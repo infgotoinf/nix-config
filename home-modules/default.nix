@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./xorg.nix
-    ./kmscon.nix
+    ./tmux.nix
   ];
 }

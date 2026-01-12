@@ -6,11 +6,11 @@
 
 {
   imports = [
-      ./hardware-configuration.nix
-      ./modules/default.nix 
-    ];
-  
-  #xorg.enable = true;
+    ./hardware-configuration.nix
+  ];
+
+  xorg.enable = false;
+  kmscon.enable = true;
 
 
   stylix = {
@@ -18,11 +18,15 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
     fonts = {
       monospace = {
-        package = pkgs.nerd-fonts.adwaita-mono;
-        name = "AdwaitaMono Nerd Font";
+        package = pkgs.unifont;
+        name = "Unifont";
+        #package = pkgs.cozette;
+        #name = "Cozette";
+        #package = pkgs.nerd-fonts.adwaita-mono;
+        #name = "AdwaitaMono Nerd Font";
       };
       sizes.applications = 14;
-      sizes.desktop = 12;
+      sizes.desktop = 14;
     };
   };
 
@@ -59,13 +63,6 @@
     enable = true;
     #ly.enable = true;
   };
-
-  /*services.kmscon = {
-    enable = true;
-    hwRender = true;
-    useXkbConfig = true;
-    extraOptions = "--font-size 14 --dpi-scale 288";
-  };*/
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
