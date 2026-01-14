@@ -1,20 +1,20 @@
 { pkgs, lib, config, ... }:
 
 let
-  tmux2k = pkgs.tmuxPlugins.mkTmuxPlugin {
-    pluginName = "tmux2k";
-    version = "unstable-2026-01-01";
+  tmux2k = pkgs.tmuxPlugins.mkTmuxPlugin rec{
+    pluginName = "2k"; # Cause plugin code is in `2k.tmux`
+    version = "1.8";
     src = pkgs.fetchFromGitHub {
-      owner = "2KAbhichek";
+      owner = "2KAbhishek";
       repo = "tmux2k";
-      rev = "2f7a613793a982401d9233fa2755dc2f5a916219";
+      rev = version;
       hash = "sha256-xg6ka8FJsii/LetYE3Cp+9kIiAg8AbK39Wpe7YEVEK8=";
     };
   };
 
 in {
   programs.tmux = {
-    enable =  true;
+    enable = true;
     baseIndex = 1;
     escapeTime = 0;
     historyLimit = 5000;
@@ -27,12 +27,13 @@ in {
       {
         plugin = tmux2k;
         extraConfig = ''
-          # set -g @tmux2k-icons-only true
+           set -g @tmux2k-theme 'gruvbox'
+           set -g @tmux2k-icons-only true
 
            set -g @tmux2k-left-plugins "ram cpu cpu-temp gpu"
-           set -g @tmux2k-right-plugins "bandwidth ping time"
+           set -g @tmux2k-right-plugins "battery bandwidth ping time"
           
-           set -g @tmux2k-refresh-rate 10
+           set -g @tmux2k-refresh-rate 100
           
            set -g @tmux2k-show-powerline false
         '';

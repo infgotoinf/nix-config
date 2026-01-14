@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./home-modules/default.nix
+    ./home-modules
   ];
 
 
@@ -11,6 +11,10 @@
   home.username = "inf";
   home.homeDirectory = "/home/inf";
 
+
+  home.shellAliases = {
+    tv = "~/nix-config/etc/nixpkgs.sh";
+  };
 
 
   # This value determines the Home Manager release that your configuration is

@@ -12,9 +12,8 @@
   config = lib.mkIf config.kmscon.enable {
     services.kmscon = {
       enable = true;
-      hwRender = true;
+      # hwRender = true; # Causes bad character antialising
       extraConfig = ''
-        font-engine=unifont
       '';
     };
   };

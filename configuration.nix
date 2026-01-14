@@ -7,12 +7,17 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./modules
   ];
 
-  xorg.enable = false;
+ # xorg.enable = true;
   kmscon.enable = true;
 
-
+  services.zapret-discord-youtube = {
+    enable = true;
+    config = "general(ALT7)";  # https://github.com/kartavkun/zapret-discord-youtube/tree/main/configs
+  };
+ 
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
@@ -20,8 +25,6 @@
       monospace = {
         package = pkgs.unifont;
         name = "Unifont";
-        #package = pkgs.cozette;
-        #name = "Cozette";
         #package = pkgs.nerd-fonts.adwaita-mono;
         #name = "AdwaitaMono Nerd Font";
       };
@@ -83,8 +86,11 @@
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
+  programs.zsh.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.inf = {
+    shell = pkgs.zsh;
     isNormalUser = true;
     extraGroups = [
       "wheel"
@@ -129,18 +135,23 @@
 
     w3m
     tor-browser
+    vimb
+    nyxt
+    nur.repos.vieb-nix.vieb
 
     fastfetch
     htop
     btop
   
-    kitty
+    wezterm
 
     #discord
     nix-search-tv
 
     fzf
     lf
+  
+    zsh-powerlevel10k
   ];
 
   programs.nh = {
