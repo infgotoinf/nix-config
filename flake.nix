@@ -30,7 +30,6 @@
       inherit system;
       modules = [
         inputs.nur.modules.nixos.default
-        #inputs.nur.legacyPackages."{sustem}".repos.iopq.modules.xraya
         
         ./configuration.nix
         inputs.stylix.nixosModules.stylix
@@ -41,7 +40,6 @@
       pkgs = nixpkgs.legacyPackages.${system};
       modules = [
         ./home.nix
-        ./home-modules
       ];
     };
   };

@@ -14,9 +14,25 @@
 
   home.shellAliases = {
     tv = "~/nix-config/etc/nixpkgs.sh";
+    cd = "z ";
+    ls = "eza ";
   };
 
+  home.packages = with pkgs; [
+    nix-search-tv
+    fzf
+    lf
+  ];
 
+  /*nix.nixPath = [
+    "nixpkgs=flake:nixpkgs:/nix/var/nix/profiles/per-user/root/channels"
+    "nixos-config=$HOME/nix-config/flake.nix"
+  ];*/ 
+
+  home.sessionVariables = {
+    TERM = "linux-16color";
+  };
+  
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
   # introduces backwards incompatible changes.

@@ -18,20 +18,6 @@
     config = "general(ALT7)";  # https://github.com/kartavkun/zapret-discord-youtube/tree/main/configs
   };
  
-  stylix = {
-    enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-    fonts = {
-      monospace = {
-        package = pkgs.unifont;
-        name = "Unifont";
-        #package = pkgs.nerd-fonts.adwaita-mono;
-        #name = "AdwaitaMono Nerd Font";
-      };
-      sizes.applications = 14;
-      sizes.desktop = 14;
-    };
-  };
 
   # Use the systemd-boot EFI boot loader.
   boot = {
@@ -48,7 +34,6 @@
   zramSwap.enable = true; # All default options are great
 
   networking.hostName = "nix-usb"; # Define your hostname.
-  # Pick only one of the below networking options.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
   # Set your time zone.
@@ -88,6 +73,7 @@
 
   programs.zsh.enable = true;
 
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.inf = {
     shell = pkgs.zsh;
@@ -100,7 +86,7 @@
     ];
   };
 
-  programs.firefox.enable = true;
+  #programs.firefox.enable = true;
   programs.light.enable = true;
   services.actkbd = {
     enable = true;
@@ -130,12 +116,10 @@
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     git
 
     w3m
     tor-browser
-    vimb
     nyxt
     nur.repos.vieb-nix.vieb
 
@@ -146,12 +130,8 @@
     wezterm
 
     #discord
-    nix-search-tv
 
-    fzf
-    lf
-  
-    zsh-powerlevel10k
+    ngrrram
   ];
 
   programs.nh = {

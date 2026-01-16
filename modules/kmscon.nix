@@ -13,8 +13,15 @@
     services.kmscon = {
       enable = true;
       # hwRender = true; # Causes bad character antialising
-      extraConfig = ''
+      /*fonts = [
+        { name = "Unifont Upper"; package = pkgs.unifont_upper; }
+      ];
+      extraOptions = ''
+        --term xterm-16color
       '';
+      extraConfig = ''
+        font-size=12
+      '';*/
     };
   };
 }
