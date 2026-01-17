@@ -10,19 +10,39 @@
     ./modules
   ];
 
- # xorg.enable = true;
-  kmscon.enable = true;
+  #kmscon.enable = true;
 
   services.zapret-discord-youtube = {
     enable = true;
     config = "general(ALT7)";  # https://github.com/kartavkun/zapret-discord-youtube/tree/main/configs
   };
+
+  systemd.services.NetworkManager-wait-online.enable = false;
  
+  services.journald.extraConfig = ''
+    Storage=volotile
+    RateLimitInterval=30s
+    SystemMaxUse=16M
+  '';
+
+  hardware = {
+    graphics = {
+      enable = true;
+      #enable32Bit = true;
+    };
+    nvidia = {
+      # open = true;
+      # TODO: add PRIME configuration for laptop
+    };
+  };
 
   # Use the systemd-boot EFI boot loader.
   boot = {
-    loader.systemd-boot.enable = true;
-    loader.efi.canTouchEfiVariables = true;
+    loader = {
+      timeout = 0; # Mash space to select different deneration
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
     kernelPackages = pkgs.linuxPackages_zen;
   };
 
@@ -47,20 +67,16 @@
   # In this configuration you use <Shift+Caps Lock> to switch between us and ru layouts
   services.xserver.xkb.layout = "us,ru";
   services.xserver.xkb.options = "grp:shift_caps_toggle";
-  services.displayManager = {
-    enable = true;
-    #ly.enable = true;
-  };
+  #services.xserver.videoDrivers = [ "nvidia" ];
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
-    # You can run script to test existing conole fonts '~/infs-nix-config/etc/test_consolefonts.sh'
-    font = "LatGrkCyr-8x16"; # 'LatGrkCyr-8x16' may work wierd, you can consider using 'UniCyr-8x16' or 'drdos8x16' instead
+    font = ./etc/Unifont-APL8x16-17.0.03.psf.gz;
+    earlySetup = true;
     useXkbConfig = true; # use xkb.options in tty.
   };
 
-  
 
   # Enable sound.
   services.pipewire = {
@@ -123,7 +139,6 @@
     nyxt
     nur.repos.vieb-nix.vieb
 
-    fastfetch
     htop
     btop
   

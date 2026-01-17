@@ -5,6 +5,8 @@
     ./home-modules
   ];
 
+  xorg.enable = true;
+  wayland.enable = true;
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -31,6 +33,7 @@
 
   home.sessionVariables = {
     TERM = "linux-16color";
+    NIXOS_OZONE_WL = 1;
   };
   
   # This value determines the Home Manager release that your configuration is

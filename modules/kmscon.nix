@@ -14,11 +14,8 @@
       enable = true;
       # hwRender = true; # Causes bad character antialising
       /*fonts = [
-        { name = "Unifont Upper"; package = pkgs.unifont_upper; }
+        { name = "Unifont Upper"; package = pkgs.unifont; }
       ];
-      extraOptions = ''
-        --term xterm-16color
-      '';
       extraConfig = ''
         font-size=12
       '';*/

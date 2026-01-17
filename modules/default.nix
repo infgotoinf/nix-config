@@ -2,8 +2,10 @@
 
 {
   imports = [
-    ./xorg.nix
+    ./display-manager.nix
+
     ./kmscon.nix
+
     ./stylix.nix
   ];
 }

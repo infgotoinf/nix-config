@@ -2,10 +2,12 @@
 
 {
   imports = [
-    ./tmux.nix
     ./zsh.nix
-    ./zoxide.nix
-    ./eza.nix
-    ./nvim.nix
+
+    ./cli
+    ./desktop-environment
+
+    ./neovim.nix
+    ./tmux.nix
   ];
 }
