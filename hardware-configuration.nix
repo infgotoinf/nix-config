@@ -16,6 +16,7 @@
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/fcdc43f8-45e0-4b31-a1c2-1303c322a4dd";
       fsType = "btrfs";
+      options = [ "compress=zstd" "noatime" ];
     };
 
   fileSystems."/boot" =

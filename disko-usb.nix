@@ -30,7 +30,7 @@
               size = "100%";
               content = {
                 type = "btrfs";
-                extraArgs = [ "-f" ]; # Override existing partition
+                extraArgs = [ "-f" "-O block-group-tree" ];
                 mountpoint = "/";
                 # https://btrfs.readthedocs.io/en/latest/ch-mount-options.html
                 mountOptions = [
