@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./display-manager.nix
+    ./display-manager-ly.nix
 
     ./kmscon.nix
 

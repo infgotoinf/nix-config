@@ -22,8 +22,8 @@
 
   home.packages = with pkgs; [
     nix-search-tv
-    fzf
-    lf
+    
+    ngrrram
   ];
 
   /*nix.nixPath = [

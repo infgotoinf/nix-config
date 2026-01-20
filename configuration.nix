@@ -19,11 +19,11 @@
 
   systemd.services.NetworkManager-wait-online.enable = false;
  
-  services.journald.extraConfig = ''
+  /*services.journald.extraConfig = ''
     Storage=volotile
     RateLimitInterval=30s
     SystemMaxUse=16M
-  '';
+  '';*/
 
   hardware = {
     graphics = {
@@ -139,14 +139,9 @@
     nyxt
     nur.repos.vieb-nix.vieb
 
-    htop
-    btop
-  
+    htop-vim
+
     wezterm
-
-    #discord
-
-    ngrrram
   ];
 
   programs.nh = {
