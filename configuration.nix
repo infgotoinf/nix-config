@@ -140,8 +140,6 @@
     nur.repos.vieb-nix.vieb
 
     htop-vim
-
-    wezterm
   ];
 
   programs.nh = {

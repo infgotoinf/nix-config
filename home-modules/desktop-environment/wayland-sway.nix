@@ -10,9 +10,12 @@ in {
   };
 
   config = lib.mkIf config.wayland.enable {
-    wayland.windowManager.sway = {
-      enable = true;
-      swaynag.enable = true;
-    } // commonConfig;
+    wayland = {
+      windowManager.sway = {
+        enable = true;
+        swaynag.enable = true;
+      } // commonConfig;
+      systemd.target = "sway-session.target";
+    };
   };
 }

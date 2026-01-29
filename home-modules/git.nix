@@ -12,6 +12,7 @@
     ignores = [
       ".*"
       "build"
+      "*.ini"
     ];
   };
 }

@@ -31,6 +31,11 @@
     "nixos-config=$HOME/nix-config/flake.nix"
   ];*/ 
 
+  programs.wezterm = {
+    enable = true;
+    enableZshIntegration = true;
+  };
+
   home.sessionVariables = {
     TERM = "linux-16color";
     NIXOS_OZONE_WL = 1;

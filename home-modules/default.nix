@@ -7,7 +7,7 @@
     ./cli
     ./desktop-environment
 
-    ./neovim.nix
+    ./neovim-nvf.nix
     ./tmux.nix
 
     ./git.nix

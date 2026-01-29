@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./xorg.nix
-    ./wayland.nix
+    ./xorg-i3.nix
+    ./wayland-sway.nix
   ];
 }

@@ -1,8 +1,9 @@
 {
   config = {
+    terminal = "wezterm";
     defaultWorkspace = "1: console";
     assigns = {
-      "1: console" = [{ class = "^Wezterm$"; }];
+      #"1: console" = [{ class = "^Wezterm$"; }];
     };
     gaps = {
       outer = 5;
