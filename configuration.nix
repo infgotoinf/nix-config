@@ -77,6 +77,10 @@
     useXkbConfig = true; # use xkb.options in tty.
   };
 
+  environment.variables = { 
+    TERM = "xterm-256color";
+  };
+
 
   # Enable sound.
   services.pipewire = {

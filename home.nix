@@ -37,7 +37,7 @@
   };
 
   home.sessionVariables = {
-    TERM = "linux-16color";
+    TERM = "xterm-256color";
     NIXOS_OZONE_WL = 1;
   };
   

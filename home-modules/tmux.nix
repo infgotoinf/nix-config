@@ -26,7 +26,7 @@ let
 in {
   programs.tmux = {
     enable = true;
-    terminal = "screen-16color";
+    terminal = "screen-256color";
     baseIndex = 1;
     escapeTime = 0;
     historyLimit = 5000;
@@ -36,6 +36,8 @@ in {
     extraConfig = ''
       bind '"' split-window -v -c "#{pane_current_path}"
       bind % split-window -h -c "#{pane_current_path}"
+
+      set-option -g focus-events on
     '';
     plugins = with pkgs.tmuxPlugins; [
       resurrect

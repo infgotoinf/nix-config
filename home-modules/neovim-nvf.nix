@@ -6,131 +6,131 @@
       vim = {
         withRuby = false;
 
+        theme = {
+          enable = true;
+          name = "gruvbox";
+          style = "dark";
+        };
+
         syntaxHighlighting = true;
-	autocomplete = {
-	  blink-cmp = {
+	      autocomplete = {
+	      blink-cmp = {
             enable = true;
-	    setupOpts = {
-	    };
-	  };
-	};
-	undoFile.enable = true;
+	          setupOpts = {
+	          };
+	        };
+	      };
+	      undoFile.enable = true;
+	      comments.comment-nvim.enable = true;
+        /*
+	      debugMode.enable = true;
+	      debugger.nvim-dap = {
+	        enable = true;
+                ui.enable = true;
+	      };
+	      diagnostics = {
+	        enable = true;
+	        nvim-lint.enable = true;
+	      };
+        */ 
 
-	autopairs.nvim-autopairs.enable = true;
-	comments.comment-nvim.enable = true;
-
-	debugMode.enable = true;
-	debugger.nvim-dap = {
-	  enable = true;
-          ui.enable = true;
-	};
-	diagnostics = {
-	  enable = true;
-	  nvim-lint.enable = true;
-	};
-	statusline.lualine.enable = true;
-	telescope.enable = true;
-	filetree.nvimTree.enable = true;
-        formatter.conform-nvim.enable = true;
+	      statusline.lualine.enable = true;
+        # telescope.enable = true;
+        # formatter.conform-nvim.enable = true;
 
         ui = {
-	  colorful-menu-nvim.enable = true;
-          # colorizer.enable = true;
-	  nvim-ufo.enable = true;
-	};
+	        colorful-menu-nvim.enable = true;
+	      };
 
-	utility = {
+          
+	      utility = {
           ccc.enable = true;
-	  diffview-nvim.enable = true;
-	  /*images.image-nvim = {
-	    enable = true;
+	        diffview-nvim.enable = true;
+	        /*images.image-nvim = {
+	          enable = true;
             setupOpts.backend = "kitty";
-	  };*/
-	  # oil-nvim.enable = true;
-	  smart-splits.enable = true;
-	  undotree.enable = true;
-	  yanky-nvim = {
-	    enable = true;
+	        };*/
+	        # oil-nvim.enable = true;
+          # smart-splits.enable = true;
+	        undotree.enable = true;
+	        yanky-nvim = {
+	          enable = true;
             setupOpts.ring.storage = "sqlite";
-	  };
+	        };
 
-	  motion = {
+	        motion = {
             leap.enable = true;
-	  };
-	};
+	        };
+	      };
 
-	visuals = {
+	      visuals = {
           cellular-automaton.enable = true;
-	  cinnamon-nvim.enable = true;
-	  fidget-nvim.enable = true;
-	};
+	        cinnamon-nvim.enable = true;
+	        fidget-nvim.enable = true;
+	      };
 
 
-	# enableLuaLoader = true;
+	      enableLuaLoader = true;
 
-	# lazy.plugins = {};
-	# globals = {};
-	# keymaps = [];
+	      # lazy.plugins = {};
+	      # globals = {};
+	      # keymaps = [];
         # lsp.enable = true;
-	# treesitter.enable = true;
+	      # treesitter.enable = true;
 
-
-	git = {
+        
+	      git = {
           enable = true;
-	  git-conflict.enable = true;
-	  gitsigns.enable = true;
-	  hunk-nvim.enable = true;
-	  neogit.enable = true;
-	  vim-fugitive.enable = true;
-	};
+	        git-conflict.enable = true;
+	        gitsigns.enable = true;
+	        hunk-nvim.enable = true;
+	        neogit.enable = true;
+	        vim-fugitive.enable = true;
+	      };
+              
+
+          options = {
+	        shiftwidth = 2;
+	        tabstop = 2;
+	        # updatetime = 50;
+	      };
 
 
-        options = {
-	  shiftwidth = 4;
-	  tabstop = 4;
-	  # updatetime = 50;
-	};
-
-
-
-	languages = {
-	  enableDAP = true;
-	  enableExtraDiagnostics = true;
-	  enableFormat = true;
-	  enableTreesitter = true;
-          enableLSP = true;
+	      languages = {
+	        # enableDAP = true;
+	        # enableExtraDiagnostics = true;
+	        # enableFormat = true;
+	        enableTreesitter = true;
+          # enableLSP = true;
 
           assembly.enable = true;
-	  markdown.enable = true;
-	  haskell.enable = true;
-	  csharp.enable = true;
-	  kotlin.enable = true;
-	  python.enable = true;
-	  clang.enable = true;
-	  ocaml.enable = true;
-	  bash.enable = true;
-	  html.enable = true;
-	  java.enable = true;
-	  json.enable = true;
-	  rust.enable = true;
-	  yaml.enable = true;
-	  css.enable = true;
-	  lua.enable = true;
-	  nim.enable = true;
-	  nix.enable = true;
-	  qml.enable = true;
-	  zig.enable = true;
-	  go.enable = true;
-	  ts.enable = true;
-	};
+	        markdown.enable = true;
+	        haskell.enable = true;
+	        csharp.enable = true;
+	        kotlin.enable = true;
+	        python.enable = true;
+	        clang.enable = true;
+	        ocaml.enable = true;
+	        bash.enable = true;
+	        html.enable = true;
+	        java.enable = true;
+	        json.enable = true;
+	        rust.enable = true;
+	        yaml.enable = true;
+	        css.enable = true;
+	        lua.enable = true;
+	        nim.enable = true;
+	        nix.enable = true;
+	        qml.enable = true;
+	        zig.enable = true;
+	        go.enable = true;
+	        ts.enable = true;
+	      };
       };
     };
     
 
-    /*plugins = with pkgs.vimPlugins; [
-      nvim-treesitter.withAllGrammars
-      undotree
-    ];
+    /*
     extraConfig = ''
       vim.g.mapleader = ' '
       vim.keymap = {
@@ -188,15 +188,10 @@
 
 
       vim.opt = {
-	swapfile = false
-	backup = false
 	undodir = os.getenv('HOME') .. '/.vim/undodir'
-	undofile = true
 
 	hlsearch = false
 	incsearch = true
-
-	termguicolors = true
 
 	scrolloff = 4
 	signcolumn = 'yes'
