@@ -16,10 +16,6 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nvf = {
-      url = "github:NotAShelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     zapret-discord-youtube.url = "github:kartavkun/zapret-discord-youtube";
   };
 
@@ -42,7 +38,6 @@
     homeConfigurations.${username} = inputs.home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
       modules = [
-	inputs.nvf.homeManagerModules.default
         ./home.nix
       ];
     };

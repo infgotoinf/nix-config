@@ -1,0 +1,31 @@
+{ pkgs, lib, config, ... }: {
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+
+    viAlias = true;
+    vimAlias = true;
+    vimdiffAlias = true;
+
+    withRuby = false;
+lolol
+    extraConfig = ''
+      set shiftwidth=2
+      set tabstop=2
+      set softtabstop=2
+      set expandtab
+      set smartindent
+
+      set scrolloff=8
+
+      set swapfile
+      set backup
+      set undofile
+      set undodir=~/.config/nvim/undodir
+
+      set incsearch
+
+      set termguicolors
+    '';
+  };
+}
