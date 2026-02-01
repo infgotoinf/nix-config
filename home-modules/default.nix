@@ -10,6 +10,7 @@
     ./vim.nix
     ./helix.nix
     ./tmux.nix
+    ./wezterm.nix
 
     ./git.nix
   ];

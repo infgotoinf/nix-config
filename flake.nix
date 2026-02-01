@@ -30,6 +30,7 @@
       inherit system;
       modules = [
         ./configuration.nix
+        inputs.home-manager.nixosModules.home-manager
         inputs.stylix.nixosModules.stylix
         inputs.nur.modules.nixos.default
         inputs.zapret-discord-youtube.nixosModules.default
@@ -39,6 +40,7 @@
       pkgs = nixpkgs.legacyPackages.${system};
       modules = [
         ./home.nix
+        inputs.stylix.homeModules.stylix
       ];
     };
   };

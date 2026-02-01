@@ -23,19 +23,15 @@ declare -a INDEXES=(
     "all ctrl-a"
 )
 
-SEARCH_SNIPPET_KEY="ctrl-w"
 OPEN_SOURCE_KEY="ctrl-s"
 OPEN_HOMEPAGE_KEY="ctrl-o"
-NIX_SHELL_KEY="ctrl-i"
 PRINT_PREVIEW_KEY="ctrl-p"
 
 OPENER="xdg-open"
 
 if [[ "$(uname)" == 'Darwin' ]]; then
-    SEARCH_SNIPPET_KEY="alt-w"
     OPEN_SOURCE_KEY="alt-s"
     OPEN_HOMEPAGE_KEY="alt-o"
-    NIX_SHELL_KEY="alt-i"
     PRINT_PREVIEW_KEY="alt-p"
 
     OPENER="open"
@@ -82,8 +78,6 @@ save_state() {
 
 HEADER="$OPEN_HOMEPAGE_KEY - open homepage
 $OPEN_SOURCE_KEY - open source
-$SEARCH_SNIPPET_KEY - search github for snippets
-$NIX_SHELL_KEY - nix-shell
 $PRINT_PREVIEW_KEY - print preview
 "
 
@@ -103,17 +97,6 @@ done
 # reset the state
 echo "" >/tmp/nix-search-tv-fzf
 
-SEARCH_SNIPPET_CMD=$'echo "{}"'
-# fzf surrounds the matched package with ', trim them
-SEARCH_SNIPPET_CMD="$SEARCH_SNIPPET_CMD | tr -d \"\'\" "
-# if it's multi-index search, then we need to remote the prefix
-SEARCH_SNIPPET_CMD="$SEARCH_SNIPPET_CMD | awk \'{ if (\$2) { print \$2 } else print \$1 }\' "
-SEARCH_SNIPPET_CMD="$SEARCH_SNIPPET_CMD | xargs printf \"https://github.com/search?type=code&q=lang:nix+%s\" \$1 "
-
-# shellcheck disable=SC2016
-NIX_SHELL_CMD='nix-shell --run $SHELL -p $(echo "{}" | sed "s:nixpkgs/::g"'
-NIX_SHELL_CMD="$NIX_SHELL_CMD | tr -d \"\'\")"
-
 # shellcheck disable=SC2016
 PREVIEW_WINDOW='
     if [[ ${FZF_COLS:-$COLUMNS} -lt 130 ]]; then
@@ -127,8 +110,6 @@ eval "$CMD print | fzf \
     --preview '$CMD preview \$(cat $STATE_FILE) {}' \
     --bind '$OPEN_SOURCE_KEY:execute($CMD source \$(cat $STATE_FILE) {} | xargs $OPENER)' \
     --bind '$OPEN_HOMEPAGE_KEY:execute($CMD homepage \$(cat $STATE_FILE) {} | xargs $OPENER)' \
-    --bind $'$SEARCH_SNIPPET_KEY:execute($SEARCH_SNIPPET_CMD | xargs $OPENER)' \
-    --bind $'$NIX_SHELL_KEY:become($NIX_SHELL_CMD)' \
     --bind $'$PRINT_PREVIEW_KEY:become($CMD preview \$(cat $STATE_FILE) {})' \
     --layout reverse \
     --scheme history \

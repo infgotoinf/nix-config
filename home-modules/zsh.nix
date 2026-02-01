@@ -1,6 +1,7 @@
 { pkgs, lib, config, ... }: {
   programs.zsh = {
     enable = true;
+    defaultKeymap = "emacs";
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     historySubstringSearch.enable = true;
@@ -9,13 +10,6 @@
       share = true;
     };
     plugins = [
-      /*
-      {
-        name = "vi-mode";
-        src = pkgs.zsh-vi-mode;
-        file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
-      }
-      */
       {
         name = "agkozak-zsh-prompt";
         src = pkgs.agkozak-zsh-prompt;
@@ -54,9 +48,5 @@
         ${exit_status}${cmd_exec_time}%F{red}[%f${username_and_hostname}%F{red}:%f${path}%F{red}]%f${venv}${bg_job_indicator}${git_status}
         ${prompt_char}'';
     };
-    /*initContent = ''
-      source <(fzf --zsh)
-    '';
-    */
   };
 }

@@ -7,6 +7,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./stylix.nix
     ./modules
   ];
 
@@ -69,10 +70,18 @@
   services.xserver.xkb.options = "grp:shift_caps_toggle";
   #services.xserver.videoDrivers = [ "nvidia" ];
 
+  fonts = {
+    fontDir.enable = true;
+    packages = with pkgs; [
+      unifont
+      unifont_upper
+    ];
+  };
+
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
-    font = ./etc/Unifont-APL8x16-17.0.03.psf.gz;
+    font = ./etc/fonts/Unifont-APL8x16-17.0.03.psf.gz;
     earlySetup = true;
     useXkbConfig = true; # use xkb.options in tty.
   };
@@ -128,10 +137,10 @@
     ];
   };
 
-  services.tor = {
+  /*services.tor = {
     enable = true;
     openFirewall = true;
-  };
+  };*/
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
@@ -139,8 +148,7 @@
     git
 
     w3m
-    tor-browser
-    nyxt
+    #tor-browser
     nur.repos.vieb-nix.vieb
 
     htop-vim

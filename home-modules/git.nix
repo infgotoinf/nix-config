@@ -5,7 +5,7 @@
     settings = {
       user = {
         name = "-inf";
-	email = "infgotoinf@gmail.com";
+	      email = "infgotoinf@gmail.com";
       };
       init.defaultBranch = "main";
     };
@@ -14,5 +14,9 @@
       "build"
       "*.ini"
     ];
+  };
+
+  programs.gh = {
+    enable = true;
   };
 }

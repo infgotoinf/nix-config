@@ -1,15 +1,15 @@
-{ pkgs, lib, config, ... }: {
+{ pkgs, config, ... }: {
 
   stylix = {
     enable = true;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
-    #targets.kmscon.fonts.enable = false;
 
     fonts = {
       monospace = {
         name = "Unifont Upper";
-	package = pkgs.unifont_upper;
+        package = pkgs.unifont_upper;
       };
+      serif = config.stylix.fonts.monospace;
       sansSerif = config.stylix.fonts.monospace;
       /*sansSerif = {
         package = pkgs.nerd-fonts.adwaita-mono;

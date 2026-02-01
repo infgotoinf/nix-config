@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./stylix.nix
     ./home-modules
   ];
 
@@ -30,11 +31,6 @@
     "nixpkgs=flake:nixpkgs:/nix/var/nix/profiles/per-user/root/channels"
     "nixos-config=$HOME/nix-config/flake.nix"
   ];*/ 
-
-  programs.wezterm = {
-    enable = true;
-    enableZshIntegration = true;
-  };
 
   home.sessionVariables = {
     TERM = "xterm-256color";
