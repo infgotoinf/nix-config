@@ -55,6 +55,10 @@
       ZSH_HIGHLIGHT_STYLES[autodirectory]=fg=green
       ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=green
       ZSH_HIGHLIGHT_STYLES[precommand]=fg=green
+
+      # Change cursor to blinking block
+      # echo -ne '\e[1 q'
+      echo -e '\033[?6c'
     '';
   };
 }
