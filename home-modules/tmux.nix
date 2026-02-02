@@ -27,7 +27,6 @@ in {
       {
         plugin = tmux2k;
         extraConfig = ''
-          set -g @tmux2k-theme 'gruvbox'
           set -g @tmux2k-icons-only true
 
           set -g @tmux2k-time-format "%a %I:%M %p %B %Y"

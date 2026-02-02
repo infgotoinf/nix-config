@@ -6,8 +6,8 @@
 
     fonts = {
       monospace = {
-        name = "Unifont Upper";
-        package = pkgs.unifont_upper;
+        name = "Unifont";
+        package = pkgs.unifont;
       };
       serif = config.stylix.fonts.monospace;
       sansSerif = config.stylix.fonts.monospace;

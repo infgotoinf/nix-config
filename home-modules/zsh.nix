@@ -48,5 +48,13 @@
         ${exit_status}${cmd_exec_time}%F{red}[%f${username_and_hostname}%F{red}:%f${path}%F{red}]%f${venv}${bg_job_indicator}${git_status}
         ${prompt_char}'';
     };
+    initContent = ''
+      # Disabling underline
+      (( ''${+ZSH_HIGHLIGHT_STYLES} )) || typeset -A ZSH_HIGHLIGHT_STYLES
+      ZSH_HIGHLIGHT_STYLES[path]=none
+      ZSH_HIGHLIGHT_STYLES[autodirectory]=fg=green
+      ZSH_HIGHLIGHT_STYLES[suffix-alias]=fg=green
+      ZSH_HIGHLIGHT_STYLES[precommand]=fg=green
+    '';
   };
 }
