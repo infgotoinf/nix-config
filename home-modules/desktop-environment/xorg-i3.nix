@@ -1,4 +1,4 @@
-{ lib, config, ... }:
+{ lib, pkgs, config, ... }:
 let
   commonConfig = import ./tiling-window-manager-config.nix;
 

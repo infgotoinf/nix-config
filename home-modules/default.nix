@@ -5,13 +5,12 @@
     ./zsh.nix
 
     ./cli
+    ./programming
     ./desktop-environment
 
-    ./vim.nix
-    ./helix.nix
     ./tmux.nix
     ./wezterm.nix
 
-    ./git.nix
+    ./vim.nix
   ];
 }

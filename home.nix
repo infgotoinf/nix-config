@@ -9,6 +9,8 @@
   xorg.enable = true;
   wayland.enable = true;
 
+  services.udiskie.enable = true;
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "inf";
@@ -26,6 +28,9 @@
     
     ngrrram
   ];
+
+
+  xdg.enable = true;
 
   /*nix.nixPath = [
     "nixpkgs=flake:nixpkgs:/nix/var/nix/profiles/per-user/root/channels"

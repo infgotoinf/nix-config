@@ -1,10 +1,13 @@
-{ pkgs, lib, config, ... }: {
+{ pkgs, lib, config, ... }:
+
+{
   programs.zsh = {
     enable = true;
     defaultKeymap = "emacs";
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     historySubstringSearch.enable = true;
+    dotDir = "${config.xdg.configHome}/zsh"; 
     history = {
       ignoreAllDups = true;
       share = true;

@@ -17,7 +17,7 @@
               start = "1M";
               # Since NixOS stores all installed kernels' versions in boot I don't recommend going below 512M
               # https://discourse.nixos.org/t/boot-partition-is-too-small-and-becoming-full/32194
-              end = "1G"; # If you're not going to play with different kernels you can half this value
+              end = "512M";
               type = "EF00";
               content = {
                 type = "filesystem";

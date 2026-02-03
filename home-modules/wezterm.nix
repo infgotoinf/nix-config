@@ -5,18 +5,110 @@
     enable = true;
     #enableZshIntegration = true;
     extraConfig = ''
+      local act = wezterm.action
+      
       return {
         -- font = wezterm.font_from_file("/home/inf/nix-config/etc/fonts/UnifontEX/UnifontExMono.ttf"),
         -- font = wezterm.font("UnifontExMono"); -- cp etc/fonts/UnifontEX/UnifontExMono.ttf ~/.local/share/fonts
         -- font_size = 12.0,
         cell_width = 0.5,
+        use_fancy_tab_bar = false,
+        scrollback_lines = 1000,
 
         default_cursor_style = 'BlinkingBlock',
         cursor_blink_ease_in = 'Constant',
         cursor_blink_ease_out = 'Constant',
         cursor_blink_rate = 250,
+
+        -- https://github.com/wezterm/wezterm/discussions/2329
+        keys = {
+      		{key="-", mods="WIN", action=act.SplitVertical{domain="CurrentPaneDomain"}},
+      		{key="=", mods="WIN", action=act.SplitHorizontal{domain="CurrentPaneDomain"}},
+      		{key="f" , mods="WIN", action="TogglePaneZoomState" },
+
+      		{key="h", mods="WIN", action=act.ActivatePaneDirection("Left")},
+      		{key="j", mods="WIN", action=act.ActivatePaneDirection("Down")},
+      		{key="k", mods="WIN", action=act.ActivatePaneDirection("Up")},
+      		{key="l", mods="WIN", action=act.ActivatePaneDirection("Right")},
+
+      		{key="H", mods="WIN", action=act{AdjustPaneSize={"Left", 5}}},
+      		{key="J", mods="WIN", action=act{AdjustPaneSize={"Down", 5}}},
+      		{key="K", mods="WIN", action=act{AdjustPaneSize={"Up", 5}}},
+      		{key="L", mods="WIN", action=act{AdjustPaneSize={"Right", 5}}},
+
+      		{key="c" , mods="WIN", action=act{SpawnTab="CurrentPaneDomain"}},
+      		{key="n", mods="WIN", action=act.ActivateTabRelative(1)},
+      		{key="p", mods="WIN", action=act.ActivateTabRelative(-1)},
+      		{key=".", mods="WIN", action=act.ActivateLastTab},
+
+      		{key="1", mods="WIN", action=act{ActivateTab=1}},
+      		{key="2", mods="WIN", action=act{ActivateTab=2}},
+      		{key="3", mods="WIN", action=act{ActivateTab=3}},
+      		{key="4", mods="WIN", action=act{ActivateTab=4}},
+      		{key="5", mods="WIN", action=act{ActivateTab=5}},
+      		{key="6", mods="WIN", action=act{ActivateTab=6}},
+      		{key="7", mods="WIN", action=act{ActivateTab=7}},
+      		{key="8", mods="WIN", action=act{ActivateTab=8}},
+      		{key="9", mods="WIN", action=act{ActivateTab=9}},
+
+      		
+    			{key="x", mods="WIN", action=act.ActivateCopyMode},
+          {key="v", mods="WIN", action=act.PasteFrom("PrimarySelection")},
+        },
+
+        key_tables = {
+          copy_mode = {
+            {key="c", mods="CTRL", action=act.CopyMode("Close")},
+            {key="[", mods="CTRL", action=act.CopyMode("Close")},
+            {key="Escape", mods="NONE", action=act.CopyMode("Close")},
+
+            {key="h", mods="NONE", action=act.CopyMode("MoveLeft")},
+            {key="j", mods="NONE", action=act.CopyMode("MoveDown")},
+            {key="k", mods="NONE", action=act.CopyMode("MoveUp")},
+            {key="l", mods="NONE", action=act.CopyMode("MoveRight")},
+
+            {key="LeftArrow",  mods="NONE", action=act.CopyMode("MoveLeft")},
+            {key="DownArrow",  mods="NONE", action=act.CopyMode("MoveDown")},
+            {key="UpArrow",    mods="NONE", action=act.CopyMode("MoveUp")},
+            {key="RightArrow", mods="NONE", action=act.CopyMode("MoveRight")},
+
+            {key="w", mods="NONE", action=act.CopyMode("MoveForwardWord")},
+            {key="b", mods="NONE",  action=act.CopyMode("MoveBackwardWord")},
+
+            {key="0", mods="NONE",  action=act.CopyMode("MoveToStartOfLine")},
+
+            {key="$", mods="NONE",  action=act.CopyMode("MoveToEndOfLineContent")},
+            {key="$", mods="SHIFT", action=act.CopyMode("MoveToEndOfLineContent")},
+            {key="_", mods="NONE",  action=act.CopyMode("MoveToStartOfLineContent")},
+            {key="_", mods="SHIFT", action=act.CopyMode("MoveToStartOfLineContent")},
+            {key="m", mods="ALT",   action=act.CopyMode("MoveToStartOfLineContent")},
+
+            {key=" ", mods="NONE",  action=act.CopyMode{SetSelectionMode="Cell"}},
+            {key="v", mods="NONE",  action=act.CopyMode{SetSelectionMode="Cell"}},
+            {key="V", mods="NONE",  action=act.CopyMode{SetSelectionMode="Line"}},
+            {key="V", mods="SHIFT", action=act.CopyMode{SetSelectionMode="Line"}},
+            {key="v", mods="CTRL",  action=act.CopyMode{SetSelectionMode="Block"}},
+
+            {key="G", mods="NONE",  action=act.CopyMode("MoveToScrollbackBottom")},
+            {key="G", mods="SHIFT", action=act.CopyMode("MoveToScrollbackBottom")},
+            {key="g", mods="NONE",  action=act.CopyMode("MoveToScrollbackTop")},
+
+            {key="Enter", mods="NONE", action=act.Multiple{
+              act.CopyTo("ClipboardAndPrimarySelection"),
+              act.CopyMode("Close"),
+            }},
+            {key="/", mods="NONE", action=act{Search={CaseSensitiveString=""}}},
+            {key="n", mods="CTRL", action=act{CopyMode="NextMatch"}},
+          },
+
+          -- Never used this mode btw
+          search_mode = {
+            {key="Escape", mods="NONE", action=act{CopyMode="Close"}},
+            {key="Enter", mods="NONE", action="ActivateCopyMode"},
+            {key="n", mods="CTRL", action=act{CopyMode="NextMatch"}},
+          },
+        },
       }
     '';
-   
   };
 }

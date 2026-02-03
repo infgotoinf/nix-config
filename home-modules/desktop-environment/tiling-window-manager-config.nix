@@ -1,7 +1,7 @@
 {
   config = {
     terminal = "wezterm";
-    defaultWorkspace = "1: console";
+    defaultWorkspace = "workspace number 1";
     assigns = {
       #"1: console" = [{ class = "^Wezterm$"; }];
     };
@@ -14,7 +14,8 @@
     ];
 
     startup = [
-
+      { command = "wezterm"; always = true; }
+      { command = "vieb"; }
     ];
 
     /*window = [

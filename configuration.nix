@@ -19,6 +19,7 @@
   };
 
   systemd.services.NetworkManager-wait-online.enable = false;
+
  
   /*services.journald.extraConfig = ''
     Storage=volotile
@@ -26,26 +27,12 @@
     SystemMaxUse=16M
   '';*/
 
-  hardware = {
-    graphics = {
-      enable = true;
-      #enable32Bit = true;
-    };
-    nvidia = {
-      # open = true;
-      # TODO: add PRIME configuration for laptop
-    };
+  # For automounting connected devices
+  services = {
+    udisks2.enable = true;
+    gvfs.enable = true;
   };
 
-  # Use the systemd-boot EFI boot loader.
-  boot = {
-    loader = {
-      timeout = 0; # Mash space to select different deneration
-      systemd-boot.enable = true;
-      efi.canTouchEfiVariables = true;
-    };
-    kernelPackages = pkgs.linuxPackages_zen;
-  };
 
   nix.settings.experimental-features = [
     "nix-command"
@@ -64,12 +51,6 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # Configure keymap in X11
-  # In this configuration you use <Shift+Caps Lock> to switch between us and ru layouts
-  services.xserver.xkb.layout = "us,ru";
-  services.xserver.xkb.options = "grp:shift_caps_toggle";
-  #services.xserver.videoDrivers = [ "nvidia" ];
-
   fonts = {
     fontDir.enable = true;
     packages = with pkgs; [
@@ -78,14 +59,12 @@
     ];
   };
 
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
   console = {
     font = ./etc/fonts/Unifont-APL8x16-17.0.03.psf.gz;
     earlySetup = true;
     useXkbConfig = true; # use xkb.options in tty.
   };
-
+                  
   environment.variables = { 
     TERM = "xterm-256color";
   };
@@ -115,32 +94,10 @@
     ];
   };
 
-  #programs.firefox.enable = true;
-  programs.light.enable = true;
-  services.actkbd = {
-    enable = true;
-    bindings = [
-      # Set `Ctrl+F9' to increase display brightness
-      { keys = [ 29 67 ]; events = [ "key" "rep" ]; command = "/run/current-system/sw/bin/light -U 2"; }
-      # Set `Ctrl+F10' to decrease display brightness
-      { keys = [ 29 68 ]; events = [ "key" "rep" ]; command = "/run/current-system/sw/bin/light -A 2"; }
-      
-      # Set 'Shift+F9' to volume up
-      { keys = [ 42 67 ]; events = [ "key" "rep" ]; command = "${pkgs.alsa-utils}/bin/amixer -q set Master 1+ unmute"; }
-      # Set 'Shift+F10' to volume down
-      { keys = [ 42 68 ]; events = [ "key" "rep" ]; command = "${pkgs.alsa-utils}/bin/amixer -q set Master 1- unmute"; }
-      
-      # Set 'Ctrl+F8' to mute sound
-      { keys = [ 29 66 ]; events = [ "key" ]; command = "${pkgs.alsa-utils}/bin/amixer -q set Master toggle"; }
-      # Set 'Shift+F8' to mute mic
-      { keys = [ 42 66 ]; events = [ "key" ]; command = "${pkgs.alsa-utils}/bin/amixer -q set Capture toggle"; }
-    ];
-  };
-
-  /*services.tor = {
+  services.tor = {
     enable = true;
     openFirewall = true;
-  };*/
+  };
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
@@ -148,20 +105,11 @@
     git
 
     w3m
-    #tor-browser
     nur.repos.vieb-nix.vieb
+    tor-browser
 
     htop-vim
   ];
-
-  programs.nh = {
-    enable = true;
-    clean = {
-      enable = true;
-      extraArgs = "--keep-since 3d --keep 5 --optimise";
-    };
-  };
-
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
