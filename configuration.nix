@@ -106,7 +106,7 @@
 
     w3m
     nur.repos.vieb-nix.vieb
-    tor-browser
+    #tor-browser
 
     htop-vim
   ];

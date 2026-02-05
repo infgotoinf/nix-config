@@ -7,10 +7,10 @@
     ./kmscon.nix
 
     ./shortcuts.nix
-    ./locales-and-keyboard-layouts.nix
+    ./locales-keyboard-layouts.nix
 
-    ./drivers.nix
-    ./boot-and-kernel.nix
+    ./drivers-xserver.nix
+    ./boot-kernel.nix
 
     ./nh.nix
   ];

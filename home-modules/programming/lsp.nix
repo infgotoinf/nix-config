@@ -5,8 +5,6 @@
     superhtml
     vscode-css-languageserver
     
-    lldb
-    clang
     
     nixd
   ];

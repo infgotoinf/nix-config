@@ -15,8 +15,7 @@
     graphics = {
       enable = true;
       extraPackages = with pkgs; [
-         intel-media-driver
-         intel-vaapi-driver
+         # intel-vaapi-driver
       ];
     };
     nvidia = {
@@ -27,7 +26,19 @@
 
   services.xserver = {
     enable = true;
-    videoDrivers = [ "xf86-video-nouveau" ];
+    /*
+    videoDrivers = [ 
+      "xf86-video-nouveau"
+      "xf86-video-intel"
+      "xf86-video-fbdev"
+    ];
+    */
+    displayManager.startx = {
+      enable = true;
+      extraCommands = ''
+        exec i3
+      '';
+    };
   };
 }
 

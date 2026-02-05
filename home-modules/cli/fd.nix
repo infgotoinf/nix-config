@@ -2,7 +2,7 @@
   programs.fd = {
     enable = true;
     extraOptions = [
-      "--absolute-path"
+      # "--absolute-path"
       "--glob"
     ];
   };
