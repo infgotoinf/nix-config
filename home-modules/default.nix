@@ -13,7 +13,5 @@
     ./wezterm.nix
 
     ./vim.nix
-
-    ./VPN.nix
   ];
 }
