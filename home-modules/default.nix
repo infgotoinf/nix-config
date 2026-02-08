@@ -7,10 +7,13 @@
     ./cli
     ./programming
     ./desktop-environment
+    ./applications.nix
 
     ./tmux.nix
     ./wezterm.nix
 
     ./vim.nix
+
+    ./VPN.nix
   ];
 }

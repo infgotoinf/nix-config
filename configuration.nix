@@ -15,11 +15,10 @@
 
   services.zapret-discord-youtube = {
     enable = true;
-    config = "general(ALT7)";  # https://github.com/kartavkun/zapret-discord-youtube/tree/main/configs
+    configName = "general(ALT7)";  # https://github.com/kartavkun/zapret-discord-youtube/tree/main/configs
   };
 
-  systemd.services.NetworkManager-wait-online.enable = false;
-
+  systemd.user.extraConfig = "DefaultTimeoutStopSec=10s";
  
   /*services.journald.extraConfig = ''
     Storage=volotile
@@ -39,10 +38,14 @@
     "flakes"
   ];
 
-  zramSwap.enable = true; # All default options are great
+  zramSwap = {
+    enable = true; # All default options are great
+    algorithm = "lz4";
+    priority = 100;
+  };
 
-  networking.hostName = "nix-usb"; # Define your hostname.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  services.irqbalance.enable = true;
+
 
   # Set your time zone.
   time.timeZone = "Europe/Moscow";
@@ -61,6 +64,7 @@
 
   console = {
     font = ./etc/fonts/Unifont-APL8x16-17.0.03.psf.gz;
+    # font = "Lat2-Terminus16";
     earlySetup = true;
     useXkbConfig = true; # use xkb.options in tty.
   };

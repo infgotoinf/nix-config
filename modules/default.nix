@@ -11,6 +11,7 @@
 
     ./drivers-xserver.nix
     ./boot-kernel.nix
+    ./network.nix
 
     ./nh.nix
   ];

@@ -27,6 +27,10 @@
     nix-search-tv
     
     ngrrram
+
+    nload
+    uwuify
+    #uwufetch
   ];
 
 

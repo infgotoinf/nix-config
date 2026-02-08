@@ -10,6 +10,7 @@
     dotDir = "${config.xdg.configHome}/zsh"; 
     history = {
       ignoreAllDups = true;
+      ignoreSpace = true;
       share = true;
     };
     plugins = [
@@ -46,7 +47,7 @@
       AGKOZAK_COLORS_USER_HOST = "magenta";
       AGKOZAK_COLORS_PATH = "blue";
       */
-      
+
       AGKOZAK_CUSTOM_PROMPT = ''
         ${exit_status}${cmd_exec_time}%F{red}[%f${username_and_hostname}%F{red}:%f${path}%F{red}]%f${venv}${bg_job_indicator}${git_status}
         ${prompt_char}'';
