@@ -31,10 +31,10 @@
       		{key="k", mods="WIN", action=act.ActivatePaneDirection("Up")},
       		{key="l", mods="WIN", action=act.ActivatePaneDirection("Right")},
 
-      		{key="H", mods="WIN", action=act{AdjustPaneSize={"Left", 5}}},
-      		{key="J", mods="WIN", action=act{AdjustPaneSize={"Down", 5}}},
-      		{key="K", mods="WIN", action=act{AdjustPaneSize={"Up", 5}}},
-      		{key="L", mods="WIN", action=act{AdjustPaneSize={"Right", 5}}},
+      		{key="H", mods="WIN", action=act{AdjustPaneSize={"Left", 1}}},
+      		{key="J", mods="WIN", action=act{AdjustPaneSize={"Down", 1}}},
+      		{key="K", mods="WIN", action=act{AdjustPaneSize={"Up", 1}}},
+      		{key="L", mods="WIN", action=act{AdjustPaneSize={"Right", 1}}},
 
       		{key="c" , mods="WIN", action=act{SpawnTab="CurrentPaneDomain"}},
       		{key="n", mods="WIN", action=act.ActivateTabRelative(1)},

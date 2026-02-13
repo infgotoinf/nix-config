@@ -1,12 +1,7 @@
-# Edit this configuration file to define what should be installed on
-# your system. Help is available in the configuration.nix(5) man page, on
-# https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
-
-{ config, lib, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
-    ./hardware-configuration.nix
     ./stylix.nix
     ./modules
   ];
@@ -19,12 +14,14 @@
   };
 
   systemd.user.extraConfig = "DefaultTimeoutStopSec=10s";
- 
-  /*services.journald.extraConfig = ''
+
+  powerManagement.cpuFreqGovernor = "performance"; 
+
+  services.journald.extraConfig = ''
     Storage=volotile
     RateLimitInterval=30s
     SystemMaxUse=16M
-  '';*/
+  '';
 
   # For automounting connected devices
   services = {
@@ -39,9 +36,13 @@
   ];
 
   zramSwap = {
-    enable = true; # All default options are great
+    enable = true;
+    memoryPercent = 100;
     algorithm = "lz4";
     priority = 100;
+  };
+  boot.kernel.sysctl = {
+    "vm.swappiness" = 100;
   };
 
   services.irqbalance.enable = true;
@@ -77,7 +78,9 @@
   # Enable sound.
   services.pipewire = {
     enable = true;
+    alsa.enable = true;
     pulse.enable = true;
+    jack.enable = true;
   };
 
   # Enable touchpad support (enabled default in most desktopManager).

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -29,12 +29,14 @@
     ngrrram
 
     nload
-    uwuify
-    #uwufetch
+
+    mindustry
   ];
 
-
-  xdg.enable = true;
+  xdg = {
+    enable = true;
+    userDirs.enable = true;
+  };
 
   /*nix.nixPath = [
     "nixpkgs=flake:nixpkgs:/nix/var/nix/profiles/per-user/root/channels"

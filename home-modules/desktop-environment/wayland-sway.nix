@@ -15,25 +15,51 @@ in {
         enable = true;
         systemd.variables = ["--all"];
         swaynag.enable = true;
+        config = let
+          modifier = config.wayland.windowManager.sway.config.modifier;
+        in {
+          keybindings = lib.mkOptionDefault {
+            "${modifier}+Shift+s" = ''exec grim -g "$(slurp)" - | swappy -f -'';
+            "Print" = "exec grimshot save output - | tee ~/Pictures/Screenshots/$(data +%Y-%m-%d_%H-%M-%S).png | wl-copy";
+          };
+          input."*" = {
+            xkb_layout = config.services.xserver.xkb.layout;
+            xkb_options = config.services.xserver.xkb.options;
+          };  
+        };
       } // commonConfig;
       systemd.target = "sway-session.target";
     };
 
-    /*
-    programs.sway.extraPackages = with pkgs; [
-      brightnessctl
+    home.packages = with pkgs; [
+      /*brightnessctl
       grim
       pulseaudio
       swayidle
       swaylock
       wmenu
-      flameshot
+      flameshot*/
       wl-clipboard
+      grim
+      slurp
+      sway-contrib.grimshot
     ];
-    */
 
-    programs.waybar = {
-      enable = true;
+    programs = {
+      waybar = {
+        enable = true;
+      };
+      satty = {
+        enable = true;
+        settings = {
+          general = {
+            fullscreen = false;
+            corner-roundness = 0;
+            initial-tool = "brush";
+            output-filename = "~/Pictures/Screenshots/%Y-%m-%d_%H:%M:%S.png";
+          };
+        };
+      };
     };
   };
 }

@@ -23,22 +23,5 @@
       # TODO: add PRIME configuration for laptop
     };
   };
-
-  services.xserver = {
-    enable = true;
-    /*
-    videoDrivers = [ 
-      "xf86-video-nouveau"
-      "xf86-video-intel"
-      "xf86-video-fbdev"
-    ];
-    */
-    displayManager.startx = {
-      enable = true;
-      extraCommands = ''
-        exec i3
-      '';
-    };
-  };
 }
 

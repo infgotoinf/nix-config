@@ -1,5 +1,3 @@
-{ config, lib, pkgs, ... }:
-
 {
   imports = [
     ./zsh.nix
@@ -8,6 +6,8 @@
     ./programming
     ./desktop-environment
     ./applications.nix
+    ./music.nix
+    ./qutebrowser.nix
 
     ./tmux.nix
     ./wezterm.nix

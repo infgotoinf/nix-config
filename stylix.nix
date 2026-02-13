@@ -20,11 +20,11 @@
       sizes.desktop = 12;
     };
 
-    /*icons = {
+    icons = {
       enable = true;
       dark = "Gruvbox Dark";
       package = pkgs.gruvbox-plus-icons;
-    };*/
+    };
     polarity = "dark";
   };
 }

@@ -1,17 +1,13 @@
-{ config, lib, pkgs, ... }:
-
 {
   imports = [
+    ./hardware
+    ./keyboard
+    
     ./display-manager-ly.nix
 
     ./kmscon.nix
 
-    ./shortcuts.nix
-    ./locales-keyboard-layouts.nix
-
-    ./drivers-xserver.nix
-    ./boot-kernel.nix
-    ./network.nix
+    ./xserver.nix
 
     ./nh.nix
   ];
