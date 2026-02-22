@@ -1,6 +1,3 @@
-# This disko.nix was made for installing NixOS on a flash drive.
-# If you're not installing NixOS on a flash drive, then consider using different disko.nix script.
-
 # Template from https://github.com/nix-community/disko/example/btrfs-only-root-subvolume.nix
 {
   disko.devices = {
@@ -29,17 +26,22 @@
             root = {
               size = "100%";
               content = {
-                type = "btrfs";
-                extraArgs = [ "-f" "-O block-group-tree" ];
+                type = "ext4";
+                extraArgs = [ "-f" "-O dir_index,ea_inode,filetype,inline_data,metadata_csum,orphan_file,resize_inode,sparse_super2," ];
                 mountpoint = "/";
                 # https://btrfs.readthedocs.io/en/latest/ch-mount-options.html
                 mountOptions = [
-                  "compress=zstd"
+                  "defaults"
                   "noatime"
+                  
+                  "errors=remount-ro"
+                  "commit=60"
+
+                  "jornal_assync_commit"
                 ];
               };
             };
-            # Notice what there is no swap, cause insead of swap usb configuration uses ZRAM to minimize wear of device
+            # Notice what there is no swap, cause insead of swap configuration uses ZRAM
           };
         };
       };
