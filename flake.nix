@@ -16,6 +16,10 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # xremap = {
+    #   url = "github:xremap/nix-flake";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     zapret-discord-youtube.url = "github:kartavkun/zapret-discord-youtube";
   };
 
@@ -41,6 +45,7 @@
       modules = [
         ./home.nix
         inputs.stylix.homeModules.stylix
+        # inputs.xremap.homeManagerModules.default
       ];
     };
   };

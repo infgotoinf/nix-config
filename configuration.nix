@@ -88,7 +88,8 @@
 
   programs.zsh.enable = true;
 
-
+  hardware.uinput.enable = true;
+  
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.inf = {
     shell = pkgs.zsh;
@@ -98,12 +99,9 @@
       "networkmanager"
       "video"
       "audio"
+      "uinput"
+      "input"
     ];
-  };
-
-  services.tor = {
-    enable = true;
-    openFirewall = true;
   };
 
   # List packages installed in system profile.
@@ -112,8 +110,6 @@
     git
 
     w3m
-    nur.repos.vieb-nix.vieb
-    #tor-browser
 
     htop-vim
   ];

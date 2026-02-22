@@ -21,16 +21,14 @@
     tv = "~/nix-config/etc/nixpkgs.sh";
     cd = "z ";
     ls = "eza ";
+    nix-zshell = "nix-shell --run zsh";
   };
 
   home.packages = with pkgs; [
     nix-search-tv
     
     ngrrram
-
-    nload
-
-    mindustry
+    gh-markdown-preview
   ];
 
   xdg = {

@@ -4,7 +4,10 @@
   programs.wezterm = {
     enable = true;
     #enableZshIntegration = true;
-    extraConfig = ''
+    extraConfig = let
+      modifier = "ALT";
+    in
+    ''
       local act = wezterm.action
       
       return {
@@ -22,50 +25,54 @@
 
         -- https://github.com/wezterm/wezterm/discussions/2329
         keys = {
-      		{key="-", mods="WIN", action=act.SplitVertical{domain="CurrentPaneDomain"}},
-      		{key="=", mods="WIN", action=act.SplitHorizontal{domain="CurrentPaneDomain"}},
-      		{key="f" , mods="WIN", action="TogglePaneZoomState" },
+      		{key="-", mods="${modifier}", action=act.SplitVertical{domain="CurrentPaneDomain"}},
+      		{key="=", mods="${modifier}", action=act.SplitHorizontal{domain="CurrentPaneDomain"}},
+      		{key="f", mods="${modifier}", action="TogglePaneZoomState" },
 
-      		{key="h", mods="WIN", action=act.ActivatePaneDirection("Left")},
-      		{key="j", mods="WIN", action=act.ActivatePaneDirection("Down")},
-      		{key="k", mods="WIN", action=act.ActivatePaneDirection("Up")},
-      		{key="l", mods="WIN", action=act.ActivatePaneDirection("Right")},
+      		{key="h", mods="${modifier}", action=act.ActivatePaneDirection("Left")},
+      		{key="j", mods="${modifier}", action=act.ActivatePaneDirection("Down")},
+      		{key="k", mods="${modifier}", action=act.ActivatePaneDirection("Up")},
+      		{key="l", mods="${modifier}", action=act.ActivatePaneDirection("Right")},
 
-      		{key="H", mods="WIN", action=act{AdjustPaneSize={"Left", 1}}},
-      		{key="J", mods="WIN", action=act{AdjustPaneSize={"Down", 1}}},
-      		{key="K", mods="WIN", action=act{AdjustPaneSize={"Up", 1}}},
-      		{key="L", mods="WIN", action=act{AdjustPaneSize={"Right", 1}}},
+      		{key="h", mods="CTRL+${modifier}", action=act{AdjustPaneSize={"Left", 1}}},
+      		{key="j", mods="CTRL+${modifier}", action=act{AdjustPaneSize={"Down", 1}}},
+      		{key="k", mods="CTRL+${modifier}", action=act{AdjustPaneSize={"Up", 1}}},
+      		{key="l", mods="CTRL+${modifier}", action=act{AdjustPaneSize={"Right", 1}}},
 
-      		{key="c" , mods="WIN", action=act{SpawnTab="CurrentPaneDomain"}},
-      		{key="n", mods="WIN", action=act.ActivateTabRelative(1)},
-      		{key="p", mods="WIN", action=act.ActivateTabRelative(-1)},
-      		{key=".", mods="WIN", action=act.ActivateLastTab},
+      		{key="c", mods="${modifier}", action=act{SpawnTab="CurrentPaneDomain"}},
+      		{key="J", mods="${modifier}", action=act.ActivateTabRelative(1)},
+      		{key="K", mods="${modifier}", action=act.ActivateTabRelative(-1)},
+      		{key=".", mods="${modifier}", action=act.ActivateLastTab},
 
-      		{key="1", mods="WIN", action=act{ActivateTab=1}},
-      		{key="2", mods="WIN", action=act{ActivateTab=2}},
-      		{key="3", mods="WIN", action=act{ActivateTab=3}},
-      		{key="4", mods="WIN", action=act{ActivateTab=4}},
-      		{key="5", mods="WIN", action=act{ActivateTab=5}},
-      		{key="6", mods="WIN", action=act{ActivateTab=6}},
-      		{key="7", mods="WIN", action=act{ActivateTab=7}},
-      		{key="8", mods="WIN", action=act{ActivateTab=8}},
-      		{key="9", mods="WIN", action=act{ActivateTab=9}},
+      		{key="1", mods="${modifier}", action=act{ActivateTab=1}},
+      		{key="2", mods="${modifier}", action=act{ActivateTab=2}},
+      		{key="3", mods="${modifier}", action=act{ActivateTab=3}},
+      		{key="4", mods="${modifier}", action=act{ActivateTab=4}},
+      		{key="5", mods="${modifier}", action=act{ActivateTab=5}},
+      		{key="6", mods="${modifier}", action=act{ActivateTab=6}},
+      		{key="7", mods="${modifier}", action=act{ActivateTab=7}},
+      		{key="8", mods="${modifier}", action=act{ActivateTab=8}},
+      		{key="9", mods="${modifier}", action=act{ActivateTab=9}},
 
       		
-    			{key="x", mods="WIN", action=act.ActivateCopyMode},
-          {key="v", mods="WIN", action=act.PasteFrom("PrimarySelection")},
+    			{key="x", mods="${modifier}", action=act.ActivateCopyMode},
+          {key="v", mods="${modifier}", action=act.PasteFrom("PrimarySelection")},
         },
 
         key_tables = {
           copy_mode = {
             {key="c", mods="CTRL", action=act.CopyMode("Close")},
             {key="[", mods="CTRL", action=act.CopyMode("Close")},
+            {key="q", mods="NONE", action=act.CopyMode("Close")},
             {key="Escape", mods="NONE", action=act.CopyMode("Close")},
 
             {key="h", mods="NONE", action=act.CopyMode("MoveLeft")},
             {key="j", mods="NONE", action=act.CopyMode("MoveDown")},
             {key="k", mods="NONE", action=act.CopyMode("MoveUp")},
             {key="l", mods="NONE", action=act.CopyMode("MoveRight")},
+
+            {key="u", mods="CTRL", action=act.CopyMode{MoveByPage=0.5}},
+            {key="d", mods="CTRL", action=act.CopyMode{MoveByPage=-0.5},
 
             {key="LeftArrow",  mods="NONE", action=act.CopyMode("MoveLeft")},
             {key="DownArrow",  mods="NONE", action=act.CopyMode("MoveDown")},
@@ -76,7 +83,7 @@
             {key="b", mods="NONE",  action=act.CopyMode("MoveBackwardWord")},
 
             {key="0", mods="NONE",  action=act.CopyMode("MoveToStartOfLine")},
-
+            {key="Enter", mods="NONE", action=act.CopyMode()"MoveToStartOfNextLine")},
             {key="$", mods="NONE",  action=act.CopyMode("MoveToEndOfLineContent")},
             {key="$", mods="SHIFT", action=act.CopyMode("MoveToEndOfLineContent")},
             {key="_", mods="NONE",  action=act.CopyMode("MoveToStartOfLineContent")},

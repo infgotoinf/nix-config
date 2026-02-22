@@ -3,7 +3,7 @@
     enable = true;
     clean = {
       enable = true;
-      extraArgs = "--keep-since 3d --keep 10 --optimise";
+      extraArgs = "--keep-since 7d --keep 10 --optimise";
     };
   };
 }

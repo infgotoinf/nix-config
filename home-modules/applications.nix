@@ -7,7 +7,5 @@
     libreoffice
 
     piano-rs
-
-    superTuxKart
   ];
 }

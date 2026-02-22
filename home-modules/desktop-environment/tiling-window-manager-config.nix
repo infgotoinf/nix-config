@@ -2,6 +2,7 @@
   config = rec{
     terminal = "wezterm";
     defaultWorkspace = "workspace number 1";
+    modifier = "Mod4";
     assigns = {
       #"1: console" = [{ class = "^Wezterm$"; }];
     };

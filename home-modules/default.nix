@@ -6,6 +6,7 @@
     ./programming
     ./desktop-environment
     ./applications.nix
+    ./games.nix
     ./music.nix
     ./qutebrowser.nix
 

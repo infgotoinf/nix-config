@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, config, ... }:
 
 {
   programs.zsh = {
@@ -29,6 +29,7 @@
       username_and_hostname = ''%(!.%S%B.%B%F{magenta})%n%1v%(!.%b%s.%f%b)'';
       path                  = ''%B%F{blue}%2v%f%b'';
       venv                  = ''%(10V. %F{green}[%10v]%f.)'';
+      nix_shell             = ''%F{blue}($((SHLVL/2)))%f '';
       bg_job_indicator      = ''%(1j. %F{magenta}%jj%f.)'';
       git_status            = ''%(3V.%F{yellow}%3v%f.)'';
       prompt_char           = ''%(4V.:.%#) '';
@@ -49,7 +50,7 @@
       */
 
       AGKOZAK_CUSTOM_PROMPT = ''
-        ${exit_status}${cmd_exec_time}%F{red}[%f${username_and_hostname}%F{red}:%f${path}%F{red}]%f${venv}${bg_job_indicator}${git_status}
+        ${exit_status}${cmd_exec_time}${nix_shell}%F{red}[%f${username_and_hostname}%F{red}:%f${path}%F{red}]%f${venv}${bg_job_indicator}${git_status}
         ${prompt_char}'';
     };
     initContent = ''
