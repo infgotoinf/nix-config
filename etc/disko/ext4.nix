@@ -26,8 +26,9 @@
             root = {
               size = "100%";
               content = {
-                type = "ext4";
-                extraArgs = [ "-f" "-O dir_index,ea_inode,filetype,inline_data,metadata_csum,orphan_file,resize_inode,sparse_super2," ];
+                type = "filesystem";
+                format = "ext4";
+                extraArgs = [ "-O" "dir_index,ea_inode,filetype,inline_data,metadata_csum,orphan_file,resize_inode,sparse_super2" ];
                 mountpoint = "/";
                 # https://btrfs.readthedocs.io/en/latest/ch-mount-options.html
                 mountOptions = [
@@ -37,7 +38,7 @@
                   "errors=remount-ro"
                   "commit=60"
 
-                  "jornal_assync_commit"
+                  # "journal_async_commit"
                 ];
               };
             };
