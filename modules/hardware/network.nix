@@ -18,7 +18,7 @@
   };
 
   networking = {
-    hostName = "nix-usb"; # Define your hostname.
+    hostName = "nix-ssd"; # Define your hostname.
     networkmanager.enable = true;  # Easiest to use and most distros use this by default.
     nameservers = [
       "8.8.8.8"

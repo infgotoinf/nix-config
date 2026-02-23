@@ -27,7 +27,7 @@
   let
     system = "x86_64-linux";
     username = "inf";
-    hostname = "nix-usb";
+    hostname = "nix-ssd";
   in {
     nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
       specialArgs = { inherit inputs; };

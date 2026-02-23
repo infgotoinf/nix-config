@@ -34,10 +34,10 @@
       		{key="k", mods="${modifier}", action=act.ActivatePaneDirection("Up")},
       		{key="l", mods="${modifier}", action=act.ActivatePaneDirection("Right")},
 
-      		{key="h", mods="CTRL+${modifier}", action=act{AdjustPaneSize={"Left", 1}}},
-      		{key="j", mods="CTRL+${modifier}", action=act{AdjustPaneSize={"Down", 1}}},
-      		{key="k", mods="CTRL+${modifier}", action=act{AdjustPaneSize={"Up", 1}}},
-      		{key="l", mods="CTRL+${modifier}", action=act{AdjustPaneSize={"Right", 1}}},
+      		{key="h", mods="CTRL|${modifier}", action=act{AdjustPaneSize={"Left", 1}}},
+      		{key="j", mods="CTRL|${modifier}", action=act{AdjustPaneSize={"Down", 1}}},
+      		{key="k", mods="CTRL|${modifier}", action=act{AdjustPaneSize={"Up", 1}}},
+      		{key="l", mods="CTRL|${modifier}", action=act{AdjustPaneSize={"Right", 1}}},
 
       		{key="c", mods="${modifier}", action=act{SpawnTab="CurrentPaneDomain"}},
       		{key="J", mods="${modifier}", action=act.ActivateTabRelative(1)},
@@ -71,19 +71,19 @@
             {key="k", mods="NONE", action=act.CopyMode("MoveUp")},
             {key="l", mods="NONE", action=act.CopyMode("MoveRight")},
 
-            {key="u", mods="CTRL", action=act.CopyMode{MoveByPage=0.5}},
-            {key="d", mods="CTRL", action=act.CopyMode{MoveByPage=-0.5},
-
             {key="LeftArrow",  mods="NONE", action=act.CopyMode("MoveLeft")},
             {key="DownArrow",  mods="NONE", action=act.CopyMode("MoveDown")},
             {key="UpArrow",    mods="NONE", action=act.CopyMode("MoveUp")},
             {key="RightArrow", mods="NONE", action=act.CopyMode("MoveRight")},
 
+            {key="u", mods="CTRL", action=act.CopyMode{MoveByPage=0.5}},
+            {key="d", mods="CTRL", action=act.CopyMode{MoveByPage=-0.5}},
+
             {key="w", mods="NONE", action=act.CopyMode("MoveForwardWord")},
             {key="b", mods="NONE",  action=act.CopyMode("MoveBackwardWord")},
 
             {key="0", mods="NONE",  action=act.CopyMode("MoveToStartOfLine")},
-            {key="Enter", mods="NONE", action=act.CopyMode()"MoveToStartOfNextLine")},
+            {key="Enter", mods="NONE", action=act.CopyMode("MoveToStartOfNextLine")},
             {key="$", mods="NONE",  action=act.CopyMode("MoveToEndOfLineContent")},
             {key="$", mods="SHIFT", action=act.CopyMode("MoveToEndOfLineContent")},
             {key="_", mods="NONE",  action=act.CopyMode("MoveToStartOfLineContent")},
@@ -113,8 +113,8 @@
             {key="Escape", mods="NONE", action=act{CopyMode="Close"}},
             {key="Enter", mods="NONE", action="ActivateCopyMode"},
             {key="n", mods="CTRL", action=act{CopyMode="NextMatch"}},
-          },
-        },
+          }
+        }
       }
     '';
   };
