@@ -14,14 +14,13 @@
   hardware = {
     graphics = {
       enable = true;
-      extraPackages = with pkgs; [
-         # intel-vaapi-driver
-      ];
     };
     nvidia = {
-      # open = true;
+      open = true;
       # TODO: add PRIME configuration for laptop
     };
   };
+
+  services.xserver.videoDriver = [ "nvidia" ];
 }
 

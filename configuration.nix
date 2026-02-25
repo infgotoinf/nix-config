@@ -8,6 +8,10 @@
 
   #kmscon.enable = true;
 
+  musnix = {
+    enable = true;
+  };
+
   services.zapret-discord-youtube = {
     enable = true;
     configName = "general(ALT7)";  # https://github.com/kartavkun/zapret-discord-youtube/tree/main/configs
@@ -40,9 +44,6 @@
     memoryPercent = 100;
     algorithm = "lz4";
     priority = 100;
-  };
-  boot.kernel.sysctl = {
-    "vm.swappiness" = 100;
   };
 
   services.irqbalance.enable = true;
@@ -83,6 +84,13 @@
     jack.enable = true;
   };
 
+  services.jack = {
+    alsa.enable = false;
+    loopback = {
+      enable = true;
+    };
+  };
+
   # Enable touchpad support (enabled default in most desktopManager).
   services.libinput.enable = true;
 
@@ -101,6 +109,7 @@
       "audio"
       "uinput"
       "input"
+      "jackaudio"
     ];
   };
 

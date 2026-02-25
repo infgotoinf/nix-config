@@ -1,3 +1,5 @@
+{ nixpkgs-stable, ... }:
+
 {
   systemd.services.NetworkManager-wait-online.enable = false;
 
@@ -26,4 +28,13 @@
       "1.1.1.1"
     ];
   };
+
+  # services.softether = {
+  #   enable = true;
+  #   package = nixpkgs-stable.softether;
+  #   # dataDir = ../../.;
+  #   vpnclient = {
+  #     enable = true;
+  #   };
+  # };
 }

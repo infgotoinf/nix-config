@@ -6,6 +6,8 @@
     ./home-modules
   ];
 
+  nixpkgs.config.allowUnfree = true;
+
   xorg.enable = true;
   wayland.enable = true;
 

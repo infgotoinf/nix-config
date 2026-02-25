@@ -3,7 +3,7 @@
 
 {
   home.packages = with pkgs; [
-    superTuxKart
+    supertuxkart
     mindustry
     prismlauncher
   ];
