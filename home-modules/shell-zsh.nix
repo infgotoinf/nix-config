@@ -13,10 +13,20 @@
       ignoreSpace = true;
       share = true;
     };
-    completionInit = ''
-      autoload -Uz compinit && compinit
-      zstyle ':completion:*' menu select
-    '';
+    prezto = {
+      enable = true;
+      pmodules = [
+        "environment"
+        "terminal"
+        "directory"
+        "spectrum"
+        "completion"
+      ];
+      python = {
+        virtualenvAutoSwitch = true;
+        virtualenvInitialize = true;
+      };
+    };
     plugins = [
       {
         name = "agkozak-zsh-prompt";
