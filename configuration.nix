@@ -6,6 +6,8 @@
     ./modules
   ];
 
+  nixpkgs.config.allowUnfree = true;
+
   #kmscon.enable = true;
 
   musnix = {
@@ -82,13 +84,6 @@
     alsa.enable = true;
     pulse.enable = true;
     jack.enable = true;
-  };
-
-  services.jack = {
-    alsa.enable = false;
-    loopback = {
-      enable = true;
-    };
   };
 
   # Enable touchpad support (enabled default in most desktopManager).

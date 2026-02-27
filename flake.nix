@@ -17,10 +17,10 @@
       url = "github:nix-community/NUR";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # xremap = {
-    #   url = "github:xremap/nix-flake";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
+    xremap = {
+      url = "github:xremap/nix-flake";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     musnix = {
       url = "github:musnix/musnix";
       inputs.nixpgs.follows = "nixpkgs";
@@ -60,7 +60,7 @@
       modules = [
         ./home.nix
         inputs.stylix.homeModules.stylix
-        # inputs.xremap.homeManagerModules.default
+        inputs.xremap.homeManagerModules.default
       ];
     };
   };

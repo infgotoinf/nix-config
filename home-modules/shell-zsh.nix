@@ -13,6 +13,10 @@
       ignoreSpace = true;
       share = true;
     };
+    completionInit = ''
+      autoload -Uz compinit && compinit
+      zstyle ':completion:*' menu select
+    '';
     plugins = [
       {
         name = "agkozak-zsh-prompt";
@@ -22,7 +26,7 @@
     ];
     localVariables = 
     let
-      # Custom prompt config
+      # https://github.com/agkozak/agkozak-zsh-prompt?tab=readme-ov-file#advanced-customization
       
       exit_status           = ''%(?..%B%F{red}(%?%)%f%b )'';
       cmd_exec_time         = ''%(9V.%F{yellow}%9v %f.)'';

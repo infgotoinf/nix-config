@@ -1,18 +1,14 @@
 {
   imports = [
-    ./zsh.nix
+    ./shell-zsh.nix
 
     ./cli
+    ./tui
+    ./gui
     ./programming
     ./desktop-environment
-    ./applications.nix
-    ./games.nix
-    ./music.nix
-    ./qutebrowser.nix
 
     ./tmux.nix
     ./wezterm.nix
-
-    ./vim.nix
   ];
 }

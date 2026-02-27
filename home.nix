@@ -20,15 +20,13 @@
 
 
   home.shellAliases = {
-    tv = "~/nix-config/etc/nixpkgs.sh";
     cd = "z ";
     ls = "eza ";
+    rmv = "~/nix-config/etc/rmv.sh ";
     nix-zshell = "nix-shell --run zsh";
   };
 
   home.packages = with pkgs; [
-    nix-search-tv
-    
     ngrrram
     gh-markdown-preview
   ];

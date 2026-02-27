@@ -1,8 +1,10 @@
 {
   services.xserver = {
     xkb = {
+      # 'localectl list-x11-keymap-layouts' to list all supportet layouts
       layout = "us,ru";
-      options = "grp:shift_caps_toggle";
+      # 'localectl list-x11-keymap-options | grep grp:' to list all supportet shortcuts
+      options = "grp:caps_toggle"; # This one switches locales
     };
     displayManager.startx = {
       enable = true;

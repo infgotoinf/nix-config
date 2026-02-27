@@ -15,19 +15,18 @@ in {
         enable = true;
         systemd.variables = ["--all"];
         swaynag.enable = true;
-        config = let
-          modifier = config.wayland.windowManager.sway.config.modifier;
-        in {
-          keybindings = lib.mkOptionDefault {
-            "${modifier}+Shift+s" = ''exec grim -g "$(slurp)" - | swappy -f -'';
-            "Print" = "exec grimshot save output - | tee ~/Pictures/Screenshots/$(data +%Y-%m-%d_%H-%M-%S).png | wl-copy";
+        config = {
+          keybindings = let
+            modifier = config.wayland.windowManager.sway.config.modifier;
+          in lib.mkOptionDefault {
+            "${modifier}+Shift+s" = ''grim -g "$(slurp)" - | satty --filename -'';
+            "Print" = ''grim -g "$(slurp)" - | satty --filename -'';
           };
           input."*" = {
-            xkb_layout = config.services.xserver.xkb.layout;
-            xkb_options = config.services.xserver.xkb.options;
-          };  
-        };
-      } // commonConfig;
+            xkb_layout = "us,ru";
+            xkb_options = "grp:caps_toggle";
+          };
+        } // commonConfig; };
       systemd.target = "sway-session.target";
     };
 
@@ -42,7 +41,6 @@ in {
       wl-clipboard
       grim
       slurp
-      sway-contrib.grimshot
     ];
 
     programs = {

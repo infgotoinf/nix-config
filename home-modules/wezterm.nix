@@ -3,12 +3,13 @@
 
   programs.wezterm = {
     enable = true;
-    #enableZshIntegration = true;
+    enableZshIntegration = true;
     extraConfig = let
       modifier = "ALT";
     in
     ''
       local act = wezterm.action
+      local disable = act.DisableDefaultAssignment
       
       return {
         -- font = wezterm.font_from_file("/home/inf/nix-config/etc/fonts/UnifontEX/UnifontExMono.ttf"),
@@ -57,6 +58,9 @@
       		
     			{key="x", mods="${modifier}", action=act.ActivateCopyMode},
           {key="v", mods="${modifier}", action=act.PasteFrom("PrimarySelection")},
+
+
+          {key="=", mods="WIN", action=disable},
         },
 
         key_tables = {
@@ -113,7 +117,7 @@
             {key="Escape", mods="NONE", action=act{CopyMode="Close"}},
             {key="Enter", mods="NONE", action="ActivateCopyMode"},
             {key="n", mods="CTRL", action=act{CopyMode="NextMatch"}},
-          }
+          },
         }
       }
     '';

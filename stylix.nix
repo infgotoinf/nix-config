@@ -18,6 +18,8 @@
       };*/
       sizes.applications = 12;
       sizes.desktop = 12;
+      # sizes.applications = 14;
+      # sizes.desktop = 14;
     };
 
     icons = {

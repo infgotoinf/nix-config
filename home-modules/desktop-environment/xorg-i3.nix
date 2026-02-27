@@ -12,6 +12,9 @@ in {
   config = lib.mkIf config.xorg.enable {
     xsession.windowManager.i3 = {
       enable = true;
-    } // commonConfig;
+      config = {
+        
+      } // commonConfig;
+    };
   };
 }
