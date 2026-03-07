@@ -9,7 +9,17 @@
     enable = true;
     settings = {
       colors.webpage.darkmode.enabled = true;
-      # auto_save.session = true;
+      # Remove rounding everythere
+      hints.radius = 0;
+      keyhint.radius = 0;
+      prompt.radius = 0;
+      content.user_stylesheets = "~/nix-config/etc/qutebrowser/style.css";
+
+      auto_save.session = true;
     };
+  };
+
+  programs.librewolf = {
+    enable = true;
   };
 }

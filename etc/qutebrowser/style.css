@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'UnifontExMono';
+  src: url(../fonts/UnifontExMono.woff2) format('woff2');
+}
+
+* {
+  border-radius: 0px !important;
+  font-family: UnifontExMono !important;
+}
+
+a,
+b,
+i,
+span,
+div,
+p {
+  font-size: 12pt !important;
+}

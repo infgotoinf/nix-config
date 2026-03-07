@@ -16,16 +16,14 @@ in {
         systemd.variables = ["--all"];
         swaynag.enable = true;
         config = {
-          keybindings = let
-            modifier = config.wayland.windowManager.sway.config.modifier;
-          in lib.mkOptionDefault {
-            "${modifier}+Shift+s" = ''grim -g "$(slurp)" - | satty --filename -'';
-            "Print" = ''grim -g "$(slurp)" - | satty --filename -'';
-          };
           input."*" = {
             xkb_layout = "us,ru";
             xkb_options = "grp:caps_toggle";
           };
+          startup = [
+            { command = "wezterm"; always = true; }
+            { command = ''swaybg -c "#1d2021"''; always = true; }
+          ];
         } // commonConfig; };
       systemd.target = "sway-session.target";
     };
@@ -41,6 +39,7 @@ in {
       wl-clipboard
       grim
       slurp
+      swaybg
     ];
 
     programs = {
@@ -51,7 +50,7 @@ in {
         enable = true;
         settings = {
           general = {
-            fullscreen = false;
+            floating-hack = true;
             corner-roundness = 0;
             initial-tool = "brush";
             output-filename = "~/Pictures/Screenshots/%Y-%m-%d_%H:%M:%S.png";

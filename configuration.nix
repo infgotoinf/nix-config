@@ -19,6 +19,15 @@
     configName = "general(ALT7)";  # https://github.com/kartavkun/zapret-discord-youtube/tree/main/configs
   };
 
+  # virtualisation.docker = {
+  #   enable = true;
+  #   storageDriver = "btrfs";
+  #   rootless = {
+  #     enable = true;
+  #     setSocketVariable = true;
+  #   };
+  # };
+
   systemd.user.extraConfig = "DefaultTimeoutStopSec=10s";
 
   powerManagement.cpuFreqGovernor = "performance"; 
@@ -105,6 +114,7 @@
       "uinput"
       "input"
       "jackaudio"
+      "docker"
     ];
   };
 

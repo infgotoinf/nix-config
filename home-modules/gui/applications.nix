@@ -9,6 +9,7 @@
     pavucontrol
     piano-rs
     nixpkgs-stable.guitarix
+    easyeffects
   ];
 
   programs.onlyoffice = {

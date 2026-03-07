@@ -1,5 +1,6 @@
 {
-  #stylix.targets.wezterm.fonts.enable = false;
+  # stylix.targets.wezterm.fonts.enable = false;
+  # stylix.targets.wezterm.fonts.override = { sizes = {applications = 14; desktop = 12;}; };
 
   programs.wezterm = {
     enable = true;
@@ -17,7 +18,7 @@
         -- font_size = 12.0,
         cell_width = 0.5,
         use_fancy_tab_bar = false,
-        scrollback_lines = 1000,
+        scrollback_lines = 20000,
 
         default_cursor_style = 'BlinkingBlock',
         cursor_blink_ease_in = 'Constant',

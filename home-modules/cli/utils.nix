@@ -6,5 +6,6 @@
     zip
     dtrx
     file-rename
+    wget
   ];
 }

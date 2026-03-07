@@ -2,9 +2,9 @@
   terminal = "wezterm";
   defaultWorkspace = "workspace number 1";
   modifier = "Mod4";
-  assigns = {
-    #"1: console" = [{ class = "^Wezterm$"; }];
-  };
+  # assigns = {
+  #   #"1: console" = [{ class = "^Wezterm$"; }];
+  # };
   gaps = {
     outer = 1;
   };
@@ -13,11 +13,11 @@
     
   ];
 
-  startup = [
-    { command = "wezterm"; always = true; }
-  ];
+  # startup = [
+  #   { command = "wezterm"; always = true; }
+  # ];
 
-  /*window = [
+  # window = [
    
-  ];*/
+  # ];
 }
