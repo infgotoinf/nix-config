@@ -1,9 +1,9 @@
 {
   imports = [
-    ./editor-vim.nix
+    ./text-editor-vim.nix
     ./music-player-mpd.nix
     ./nix-search-tv.nix
-    ./lf.nix
+    ./file-manager-lf.nix
     ./htop.nix
   ];
 }

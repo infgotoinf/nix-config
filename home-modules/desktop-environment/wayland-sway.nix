@@ -17,6 +17,7 @@ in {
         swaynag.enable = true;
         config = {
           input."*" = {
+            # modules/keyboard/locales-keyboard-layouts.nix
             xkb_layout = "us,ru";
             xkb_options = "grp:caps_toggle";
           };

@@ -1,5 +1,3 @@
-{ pkgs, ... }:
-
 {
   imports = [
     ./stylix.nix
@@ -22,18 +20,19 @@
   home.shellAliases = {
     cd = "z ";
     ls = "eza ";
-    rmv = "~/nix-config/etc/rmv.sh ";
+    # rmv = "~/nix-config/etc/rmv.sh ";
     nix-zshell = "nix-shell --run zsh";
+    list-all-avalible-xdg-apps = "echo $XDG_DATA_DIRS | tr -d '\n' | xargs -d : -I % find %/applications -name '*.desktop'";
   };
-
-  home.packages = with pkgs; [
-    ngrrram
-    gh-markdown-preview
-  ];
 
   xdg = {
     enable = true;
     userDirs.enable = true;
+    mimeApps.defaultApplications = {
+      "application/pdf" = "org.qutebrowser.qutebrowser.desktop";
+      "text/html" = "org.qutebrowser.qutebrowser.desktop";
+      "image/*" = "satty.desktop";
+    };
   };
 
   /*nix.nixPath = [

@@ -16,6 +16,7 @@
       nixd
       
       cmake-language-server
+      clang-tools
 
       superhtml
       vscode-css-languageserver

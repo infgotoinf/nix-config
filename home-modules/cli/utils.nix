@@ -7,5 +7,6 @@
     dtrx
     file-rename
     wget
+    viu
   ];
 }

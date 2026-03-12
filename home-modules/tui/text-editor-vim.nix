@@ -1,7 +1,7 @@
 {
   programs.vim = {
     enable = true;
-    defaultEditor = true;
+    # defaultEditor = true;
 
     extraConfig = ''
       syntax enable

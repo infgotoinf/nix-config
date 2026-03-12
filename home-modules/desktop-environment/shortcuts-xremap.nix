@@ -1,7 +1,7 @@
 # { config, ... }:
 let
   modifier = "Win";
-  wlroots-screenshot-command = ''grim -g "$(slurp)" - | satty --filename -'';
+  wlroots-screenshot-command = ["bash" "-c" ''grim -g "$(slurp)" - | satty --filename -''];
   # x11-screenshot-command = ''grim -g "$(slurp)" - | satty --filename -'';
 in
 {
@@ -10,13 +10,29 @@ in
     withWlroots = true;
     config = {
       keymap = [
+        # Use Ctrl+[ instead
+        # {
+        #   name = "Second esc";
+        #   remap = {
+        #     "Alt-Capslock" = "Esc";
+        #     "Win-Capslock" = "Esc";
+        #     "Ctrl-Capslock" = "Esc";
+        #   };
+        # }
         {
-          name = "Global";
+          name = "Screenshot";
           remap = {
-            "${modifier}-Shift-s" = "${wlroots-screenshot-command}";
-            "KEY_PRINT" = "${wlroots-screenshot-command}";
+            "${modifier}-s".launch = wlroots-screenshot-command;
+            # "KEY_PRINT".launch = wlroots-screenshot-command;
           };
-        } 
+        }
+        {
+          name = "Application launcher";
+          remap = {
+            "${modifier}-Space".launch = ["bash" "-c" "rofi -show drun"];
+            "${modifier}-Alt-Space".launch = ["bash" "-c" "rofi -show emoji"];
+          };
+        }
       ];
     };   
   };
