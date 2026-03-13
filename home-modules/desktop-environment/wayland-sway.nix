@@ -14,7 +14,7 @@ in {
       windowManager.sway = {
         enable = true;
         systemd.variables = ["--all"];
-        swaynag.enable = true;
+        # swaynag.enable = true;
         config = {
           input."*" = {
             # modules/keyboard/locales-keyboard-layouts.nix
@@ -22,12 +22,12 @@ in {
             xkb_options = "grp:caps_toggle";
           };
           startup = [
-            { command = "wezterm"; always = true; }
+            { command = "systemctl --user restart xremap"; }
             { command = ''swaybg -c "#1d2021"''; always = true; }
-            { command = "systemctl --user start xremap"; always = true; }
+            { command = "wezterm"; always = true; }
           ];
         } // commonConfig; };
-      systemd.target = "sway-session.target";
+      # systemd.target = "sway-session.target";
     };
 
     home.packages = with pkgs; [

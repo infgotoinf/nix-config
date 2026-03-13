@@ -43,8 +43,8 @@ in
         tabs = {
           indicator.start = mkf yellow;
           
-          even.bg = mkf bg-color4;
-          even.fg = mkf fg-color;
+          even.bg = mkf bg-color3;
+          even.fg = mkf fg-color2;
           odd.bg = mkf qb-colors.tabs.even.bg;
           odd.fg = mkf qb-colors.tabs.even.fg;
           selected = {

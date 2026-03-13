@@ -7,7 +7,7 @@ in
 {
   services.xremap = {
     enable = true;
-    withWlroots = true;
+    # withWlroots = true;
     config = {
       keymap = [
         # Use Ctrl+[ instead
