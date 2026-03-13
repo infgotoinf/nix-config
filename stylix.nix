@@ -8,7 +8,7 @@
     fonts = {
       monospace = {
         name = "Unifont";
-        package = pkgs.unifont-csur;
+        package = pkgs.unifont;
       };
       serif = config.stylix.fonts.monospace;
       sansSerif = config.stylix.fonts.monospace;

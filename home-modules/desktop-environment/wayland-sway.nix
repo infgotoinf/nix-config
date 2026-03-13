@@ -24,6 +24,7 @@ in {
           startup = [
             { command = "wezterm"; always = true; }
             { command = ''swaybg -c "#1d2021"''; always = true; }
+            { command = "systemctl --user start xremap"; always = true; }
           ];
         } // commonConfig; };
       systemd.target = "sway-session.target";

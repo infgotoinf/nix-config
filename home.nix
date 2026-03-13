@@ -6,7 +6,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  xorg.enable = true;
+  # xorg.enable = true;
   wayland.enable = true;
 
   services.udiskie.enable = true;
