@@ -5,5 +5,6 @@
     ./nix-search-tv.nix
     ./file-manager-lf.nix
     ./htop.nix
+    ./other.nix
   ];
 }

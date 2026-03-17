@@ -2,8 +2,8 @@
 
 {
   home.packages = with pkgs; [
-    nixpkgs-stable.krita
-    nixpkgs-stable.krita-plugin-gmic
+    krita
+    krita-plugin-gmic
     aseprite
 
     pavucontrol
