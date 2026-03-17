@@ -1,3 +1,5 @@
+{ pkgs , ... }:
+
 {
   imports = [
     ./stylix.nix
@@ -36,6 +38,10 @@
       "image/*" = "satty.desktop";
     };
   };
+
+  home.packages = with pkgs; [
+    telegram-desktop
+  ];
 
   /*nix.nixPath = [
     "nixpkgs=flake:nixpkgs:/nix/var/nix/profiles/per-user/root/channels"
