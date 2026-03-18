@@ -11,12 +11,6 @@
       };
       init.defaultBranch = "main";
     };
-    ignores = [
-      "build"
-      ".*"
-      "*.ini"
-      "*.bck"
-    ];
   };
 
   programs.gh = {
