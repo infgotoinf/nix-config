@@ -1,4 +1,4 @@
-{ nixpkgs-stable, ... }:
+{ hostname, ... }:
 
 {
   systemd.services.NetworkManager-wait-online.enable = false;
@@ -20,7 +20,7 @@
   };
 
   networking = {
-    hostName = "nix-ssd"; # Define your hostname.
+    hostName = hostname;
     networkmanager.enable = true;  # Easiest to use and most distros use this by default.
     nameservers = [
       "8.8.8.8"
@@ -28,13 +28,4 @@
       "1.1.1.1"
     ];
   };
-
-  # services.softether = {
-  #   enable = true;
-  #   package = nixpkgs-stable.softether;
-  #   # dataDir = ../../.;
-  #   vpnclient = {
-  #     enable = true;
-  #   };
-  # };
 }

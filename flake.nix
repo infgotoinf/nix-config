@@ -1,10 +1,9 @@
 {
- description = "A very basic flake";
+ description = "A very basic flake. You can edit username and add more hosts here.";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
-    #flake-utils.url = "github:numtide/flake-utils";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -28,18 +27,21 @@
     zapret-discord-youtube.url = "github:kartavkun/zapret-discord-youtube";
   };
 
+
   outputs = { nixpkgs, nixpkgs-stable, ... }@inputs:
   let
     system = "x86_64-linux";
-    username = "inf";
-    hostname = "nix-ssd";
-  in {
-    nixosConfigurations.${hostname} = nixpkgs.lib.nixosSystem {
+    username = "inf"; #< Here you can change username
+
+    # https://discourse.nixos.org/t/how-to-make-one-flake-nix-for-multiple-hosts/62056
+    mkHostConfig = hostname: nixpkgs.lib.nixosSystem {
       specialArgs = {
           nixpkgs-stable = import nixpkgs-stable {
             inherit system;
         };
         inherit inputs system;
+        inherit username;
+        inherit hostname;
       };
       modules = [
         ./configuration.nix
@@ -50,11 +52,20 @@
         inputs.musnix.nixosModules.musnix
       ];
     };
+  in
+  {
+    nixosConfigurations = {
+      # Here you can add more hosts
+      nix-ssd = mkHostConfig "nix-ssd";
+      nix-pc = mkHostConfig "nix-pc";
+    };
+
     homeConfigurations.${username} = inputs.home-manager.lib.homeManagerConfiguration {
       extraSpecialArgs = {
         nixpkgs-stable = import nixpkgs-stable {
           inherit system;
         };
+        inherit username;
       };
       pkgs = nixpkgs.legacyPackages.${system};
       modules = [

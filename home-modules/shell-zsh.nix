@@ -7,7 +7,7 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     historySubstringSearch.enable = true;
-    dotDir = "${config.xdg.configHome}/zsh"; 
+    dotDir = "${config.xdg.configHome}/zsh";
     history = {
       ignoreAllDups = true;
       ignoreSpace = true;
@@ -18,9 +18,14 @@
       pmodules = [
         "environment"
         "terminal"
-        "directory"
         "spectrum"
-        "completion"
+
+        # If one of those enabled I can't rebuild system
+        # % sudo nh os switch -R .#nix-pc
+        # zsh: no matches found: .#nix-pc
+
+        # "directory"
+        # "completion"
       ];
       python = {
         virtualenvAutoSwitch = true;
@@ -34,15 +39,18 @@
         file = "share/zsh/site-functions/agkozak-zsh-prompt.plugin.zsh";
       }
     ];
-    localVariables = 
+    localVariables =
     let
       # https://github.com/agkozak/agkozak-zsh-prompt?tab=readme-ov-file#advanced-customization
-      
+
       exit_status           = ''%(?..%B%F{red}(%?%)%f%b )'';
       cmd_exec_time         = ''%(9V.%F{yellow}%9v %f.)'';
       username_and_hostname = ''%(!.%S%B.%B%F{magenta})%n%1v%(!.%b%s.%f%b)'';
       path                  = ''%B%F{blue}%2v%f%b'';
       venv                  = ''%(10V. %F{green}[%10v]%f.)'';
+
+      # Super wierd thing like basically then I start nix-shell it creates two shells and nix-shell
+      # is the only thing that matters to me, so yes, I just divide shell level by two.
       nix_shell             = ''%F{blue}($((SHLVL/2)))%f '';
       bg_job_indicator      = ''%(1j. %F{magenta}%jj%f.)'';
       git_status            = ''%(3V.%F{yellow}%3v%f.)'';

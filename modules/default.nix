@@ -2,10 +2,8 @@
   imports = [
     ./hardware
     ./keyboard
-    
-    ./display-manager-ly.nix
 
-    ./kmscon.nix
+    ./display-manager-ly.nix
 
     ./xserver.nix
 

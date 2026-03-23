@@ -1,5 +1,3 @@
-{ pkgs, ... }:
-
 {
   security.pam = {
     loginLimits = [
@@ -16,11 +14,10 @@
       enable = true;
     };
     nvidia = {
-      # open = true;
+      open = true;
       # TODO: add PRIME configuration for laptop
     };
   };
 
   # services.xserver.videoDrivers = [ "nvidia" ];
 }
-

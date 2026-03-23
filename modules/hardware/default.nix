@@ -1,6 +1,8 @@
+{ hostname, ... }:
+
 {
   imports = [
-    ./hardware-configuration.nix
+    ./${hostname}.nix
 
     ./drivers.nix
     ./boot-kernel.nix

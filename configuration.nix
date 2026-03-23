@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, username, ... }:
 
 {
   imports = [
@@ -30,7 +30,7 @@
 
   systemd.user.extraConfig = "DefaultTimeoutStopSec=10s";
 
-  powerManagement.cpuFreqGovernor = "performance"; 
+  powerManagement.cpuFreqGovernor = "performance";
 
   services.journald.extraConfig = ''
     Storage=volotile
@@ -81,8 +81,8 @@
     earlySetup = true;
     useXkbConfig = true; # use xkb.options in tty.
   };
-                  
-  environment.variables = { 
+
+  environment.variables = {
     TERM = "xterm-256color";
   };
 
@@ -101,9 +101,9 @@
   programs.zsh.enable = true;
 
   hardware.uinput.enable = true;
-  
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.inf = {
+  users.users.${username} = {
     shell = pkgs.zsh;
     isNormalUser = true;
     extraGroups = [
@@ -122,10 +122,8 @@
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     git
-
+    vim
     w3m
-
-    htop-vim
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -169,4 +167,3 @@
   system.stateVersion = "25.05"; # Did you read the comment?
 
 }
-
