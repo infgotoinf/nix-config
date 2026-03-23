@@ -12,8 +12,10 @@
               priority = 1;
               name = "ESP";
               start = "1M";
-              # Since NixOS stores all installed kernels' versions in boot I don't recommend going below 512M
+              # Since NixOS stores all installed kernels' versions in boot, I don't recommend going below 512M
               # https://discourse.nixos.org/t/boot-partition-is-too-small-and-becoming-full/32194
+              # (but if you're too griddy you actually can. In my personal experience I didn't see boot parition
+              # taking more than 100M, but know that you're doing)
               end = "512M";
               type = "EF00";
               content = {
