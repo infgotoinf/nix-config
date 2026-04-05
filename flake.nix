@@ -22,9 +22,16 @@
     };
     musnix = {
       url = "github:musnix/musnix";
-      inputs.nixpgs.follows = "nixpkgs";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
-    zapret-discord-youtube.url = "github:kartavkun/zapret-discord-youtube";
+    # quadlet-nix = {
+    #   url = "github:SEIAROTg/quadlet-nix";
+    #   # inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    zapret-discord-youtube = {
+      url = "github:kartavkun/zapret-discord-youtube";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
 
@@ -43,13 +50,14 @@
         inherit username;
         inherit hostname;
       };
-      modules = [
+      modules = with inputs; [
         ./configuration.nix
-        inputs.home-manager.nixosModules.home-manager
-        inputs.stylix.nixosModules.stylix
-        inputs.nur.modules.nixos.default
-        inputs.zapret-discord-youtube.nixosModules.default
-        inputs.musnix.nixosModules.musnix
+        home-manager.nixosModules.home-manager
+        stylix.nixosModules.stylix
+        nur.modules.nixos.default
+        zapret-discord-youtube.nixosModules.default
+        musnix.nixosModules.musnix
+        # quadlet-nix.nixosModules.quadlet
       ];
     };
   in
@@ -68,10 +76,11 @@
         inherit username;
       };
       pkgs = nixpkgs.legacyPackages.${system};
-      modules = [
+      modules = with inputs; [
         ./home.nix
-        inputs.stylix.homeModules.stylix
-        inputs.xremap.homeManagerModules.default
+        stylix.homeModules.stylix
+        xremap.homeManagerModules.default
+        # quadlet-nix.homeManagerModules.quadlet
       ];
     };
   };

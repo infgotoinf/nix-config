@@ -10,7 +10,17 @@
     piano-rs
     nixpkgs-stable.guitarix
     easyeffects
+
+    qbittorrent
+
+    docker-client
+    docker-buildx
+    docker-compose
   ];
+
+  programs.docker-cli = {
+    enable = true;
+  };
 
   programs.onlyoffice = {
     enable = true;

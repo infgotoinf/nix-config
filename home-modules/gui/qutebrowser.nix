@@ -1,3 +1,7 @@
+# If google account does not work, then paste this inside
+# qutebrowser's command prompt
+# :set -u https://accounts.google.com/* content.headers.user_agent "Mozilla/5.0 ({os_info}; rv:135.0) Gecko/20100101 Firefox/135"
+
 { lib, config, ... }:
 
 let
@@ -18,9 +22,9 @@ in
   # For some reason then I go into follow link mode I have to wait about 2-3 seconds till the
   # letters appear and the issue fixes if I change from 12pt to any other. I guess this issue
   # is driver specific, cause I have this issue only on my PC amoung with issue with proper
-  # raylib render (f***, Nvidia!) 
+  # raylib render (f***, Nvidia!)
   # stylix.targets.qutebrowser.fonts.override = { sizes.applications = 11; };
-  
+
   programs.qutebrowser = {
     enable = true;
     settings = {
@@ -30,7 +34,7 @@ in
       colors.webpage.bg = mkf bg-color;
 
       keyhint.delay = 0;
-      
+
       # Remove rounding everythere
       hints.radius = 0;
       keyhint.radius = 0;
@@ -38,11 +42,11 @@ in
       content.user_stylesheets = "~/nix-config/etc/qutebrowser/style.css";
 
       hints.border = mkf "1px solid ${green}";
-      
+
       colors = {
         tabs = {
           indicator.start = mkf yellow;
-          
+
           even.bg = mkf bg-color3;
           even.fg = mkf fg-color2;
           odd.bg = mkf qb-colors.tabs.even.bg;

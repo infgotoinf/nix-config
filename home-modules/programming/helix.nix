@@ -20,12 +20,12 @@
       };
     };
 
-    # languages = {
-    #   language = [{
-    #     name = "perl";
-    #     indent = { tab-width = 4; unit = "    "; };
-    #   }];
-    # };
+    languages = {
+      language = [{
+        name = "perl";
+        indent = { tab-width = 4; unit = "    "; };
+      }];
+    };
 
     # LSP's
     extraPackages = with pkgs; [

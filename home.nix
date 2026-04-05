@@ -22,6 +22,7 @@
   home.shellAliases = {
     cd = "z ";
     ls = "eza ";
+    gdb = "gdb-dashboard ";
     # rmv = "~/nix-config/etc/rmv.sh ";
     nix-zshell = "nix-shell --run zsh";
     xdg-list-avalible-apps = "echo $XDG_DATA_DIRS | tr -d '\n' | xargs -d : -I % find %/applications -name '*.desktop'";

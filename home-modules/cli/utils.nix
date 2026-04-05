@@ -8,5 +8,6 @@
     file-rename
     wget
     viu
+    calc
   ];
 }

@@ -8,8 +8,6 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  #kmscon.enable = true;
-
   musnix = {
     enable = true;
   };
@@ -19,14 +17,43 @@
     configName = "general(ALT7)";  # https://github.com/kartavkun/zapret-discord-youtube/tree/main/configs
   };
 
-  # virtualisation.docker = {
-  #   enable = true;
-  #   storageDriver = "btrfs";
-  #   rootless = {
-  #     enable = true;
-  #     setSocketVariable = true;
-  #   };
-  # };
+
+  # Set up virtualisation
+  virtualisation.libvirtd = {
+    enable = true;
+
+    # Enable TPM emulation (for Windows 11)
+    qemu = {
+      swtpm.enable = true;
+      # ovmf.packages = [ pkgs.OVMFFull.fd ];
+    };
+  };
+
+  # Enable USB redirection
+  virtualisation.spiceUSBRedirection.enable = true;
+
+  # Allow VM management
+  users.groups.libvirtd.members = [ username ];
+  users.groups.kvm.members = [ username ];
+
+  # Enable VM networking and file sharing
+  environment.systemPackages = with pkgs; [
+    git
+    vim
+    w3m
+    # ... your other packages ...
+    gnome-boxes # VM management
+    dnsmasq # VM networking
+    phodav # (optional) Share files with guest VMs
+  ];
+
+
+  programs.steam = {
+    enable = true;
+    extest.enable = true;
+    gamescopeSession.enable = true;
+    protontricks.enable = true;
+  };
 
   systemd.user.extraConfig = "DefaultTimeoutStopSec=10s";
 
@@ -102,7 +129,7 @@
 
   hardware.uinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  hardware.facter.detected.virtualisation.qemu.enable = true;
   users.users.${username} = {
     shell = pkgs.zsh;
     isNormalUser = true;
@@ -114,17 +141,26 @@
       "uinput"
       "input"
       "jackaudio"
-      "docker"
+      # "podman"
+      # "docker"
     ];
+    # For containers
+    linger = true;
+    autoSubUidGidRange = true;
   };
 
-  # List packages installed in system profile.
-  # You can use https://search.nixos.org/ to find more packages (and options).
-  environment.systemPackages = with pkgs; [
-    git
-    vim
-    w3m
-  ];
+  virtualisation.docker = {
+    enable = true;
+    storageDriver = "btrfs";
+    rootless = {
+      enable = true;
+      setSocketVariable = true;
+      daemon.settings = {
+        dns = [ "1.1.1.1" "8.8.8.8" ];
+        # registry-mirrors = [ "https://mirror.gcr.io" ];
+      };
+    };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
