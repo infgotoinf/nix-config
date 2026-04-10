@@ -17,7 +17,7 @@
     configName = "general(ALT7)";  # https://github.com/kartavkun/zapret-discord-youtube/tree/main/configs
   };
 
-
+  config.networking.proxy.envVars = true;
   # Set up virtualisation
   virtualisation.libvirtd = {
     enable = true;
@@ -45,6 +45,8 @@
     gnome-boxes # VM management
     dnsmasq # VM networking
     phodav # (optional) Share files with guest VMs
+
+    socat
   ];
 
 
