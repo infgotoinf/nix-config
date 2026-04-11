@@ -1,10 +1,12 @@
-{ pkgs, username, ... }:
+{ pkgs, config, username, ... }:
 
 {
   imports = [
     ./stylix.nix
     ./home-modules
   ];
+
+  gtk.gtk4.theme = config.gtk.theme;
 
   nixpkgs.config.allowUnfree = true;
 
@@ -37,7 +39,10 @@
 
   xdg = {
     enable = true;
-    userDirs.enable = true;
+    userDirs = {
+      enable = true;
+      setSessionVariables = true;
+    };
     mimeApps.defaultApplications = {
       "application/pdf" = "org.qutebrowser.qutebrowser.desktop";
       "text/html" = "org.qutebrowser.qutebrowser.desktop";

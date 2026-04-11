@@ -1,6 +1,6 @@
-{ pkgs, username, ... }:
+{ pkgs, config, username, ... }:
 
-{
+with config; {
   imports = [
     ./stylix.nix
     ./modules
@@ -17,36 +17,11 @@
     configName = "general(ALT7)";  # https://github.com/kartavkun/zapret-discord-youtube/tree/main/configs
   };
 
-  config.networking.proxy.envVars = true;
-  # Set up virtualisation
-  virtualisation.libvirtd = {
-    enable = true;
 
-    # Enable TPM emulation (for Windows 11)
-    qemu = {
-      swtpm.enable = true;
-      # ovmf.packages = [ pkgs.OVMFFull.fd ];
-    };
-  };
-
-  # Enable USB redirection
-  virtualisation.spiceUSBRedirection.enable = true;
-
-  # Allow VM management
-  users.groups.libvirtd.members = [ username ];
-  users.groups.kvm.members = [ username ];
-
-  # Enable VM networking and file sharing
   environment.systemPackages = with pkgs; [
     git
     vim
     w3m
-    # ... your other packages ...
-    gnome-boxes # VM management
-    dnsmasq # VM networking
-    phodav # (optional) Share files with guest VMs
-
-    socat
   ];
 
 
@@ -58,8 +33,6 @@
   };
 
   systemd.user.extraConfig = "DefaultTimeoutStopSec=10s";
-
-  powerManagement.cpuFreqGovernor = "performance";
 
   services.journald.extraConfig = ''
     Storage=volotile
@@ -79,16 +52,6 @@
     "flakes"
   ];
 
-  zramSwap = {
-    enable = true;
-    memoryPercent = 100;
-    algorithm = "lz4";
-    priority = 100;
-  };
-
-  services.irqbalance.enable = true;
-
-
   # Set your time zone.
   time.timeZone = "Europe/Moscow";
 
@@ -96,25 +59,13 @@
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  fonts = {
-    fontDir.enable = true;
-    packages = with pkgs; [
-      unifont
-      unifont_upper
-    ];
-  };
-
-  console = {
-    font = ./etc/fonts/Unifont-APL8x16-17.0.03.psf.gz;
-    # font = "Lat2-Terminus16";
-    earlySetup = true;
-    useXkbConfig = true; # use xkb.options in tty.
-  };
-
-  environment.variables = {
-    TERM = "xterm-256color";
-  };
-
+  # fonts = {
+  #   fontDir.enable = true;
+  #   packages = with pkgs; [
+  #     unifont
+  #     unifont_upper
+  #   ];
+  # };
 
   # Enable sound.
   services.pipewire = {
@@ -124,14 +75,8 @@
     jack.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  services.libinput.enable = true;
-
   programs.zsh.enable = true;
 
-  hardware.uinput.enable = true;
-
-  hardware.facter.detected.virtualisation.qemu.enable = true;
   users.users.${username} = {
     shell = pkgs.zsh;
     isNormalUser = true;
@@ -143,25 +88,7 @@
       "uinput"
       "input"
       "jackaudio"
-      # "podman"
-      # "docker"
     ];
-    # For containers
-    linger = true;
-    autoSubUidGidRange = true;
-  };
-
-  virtualisation.docker = {
-    enable = true;
-    storageDriver = "btrfs";
-    rootless = {
-      enable = true;
-      setSocketVariable = true;
-      daemon.settings = {
-        dns = [ "1.1.1.1" "8.8.8.8" ];
-        # registry-mirrors = [ "https://mirror.gcr.io" ];
-      };
-    };
   };
 
   # Some programs need SUID wrappers, can be configured further or are
