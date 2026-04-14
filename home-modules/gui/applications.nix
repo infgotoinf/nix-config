@@ -2,25 +2,35 @@
 
 {
   # nixpkgs.config.allowUnfree = true;
-
   home.packages = with pkgs; [
     krita
     krita-plugin-gmic
     aseprite
     kdePackages.kdenlive
 
-    zrythm
     ardour
     # reaper
     # reaper-reapack-extension
     # reaper-sws-extension
-    # renoise
+    renoise
+    audacity
+    # lmms
 
-    pavucontrol
     piano-rs
     nixpkgs-stable.guitarix
     nixpkgs-stable.surge
+    bespokesynth-with-vst2
+    distrho-ports
+    zam-plugins
+    dexed
+    zynaddsubfx
+    geonkick
+    carla
+    redux
+
+    pavucontrol
     easyeffects
+    qpwgraph
 
     qbittorrent
 

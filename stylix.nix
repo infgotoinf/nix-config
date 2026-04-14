@@ -25,7 +25,8 @@
     icons = {
       enable = true;
       dark = "Gruvbox Dark";
-      package = pkgs.gruvbox-plus-icons;
+      # package = pkgs.gruvbox-plus-icons;
+      package = pkgs.gruvbox-dark-icons-gtk;
     };
     polarity = "dark";
   };

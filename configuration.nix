@@ -1,5 +1,8 @@
 { pkgs, config, username, ... }:
 
+let
+  proxy = "socks5://152.53.144.223:1080";
+in
 with config; {
   imports = [
     ./stylix.nix
@@ -16,6 +19,19 @@ with config; {
     enable = true;
     configName = "general(ALT7)";  # https://github.com/kartavkun/zapret-discord-youtube/tree/main/configs
   };
+
+
+  # networking.proxy.default = proxy;
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.local";
+
+  # environment.variables = {
+  #   http_proxy  = proxy;
+  #   https_proxy = proxy;
+  #   HTTP_PROXY  = proxy;
+  #   HTTPS_PROXY = proxy;
+  #   no_proxy    = "127.0.0.1,localhost,internal.local";
+  #   NO_PROXY    = "127.0.0.1,localhost,internal.local";
+  # };
 
 
   environment.systemPackages = with pkgs; [

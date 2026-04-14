@@ -8,6 +8,10 @@
 
   gtk.gtk4.theme = config.gtk.theme;
 
+  stylix.targets.gtk.extraCss = ''
+    * { border-radius: 0; }
+  '';
+
   nixpkgs.config.allowUnfree = true;
 
   # xorg.enable = true;
