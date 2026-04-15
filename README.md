@@ -7,19 +7,25 @@
 
 TODO: Make a script
 
-1. Choose a disco config you'd like to use (they're located in 'etc/disko' folder). And edit 'device' to the disk you'd like to install NixOS on.
+1. Edit disco config
 
-2. In the following command replace 'path/to/disko.nix' with actual path to disko config you'd like to use and then run it.
-
-```console
-sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount path/to/disko.nix
-```
 > [!NOTE]
 > You can learn more about disco on the [official disko repo](https://github.com/nix-community/disko)
 
+```shell
+EDITOR etc/disko/btrfs.nix
+```
+2. Run it
+
+> [!WARNING]
+> This action will destroy all data on sellected disk! Be sure you followed previous step.
+
+```shell
+sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount etc/disco/btrfs.nix
+```
 3. Install NixOS
 
-```console
+```shell
 sudo nixos-generate-config --root /mnt && sudo nixos-install
 ```
 
