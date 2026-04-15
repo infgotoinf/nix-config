@@ -1,7 +1,7 @@
 { lib, pkgs, config, ... }:
 let
   commonConfig = import ./tiling-window-manager-config.nix;
-  
+
 in {
   options = {
     wayland.enable = lib.mkEnableOption ''
@@ -54,6 +54,7 @@ in {
           general = {
             floating-hack = true;
             corner-roundness = 0;
+            resize.mode = "smart";
             initial-tool = "brush";
             output-filename = "~/Pictures/Screenshots/%Y-%m-%d_%H:%M:%S.png";
           };

@@ -1,7 +1,8 @@
 # { config, ... }:
 let
   modifier = "Win";
-  wlroots-screenshot-command = ["bash" "-c" ''grim -g "$(slurp)" - | satty --filename -''];
+  wlroots-screenshot-command = ["bash" "-c" ''grim -g "$(slurp)" - | satty -f -''];
+  wlroots-screenshot-command2 = ["bash" "-c" ''grim - | satty -f -''];
   # x11-screenshot-command = ''grim -g "$(slurp)" - | satty --filename -'';
 in
 {
@@ -22,8 +23,8 @@ in
         {
           name = "Screenshot";
           remap = {
-            "${modifier}-s".launch = wlroots-screenshot-command;
-            # "KEY_PRINT".launch = wlroots-screenshot-command;
+            "${modifier}-Shift-s".launch = wlroots-screenshot-command;
+            "${modifier}-s".launch = wlroots-screenshot-command2;
           };
         }
         {
@@ -34,6 +35,6 @@ in
           };
         }
       ];
-    };   
+    };
   };
 }
