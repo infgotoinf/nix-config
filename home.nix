@@ -34,7 +34,7 @@
     xdg-list-avalible-apps = "echo $XDG_DATA_DIRS | tr -d '\n' | xargs -d : -I % find %/applications -name '*.desktop'";
     btrfs-balance = "sudo btrfs balance start -dusage=10 -musage=10 /";
     btrfs-defrag = "sudo btrfs filesystem defragment -r / 2&> /dev/null";
-    dd-measure-disk-write-speed = "dd if=/dev/zero of=/tmp/lol.img bs=1G count=1 oflag=dsync; rm -rf /tmp/lol.img";
+    dd-measure-disk-write-speed = "dd if=/dev/zero of=$HOME/lol.img bs=1G count=1 oflag=dsync; rm -rf $HOME/lol.img";
   };
 
   home.sessionVariables = {
