@@ -1,9 +1,70 @@
 { pkgs, config, username, ... }:
 
-let
-  proxy = "socks5://152.53.144.223:1080";
-in
 with config; {
+  services = {
+    tor = {
+      enable = true;
+      enableGeoIP = false;
+      openFirewall = true;
+      torsocks.enable = true;
+
+      client = {
+        enable = true;
+        dns.enable = true;
+      };
+
+      settings = {
+        AvoidDiskWrites = 1;
+        HardwareAccel = 1;
+        SafeLogging = 1;
+
+        DNSPort = [{
+          addr = "127.0.0.1";
+          port = 9053;
+        }];
+
+        # UseBridges = true;
+        # ClientTranportPlugin = "obfs4 exec ${pkgs.obfs4}/bin/lyrebird";
+        # Bridge = "obfs4
+        # Bridges = [
+        #   "obfs4 83.229.15.208:65535 D3E98BA2555DCA5B7FA2E105167DAE4CF393533A cert=AyNLa6xlRzu+k18pwUA/g5M2IrSMETyysvj6zv/mnbfxeY1QHUH7tI7NVXicGWd3f/Yufg iat-mode=0"
+        #   "obfs4 148.113.173.182:9443 D710A86E8AAE84737FCBBCB2CF0A7903583941CA cert=hjS2leB9TM1aMsQL+gvqazR5W/Rkm+oq/tGHKzeZeWlJIJFWYTCcx//fy09+By+fGNstXA iat-mode=0"
+        # ];
+      };
+    };
+
+    resolved = {
+      enable = true;
+      settings.Resolve.FallbackDNS = [ "1.1.1.1" "9.9.9.9" ];
+    };
+  };
+
+  # networking.nameservers = [ "127.0.0.1" ];
+  networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
+
+  # services.privoxy = {
+  #   enable = true;
+  #   settings = {
+  #     listen-address = "192.168.1.10:8118";
+  #     forward-socks5 = "/ 127.0.0.1:9050 .";
+  #   };
+  # };
+
+  # systemd.services.nix-daemon.serviceConfig.Environment = [
+  #   "http_proxy=http://192.168.1.10:8118"
+  #   "https_proxy=http://192.168.1.10:8118"
+  #   "no_proxy=127.0.0.1,localhost,internal.local"
+  # ];
+
+  # networking.proxy.default = "http://192.168.1.10:8118";
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.local";
+
+  environment.sessionVariables = {
+    TERM = "xterm-256color";
+    NIXOS_OZONE_WL = 1;
+    # NIX_BUILD_SHELL = "${pkgs.zsh}/bin/zsh";
+  };
+
   imports = [
     ./stylix.nix
     ./modules
@@ -20,26 +81,19 @@ with config; {
     configName = "general(ALT7)";  # https://github.com/kartavkun/zapret-discord-youtube/tree/main/configs
   };
 
-
-  # networking.proxy.default = proxy;
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.local";
-
-  # environment.variables = {
-  #   http_proxy  = proxy;
-  #   https_proxy = proxy;
-  #   HTTP_PROXY  = proxy;
-  #   HTTPS_PROXY = proxy;
-  #   no_proxy    = "127.0.0.1,localhost,internal.local";
-  #   NO_PROXY    = "127.0.0.1,localhost,internal.local";
-  # };
-
-
   environment.systemPackages = with pkgs; [
     git
     vim
     w3m
+    zsh
   ];
 
+  security.sudo.extraConfig = ''
+    Defaults pwfeedback
+    Defaults insults
+
+    Defaults use_pty
+  '';
 
   programs.steam = {
     enable = true;

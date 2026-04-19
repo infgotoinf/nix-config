@@ -4,6 +4,11 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    flake-utils.url = "github:numtide/flake-utils";
+    nur = {
+      url = "github:nix-community/NUR";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -12,10 +17,8 @@
       url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nur = {
-      url = "github:nix-community/NUR";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+
     xremap = {
       url = "github:xremap/nix-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -24,10 +27,6 @@
       url = "github:musnix/musnix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # quadlet-nix = {
-    #   url = "github:SEIAROTg/quadlet-nix";
-    #   # inputs.nixpkgs.follows = "nixpkgs";
-    # };
     zapret-discord-youtube = {
       url = "github:kartavkun/zapret-discord-youtube";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -35,16 +34,20 @@
   };
 
 
-  outputs = { nixpkgs, nixpkgs-stable, ... }@inputs:
+  outputs = { nixpkgs, nur, nixpkgs-stable, ... }@inputs:
   let
     system = "x86_64-linux";
     username = "inf"; #< Here you can change username
 
+    pkgs = nixpkgs.legacyPackages.${system};
     # https://discourse.nixos.org/t/how-to-make-one-flake-nix-for-multiple-hosts/62056
     mkHostConfig = hostname: nixpkgs.lib.nixosSystem {
       specialArgs = {
-          nixpkgs-stable = import nixpkgs-stable {
-            inherit system;
+        nixpkgs-stable = import nixpkgs-stable {
+          inherit system;
+        };
+        nur = import nur {
+          inherit system;
         };
         inherit inputs system;
         inherit username;
@@ -52,12 +55,22 @@
       };
       modules = with inputs; [
         ./configuration.nix
+        nur.modules.nixos.default
         home-manager.nixosModules.home-manager
         stylix.nixosModules.stylix
-        nur.modules.nixos.default
-        zapret-discord-youtube.nixosModules.default
+
         musnix.nixosModules.musnix
-        # quadlet-nix.nixosModules.quadlet
+        zapret-discord-youtube.nixosModules.default
+        (
+          {pkgs, ...}:
+          {
+            nixpkgs.overlays = [ nix-cachyos-kernel.overlays.default ];
+
+            # boot.kernelPackages = pkgs.linuxPackages_zen;
+            boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-x86_64-v3;
+            # boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v3;
+          }
+        )
       ];
     };
   in
@@ -73,14 +86,16 @@
         nixpkgs-stable = import nixpkgs-stable {
           inherit system;
         };
-        inherit username;
+        nur = import nur {
+          inherit system;
+        };
+        inherit username pkgs;
       };
-      pkgs = nixpkgs.legacyPackages.${system};
+      inherit pkgs;
       modules = with inputs; [
         ./home.nix
         stylix.homeModules.stylix
         xremap.homeManagerModules.default
-        # quadlet-nix.homeManagerModules.quadlet
       ];
     };
   };

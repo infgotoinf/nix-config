@@ -32,12 +32,9 @@ in {
 
     home.packages = with pkgs; [
       /*brightnessctl
-      grim
-      pulseaudio
       swayidle
       swaylock
-      wmenu
-      flameshot*/
+      wmenu*/
       wl-clipboard
       grim
       slurp

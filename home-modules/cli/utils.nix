@@ -9,5 +9,6 @@
     wget
     viu
     calc
+    killall
   ];
 }

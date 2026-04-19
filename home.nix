@@ -66,6 +66,7 @@
   home.sessionVariables = {
     TERM = "xterm-256color";
     NIXOS_OZONE_WL = 1;
+    # NIX_BUILD_SHELL = "${pkgs.zsh}/bin/zsh";
   };
 
   # This value determines the Home Manager release that your configuration is

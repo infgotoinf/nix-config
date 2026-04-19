@@ -1,12 +1,13 @@
 { pkgs, nixpkgs-stable, ... }:
 
 {
-  # nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
-    krita
-    krita-plugin-gmic
+    nixpkgs-stable.krita
+    nixpkgs-stable.krita-plugin-gmic
     aseprite
     kdePackages.kdenlive
+    blender
 
     ardour
     # reaper
@@ -14,6 +15,7 @@
     # reaper-sws-extension
     renoise
     audacity
+    carla
     # lmms
 
     piano-rs

@@ -1,5 +1,3 @@
-{ pkgs, ... }:
-
 {
   boot = {
     kernelParams = [
@@ -11,6 +9,5 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-    kernelPackages = pkgs.linuxPackages_zen;
   };
 }
