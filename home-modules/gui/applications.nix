@@ -8,6 +8,7 @@
     aseprite
     kdePackages.kdenlive
     blender
+    # material-maker
 
     ardour
     # reaper
@@ -39,6 +40,8 @@
     docker-client
     docker-buildx
     docker-compose
+
+    altair
   ];
 
   programs.docker-cli = {

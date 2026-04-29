@@ -14,10 +14,10 @@
       enable = true;
     };
     nvidia = {
-      open = true;
+      open = false;
       # TODO: add PRIME configuration for laptop
     };
   };
 
-  # services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "nvidia" ];
 }

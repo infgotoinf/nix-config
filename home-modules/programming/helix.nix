@@ -32,6 +32,12 @@
       nixd
 
       cmake-language-server
+      lua-language-server
+
+      python314Packages.jedi-language-server
+      ty
+      ruff
+
       clang-tools
 
       superhtml

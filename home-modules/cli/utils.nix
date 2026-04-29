@@ -10,5 +10,11 @@
     viu
     calc
     killall
+    ffmpeg-full
+    mermaid-filter
   ];
+
+  programs.pandoc = {
+    enable = true;
+  };
 }

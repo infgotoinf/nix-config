@@ -31,6 +31,7 @@
     gdb = "gdb-dashboard ";
     # rmv = "~/nix-config/etc/rmv.sh ";
     nix-zshell = "nix-shell --run zsh";
+    ds = "devbox shell";
     xdg-list-avalible-apps = "echo $XDG_DATA_DIRS | tr -d '\n' | xargs -d : -I % find %/applications -name '*.desktop'";
     btrfs-balance = "sudo btrfs balance start -dusage=10 -musage=10 /";
     btrfs-defrag = "sudo btrfs filesystem defragment -r / 2&> /dev/null";

@@ -42,6 +42,8 @@ with config; {
   # networking.nameservers = [ "127.0.0.1" ];
   networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
 
+  programs.nix-ld.enable = true;
+
   # services.privoxy = {
   #   enable = true;
   #   settings = {
