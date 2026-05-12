@@ -17,4 +17,6 @@
   programs.pandoc = {
     enable = true;
   };
+
+  # TODO: configure bat
 }

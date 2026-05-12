@@ -92,7 +92,7 @@
 
       "#textbox-prompt-colon" = {
         expand = false;
-        str = "> "; 
+        str = "> ";
       };
       "#inputbar" = {
         # border = 1;
@@ -110,11 +110,11 @@
     modes = [
       "drun"
       "emoji"
-      # "nerdy"
+      "nerdy"
     ];
     plugins = with pkgs; [
       rofi-emoji
-      # rofi-nerdy
+      rofi-nerdy
     ];
   };
 }

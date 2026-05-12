@@ -1,9 +1,12 @@
 { pkgs, config, username, ... }:
 
+# let
+#   proxy = "socks5://5.255.103.55:1080";
+# in
 with config; {
   services = {
     tor = {
-      enable = true;
+      # enable = true;
       enableGeoIP = false;
       openFirewall = true;
       torsocks.enable = true;
@@ -34,15 +37,13 @@ with config; {
     };
 
     resolved = {
-      enable = true;
+      # enable = true;
       settings.Resolve.FallbackDNS = [ "1.1.1.1" "9.9.9.9" ];
     };
   };
 
   # networking.nameservers = [ "127.0.0.1" ];
-  networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
-
-  programs.nix-ld.enable = true;
+  # networking.nameservers = [ "1.1.1.1" "9.9.9.9" ];
 
   # services.privoxy = {
   #   enable = true;
@@ -60,6 +61,21 @@ with config; {
 
   # networking.proxy.default = "http://192.168.1.10:8118";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.local";
+
+  # TODO: Get rid of this thing then make thing above work
+  # networking.proxy.default = proxy;
+  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.local";
+
+  # environment.variables = {
+  #   http_proxy  = proxy;
+  #   https_proxy = proxy;
+  #   HTTP_PROXY  = proxy;
+  #   HTTPS_PROXY = proxy;
+  #   no_proxy    = "127.0.0.1,localhost,internal.local";
+  #   NO_PROXY    = "127.0.0.1,localhost,internal.local";
+  # };
+
+  programs.nix-ld.enable = true;
 
   environment.sessionVariables = {
     TERM = "xterm-256color";

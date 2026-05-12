@@ -67,8 +67,14 @@
             nixpkgs.overlays = [ nix-cachyos-kernel.overlays.default ];
 
             # boot.kernelPackages = pkgs.linuxPackages_zen;
-            boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-x86_64-v3;
+            # kernel = pkgs.cachyosKernels.linux-cachyos-latest.override {
+            #   cpusched = "rt-dore";
+            #   processorOpt = "x86_64-v3";
+            #   rt = true;
+            # };
+            # boot.kernelPackages = pkgs.linuxKernel.packagesFor kernel;
             # boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v3;
+            boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-x86_64-v3;
           }
         )
       ];

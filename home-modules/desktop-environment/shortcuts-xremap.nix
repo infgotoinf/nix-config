@@ -32,6 +32,7 @@ in
           remap = {
             "${modifier}-Space".launch = ["bash" "-c" "rofi -show drun"];
             "${modifier}-Alt-Space".launch = ["bash" "-c" "rofi -show emoji"];
+            "${modifier}-Ctrl-Alt-Space".launch = ["bash" "-c" "rofi -show nerdy"];
           };
         }
       ];

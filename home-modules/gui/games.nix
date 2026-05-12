@@ -3,8 +3,9 @@
 
 {
   home.packages = with pkgs; [
-    supertuxkart
-    mindustry
-    prismlauncher
+    # supertuxkart
+    # mindustry
+    # prismlauncher
+    # cataclysm-dda
   ];
 }

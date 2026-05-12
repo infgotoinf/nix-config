@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, ... }:
 
 let
   tmux2k = pkgs.tmuxPlugins.mkTmuxPlugin rec{
@@ -61,7 +61,7 @@ in {
 
 
       set -g status-position top
-      set -g pane-border-status top 
+      set -g pane-border-status top
       set -g pane-border-format ""
 
 

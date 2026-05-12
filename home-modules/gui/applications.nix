@@ -21,7 +21,8 @@
 
     piano-rs
     nixpkgs-stable.guitarix
-    nixpkgs-stable.surge
+    # nixpkgs-stable.surge
+    surge-xt
     bespokesynth-with-vst2
     distrho-ports
     zam-plugins
@@ -29,7 +30,10 @@
     zynaddsubfx
     geonkick
     carla
-    redux
+    # redux
+    cardinal
+    vcv-rack
+    distrho-ports
 
     pavucontrol
     easyeffects
@@ -42,6 +46,8 @@
     docker-compose
 
     altair
+
+    gnome-system-monitor
   ];
 
   programs.docker-cli = {

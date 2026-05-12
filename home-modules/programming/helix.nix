@@ -32,13 +32,13 @@
       nixd
 
       cmake-language-server
-      lua-language-server
+      clang-tools
 
       python314Packages.jedi-language-server
       ty
       ruff
-
-      clang-tools
+      lua-language-server
+      perlnavigator
 
       superhtml
       vscode-css-languageserver
