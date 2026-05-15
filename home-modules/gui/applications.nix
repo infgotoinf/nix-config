@@ -50,6 +50,10 @@
     gnome-system-monitor
   ];
 
+  programs.obs-studio = {
+    enable = true;
+  };
+
   programs.docker-cli = {
     enable = true;
   };

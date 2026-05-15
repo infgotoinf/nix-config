@@ -44,6 +44,16 @@
 
   xdg = {
     enable = true;
+    # portal = {
+    #   enable = true;
+    #   extraPortals = with pkgs; [
+    #     xdg-desktop-portal-gtk
+    #     xdg-desktop-portal-wlr
+    #     xdg-desktop-portal-termfilechooser
+    #     kdePackages.xdg-desktop-portal-kde
+    #   ];
+    #   config.common.default = "*";
+    # };
     userDirs = {
       enable = true;
       setSessionVariables = true;
