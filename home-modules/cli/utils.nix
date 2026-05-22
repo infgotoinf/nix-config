@@ -18,5 +18,19 @@
     enable = true;
   };
 
+  # TODO: configure this thing fully
+  programs.translate-shell = {
+    enable = true;
+    settings = {
+      hl = "ru";
+      tl = [
+        "ru"
+        "en"
+      ];
+      # engine = "yandex";
+      verbose = true;
+    };
+  };
+
   # TODO: configure bat
 }

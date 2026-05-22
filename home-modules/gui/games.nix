@@ -5,7 +5,11 @@
   home.packages = with pkgs; [
     # supertuxkart
     # mindustry
-    # prismlauncher
+    # itch
     # cataclysm-dda
   ];
+
+  programs.prismlauncher = {
+    enable = true;
+  };
 }

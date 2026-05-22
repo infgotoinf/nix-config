@@ -10,14 +10,9 @@
     blender
     # material-maker
 
-    ardour
-    # reaper
-    # reaper-reapack-extension
-    # reaper-sws-extension
     renoise
     audacity
     carla
-    # lmms
 
     piano-rs
     nixpkgs-stable.guitarix

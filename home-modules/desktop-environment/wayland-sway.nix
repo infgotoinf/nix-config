@@ -22,11 +22,12 @@ in {
             xkb_options = "grp:caps_toggle";
           };
           startup = [
-            { command = "systemctl --user restart xremap"; }
+            { command = "systemctl --user restart xremap"; always = true; }
             { command = ''swaybg -c "#1d2021"''; always = true; }
             { command = "wezterm"; always = true; }
           ];
-        } // commonConfig; };
+        } // (commonConfig {config = config; lib = lib;});
+      };
       # systemd.target = "sway-session.target";
     };
 
@@ -42,9 +43,6 @@ in {
     ];
 
     programs = {
-      waybar = {
-        enable = true;
-      };
       satty = {
         enable = true;
         settings = {

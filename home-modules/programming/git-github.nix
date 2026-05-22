@@ -24,4 +24,8 @@
   services.git-sync = {
     enable = true;
   };
+
+  home.packages = with pkgs; [
+    act
+  ];
 }

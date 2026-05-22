@@ -42,6 +42,7 @@
 
       superhtml
       vscode-css-languageserver
+      yaml-language-server
     ];
   };
 }

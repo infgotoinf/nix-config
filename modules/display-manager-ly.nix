@@ -4,6 +4,7 @@
     settings = {
       # doom, matrix, colormix, gameoflife
       animation = "doom";
+      animation_frame_delay = 10;
       auth_fails = 3;
 
       #battery_id = "BAT1";
@@ -17,6 +18,7 @@
 
       brightness_down_key = null;
       brightness_up_key = null;
+      show_password_key = null;
 
       clear_password = true;
       default_input = "password";

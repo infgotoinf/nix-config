@@ -16,7 +16,7 @@ in {
         startup = [
           { command = "wezterm"; always = true; }
         ];
-      } // commonConfig;
+      } // (commonConfig {config = config; lib = lib;});
     };
   };
 }

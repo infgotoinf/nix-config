@@ -6,7 +6,7 @@
     # services.i3lock = enable;
   };
 
-  #services.autorandr.enable = true;
+  services.autorandr.enable = true;
   services.picom.enable = true;
 
   hardware = {

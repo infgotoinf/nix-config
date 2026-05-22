@@ -66,15 +66,25 @@
           {
             nixpkgs.overlays = [ nix-cachyos-kernel.overlays.default ];
 
+            # Using architecure specific kernel don't really seem to change anything that much
+            # lto also doesn't really change performance according to benchmarks (but compiles
+            # 50% slower)
+            # Amoung all default kernels 'zen' seems like the best one, so if you don't want to
+            # wait chachy kernel compilation, you can use zen kernel, but you will sacrifice a
+            # little bit of performance.
             # boot.kernelPackages = pkgs.linuxPackages_zen;
-            # kernel = pkgs.cachyosKernels.linux-cachyos-latest.override {
-            #   cpusched = "rt-dore";
-            #   processorOpt = "x86_64-v3";
-            #   rt = true;
-            # };
-            # boot.kernelPackages = pkgs.linuxKernel.packagesFor kernel;
-            # boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-lto-x86_64-v3;
-            boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-latest-x86_64-v3;
+            # boot.kernelPackages = let
+            #   kernel = pkgs.cachyosKernels.linux-cachyos-latest.override {
+            #     pname = "linux-cachyos-latest-rt-bore-x86_64-v3";
+            #     cpusched = "rt-bore";
+            #     processorOpt = "x86_64-v3";
+            #     rt = true;
+            #   };
+            # in
+            # pkgs.linuxKernel.packagesFor kernel;
+            boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-x86_64-v3;
+            # boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore;
+            # boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-rt;
           }
         )
       ];

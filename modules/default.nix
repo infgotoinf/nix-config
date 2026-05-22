@@ -9,7 +9,7 @@
 
     ./xserver.nix
     ./virtual-machine.nix
-    ./docker.nix
+    ./podman.nix
 
     ./nh.nix
   ];

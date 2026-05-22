@@ -1,6 +1,6 @@
 {
   imports = [
-    ./git.nix
+    ./git-github.nix
 
     ./helix.nix
     ./programing-languages.nix

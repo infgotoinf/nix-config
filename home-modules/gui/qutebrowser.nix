@@ -4,20 +4,6 @@
 
 { lib, config, ... }:
 
-let
-  mkf = lib.mkForce;
-  qb-colors = config.programs.qutebrowser.settings.colors;
-  stylix-colors = config.lib.stylix.colors;
-  bg-color = "#${stylix-colors.base00}";
-  bg-color2 = "#${stylix-colors.base01}";
-  bg-color3 = "#${stylix-colors.base02}";
-  bg-color4 = "#${stylix-colors.base03}";
-  fg-color = "#${stylix-colors.base06}";
-  fg-color2 = "#${stylix-colors.base07}";
-  yellow = "#${stylix-colors.base0A}";
-  green = "#${stylix-colors.base0B}";
-
-in
 {
   # For some reason then I go into follow link mode I have to wait about 2-3 seconds till the
   # letters appear and the issue fixes if I change from 12pt to any other. I guess this issue
@@ -27,18 +13,31 @@ in
 
   programs.qutebrowser = {
     enable = true;
-    settings = {
+    settings = let
+      mkf = lib.mkForce;
+      qb_colors = config.programs.qutebrowser.settings.colors;
+      stylix_colors = config.lib.stylix.colors;
+      bg_color  = "#${stylix_colors.base00}";
+      bg_color2 = "#${stylix_colors.base01}";
+      bg_color3 = "#${stylix_colors.base02}";
+      bg_color4 = "#${stylix_colors.base03}";
+      fg_color  = "#${stylix_colors.base06}";
+      fg_color2 = "#${stylix_colors.base07}";
+      yellow    = "#${stylix_colors.base0A}";
+      green     = "#${stylix_colors.base0B}";
+
+    in {
       auto_save.session = true;
 
       colors.webpage.darkmode.enabled = true;
-      colors.webpage.bg = mkf bg-color;
+      colors.webpage.bg = mkf bg_color;
 
       keyhint.delay = 0;
 
       # Remove rounding everythere
-      hints.radius = 0;
+      hints.radius   = 0;
       keyhint.radius = 0;
-      prompt.radius = 0;
+      prompt.radius  = 0;
       content.user_stylesheets = "~/nix-config/etc/qutebrowser/style.css";
 
       hints.border = mkf "1px solid ${green}";
@@ -47,78 +46,78 @@ in
         tabs = {
           indicator.start = mkf yellow;
 
-          even.bg = mkf bg-color3;
-          even.fg = mkf fg-color2;
-          odd.bg = mkf qb-colors.tabs.even.bg;
-          odd.fg = mkf qb-colors.tabs.even.fg;
+          even.bg = mkf bg_color3;
+          even.fg = mkf fg_color2;
+          odd.bg  = mkf qb_colors.tabs.even.bg;
+          odd.fg  = mkf qb_colors.tabs.even.fg;
           selected = {
-            even.bg = mkf bg-color;
-            even.fg = mkf fg-color;
-            odd.bg = mkf qb-colors.tabs.selected.even.bg;
-            odd.fg = mkf qb-colors.tabs.selected.even.fg;
+            even.bg = mkf bg_color;
+            even.fg = mkf fg_color;
+            odd.bg  = mkf qb_colors.tabs.selected.even.bg;
+            odd.fg  = mkf qb_colors.tabs.selected.even.fg;
           };
           pinned = {
-            even.bg = mkf qb-colors.tabs.odd.bg;
-            even.fg = mkf qb-colors.tabs.odd.fg;
-            odd.bg = mkf qb-colors.tabs.even.bg;
-            odd.fg = mkf qb-colors.tabs.even.fg;
+            even.bg = mkf qb_colors.tabs.odd.bg;
+            even.fg = mkf qb_colors.tabs.odd.fg;
+            odd.bg  = mkf qb_colors.tabs.even.bg;
+            odd.fg  = mkf qb_colors.tabs.even.fg;
             selected = {
-              even.bg = mkf qb-colors.tabs.selected.odd.bg;
-              even.fg = mkf qb-colors.tabs.selected.odd.fg;
-              odd.bg = mkf qb-colors.tabs.selected.even.bg;
-              odd.fg = mkf qb-colors.tabs.selected.even.fg;
+              even.bg = mkf qb_colors.tabs.selected.odd.bg;
+              even.fg = mkf qb_colors.tabs.selected.odd.fg;
+              odd.bg  = mkf qb_colors.tabs.selected.even.bg;
+              odd.fg  = mkf qb_colors.tabs.selected.even.fg;
             };
           };
         };
         completion = {
-          odd.bg = mkf qb-colors.completion.even.bg;
-          fg = mkf fg-color;
-          scrollbar.fg = mkf fg-color;
+          odd.bg = mkf qb_colors.completion.even.bg;
+          fg = mkf fg_color;
+          scrollbar.fg = mkf fg_color;
           item.selected = {
-            bg = mkf bg-color3;
-            fg = mkf fg-color2;
-            border.top = mkf qb-colors.completion.item.selected.bg;
-            border.bottom = mkf qb-colors.completion.item.selected.bg;
+            bg = mkf bg_color3;
+            fg = mkf fg_color2;
+            border.top    = mkf qb_colors.completion.item.selected.bg;
+            border.bottom = mkf qb_colors.completion.item.selected.bg;
           };
         };
         downloads = {
-          bar.bg = mkf bg-color2;
+          bar.bg   = mkf bg_color2;
           start.bg = mkf yellow;
-          stop.bg = mkf green;
+          stop.bg  = mkf green;
         };
 
-        hints.bg = mkf bg-color;
-        hints.fg = mkf fg-color;
-        keyhint.bg = mkf qb-colors.hints.bg;
-        keyhint.fg = mkf qb-colors.hints.fg;
+        hints.bg   = mkf bg_color;
+        hints.fg   = mkf fg_color;
+        keyhint.bg = mkf qb_colors.hints.bg;
+        keyhint.fg = mkf qb_colors.hints.fg;
         keyhint.suffix.fg = mkf green;
-        tooltip.bg = mkf qb-colors.hints.bg;
-        tooltip.fg = mkf qb-colors.hints.fg;
+        tooltip.bg = mkf qb_colors.hints.bg;
+        tooltip.fg = mkf qb_colors.hints.fg;
 
         prompts = {
-          fg = mkf fg-color;
-          selected.bg = mkf bg-color3;
-          selected.fg = mkf fg-color2;
+          fg = mkf fg_color;
+          selected.bg = mkf bg_color3;
+          selected.fg = mkf fg_color2;
         };
         contextmenu = {
-          menu.fg = mkf fg-color;
-          disabled.bg = mkf bg-color4;
-          disabled.fg = mkf bg-color;
-          selected.bg = mkf fg-color;
-          selected.fg = mkf bg-color;
+          menu.fg = mkf fg_color;
+          disabled.bg = mkf bg_color4;
+          disabled.fg = mkf bg_color;
+          selected.bg = mkf fg_color;
+          selected.fg = mkf bg_color;
         };
         statusbar = {
-          caret.fg = mkf fg-color;
-          caret.selection.fg = mkf fg-color2;
-          command.fg = mkf qb-colors.statusbar.caret.fg;
-          command.private.fg = mkf qb-colors.statusbar.caret.fg;
-          normal.fg = mkf qb-colors.statusbar.caret.fg;
-          private.fg = mkf qb-colors.statusbar.caret.fg;
+          caret.fg = mkf fg_color;
+          caret.selection.fg = mkf fg_color2;
+          command.fg = mkf qb_colors.statusbar.caret.fg;
+          command.private.fg = mkf qb_colors.statusbar.caret.fg;
+          normal.fg = mkf qb_colors.statusbar.caret.fg;
+          private.fg = mkf qb_colors.statusbar.caret.fg;
 
           passthrough.bg = mkf yellow;
           url = {
-            fg = mkf fg-color;
-            hover.fg = mkf qb-colors.statusbar.url.fg;
+            fg = mkf fg_color;
+            hover.fg = mkf qb_colors.statusbar.url.fg;
             success.http.fg = mkf yellow;
           };
         };
@@ -126,7 +125,7 @@ in
     };
   };
 
-  programs.librewolf = {
-    enable = true;
-  };
+  # programs.librewolf = {
+  #   enable = true;
+  # };
 }
