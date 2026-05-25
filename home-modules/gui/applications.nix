@@ -10,25 +10,23 @@
     blender
     # material-maker
 
-    renoise
+    # This one is stable cause I'm tired of turning on proxy to download it
+    nixpkgs-stable.renoise
     audacity
-    carla
 
-    piano-rs
+    # piano-rs
     nixpkgs-stable.guitarix
     # nixpkgs-stable.surge
     surge-xt
-    bespokesynth-with-vst2
+    # bespokesynth-with-vst2
     distrho-ports
     zam-plugins
-    dexed
-    zynaddsubfx
-    geonkick
-    carla
-    # redux
+    # dexed
+    # zynaddsubfx
+    # geonkick
+    # carla
     cardinal
-    vcv-rack
-    distrho-ports
+    # vcv-rack
 
     pavucontrol
     easyeffects
@@ -36,20 +34,14 @@
 
     qbittorrent
 
-    docker-client
-    docker-buildx
-    docker-compose
-
     altair
 
     gnome-system-monitor
+    gpu-screen-recorder-gtk
+    librewolf
   ];
 
   programs.obs-studio = {
-    enable = true;
-  };
-
-  programs.docker-cli = {
     enable = true;
   };
 

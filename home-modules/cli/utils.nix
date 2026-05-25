@@ -18,6 +18,10 @@
     enable = true;
   };
 
+  programs.mpv = {
+    enable = true;
+  };
+
   # TODO: configure this thing fully
   programs.translate-shell = {
     enable = true;

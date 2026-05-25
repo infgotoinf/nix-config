@@ -68,7 +68,8 @@
 
   home.packages = with pkgs; [
     telegram-desktop
-    geekbench
+    wineWow64Packages.full
+    winetricks
   ];
 
   /*nix.nixPath = [

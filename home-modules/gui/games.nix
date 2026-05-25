@@ -1,13 +1,17 @@
-
-{ pkgs, ... }:
+{ pkgs, nixpkgs-stable, ... }:
 
 {
   home.packages = with pkgs; [
     # supertuxkart
     # mindustry
-    # itch
     # cataclysm-dda
+    retroarch
   ];
+
+  programs.lutris = {
+    enable = true;
+    package = nixpkgs-stable.lutris;
+  };
 
   programs.prismlauncher = {
     enable = true;

@@ -1,23 +1,11 @@
 { pkgs, config, username, ... }:
 
-# let
-#   proxy = "socks5://185.58.207.89:1080";
-# in
 with config; {
-  # Use this if can't install a package
-  # networking.proxy.default = proxy;
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.local";
-
-  # environment.variables = {
-  #   http_proxy  = proxy;
-  #   https_proxy = proxy;
-  #   HTTP_PROXY  = proxy;
-  #   HTTPS_PROXY = proxy;
-  #   no_proxy    = "127.0.0.1,localhost,internal.local";
-  #   NO_PROXY    = "127.0.0.1,localhost,internal.local";
-  # };
-
   programs.nix-ld.enable = true;
+
+  programs.gpu-screen-recorder = {
+    enable = true;
+  };
 
   environment.sessionVariables = {
     TERM = "xterm-256color";

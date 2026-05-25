@@ -34,7 +34,7 @@
       cmake-language-server
       clang-tools
 
-      python314Packages.jedi-language-server
+      # python314Packages.jedi-language-server
       ty
       ruff
       lua-language-server

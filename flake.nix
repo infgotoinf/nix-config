@@ -60,7 +60,7 @@
         stylix.nixosModules.stylix
 
         musnix.nixosModules.musnix
-        zapret-discord-youtube.nixosModules.default
+        zapret-discord-youtube.nixosModules.withTestTools
         (
           {pkgs, ...}:
           {
