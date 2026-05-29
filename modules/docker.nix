@@ -9,25 +9,17 @@
     enable = true;
     storageDriver = "btrfs";
     package = nixpkgs-stable.docker;
-    daemon.settings = {
-      dns = [ "1.1.1.1" "8.8.8.8" ];
-      registry-mirrors = [
-        "https://mirror.gcr.io"
-        "https://dockerproxy.com"
-      ];
-      max-concurrent-downloads = 1;
-      max-concurrent-uploads = 1;
-    };
     rootless = {
       enable = true;
       setSocketVariable = true;
       package = nixpkgs-stable.docker;
       daemon.settings = {
-        dns = [ "1.1.1.1" "8.8.8.8" ];
+        # dns = [ "1.1.1.1" "8.8.8.8" ];
         registry-mirrors = [
           "https://mirror.gcr.io"
           "https://dockerproxy.com"
         ];
+        # To not get timeouts if internet slow
         max-concurrent-downloads = 1;
         max-concurrent-uploads = 1;
       };
@@ -41,26 +33,4 @@
     docker-color-output
     docker-language-server
   ];
-
-  # users.users.${username} = {
-  #   extraGroups = [
-  #     "podman"
-  #   ];
-  # };
-
-  # virtualisation = {
-  #   containers.enable = true;
-  #   podman = {
-  #     enable = true;
-  #     dockerCompat = true;
-  #     dockerSocket.enable = true;
-  #     defaultNetwork.settings.dns_enabled = true;
-  #   };
-  # };
-
-  # environment.systemPackages = with pkgs; [
-  #   podman-compose
-  #   docker-language-server
-  #   passt    # For Pasta rootless networking
-  # ];
 }

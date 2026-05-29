@@ -19,6 +19,8 @@
     "net.ipv4.tcp_mtu_probing" = 1;
   };
 
+  programs.amnezia-vpn.enable = true;
+
   # Use this if can't install a package cause of a timeout error
   # environment.variables =
   # let
@@ -35,41 +37,60 @@
   # Yanked and edited from https://github.com/Ha1kuFox/dotfiles/blob/8b193c6842ec561bce88df0dbb385acd4e271a98/modules/nixos/network.nix
   networking = {
     hostName = hostname;
+	  firewall.enable = false;
     # Uncomment this line if internet doesn't work (it bypasses all those DNS
     # encryptors I have there, exept zapret-discord-youtube)
-    # nameservers = [ "1.1.1.1" "8.8.4.4" "8.8.8.8" ];
+    # nameservers = [ "8.8.8.8" "1.1.1.1" ];
+    # nameservers = [ "1.1.1.1" "1.0.0.1" ];
+    # proxy.default = "52.34.243.150:8080";
     networkmanager = {
       enable = true;
+      # dns = "systemd-resolved";
     };
   };
 
-  services.resolved.enable = false;
+  # services.resolved = {
+  # 	enable = true;
+  # 	settings.Resolve = {
+		# 	DNS = [
+		# 		"1.1.1.1"
+		# 		"1.0.0.1"
+		# 		"9.9.9.9"
+		# 	];
+		# 	DNSSEC = true;
+		# 	DNSOverTLS = true;
+		# 	Domains = [ "~." ];
+  # 	};
+  # };
 
-  services.adguardhome = {
-	  enable = true;
-	  openFirewall = true;
-	  settings = {
-		  dns = {
-			  bind_hosts = [ "0.0.0.0" ];
-			  port = 53;
-			  upstream_dns = [ "127.0.0.1:5353" ];
-			  allowed_clients = [ "127.0.0.1" "::1" ];
-		  };
-		  filtering = {
-			  protection_enabled = true;
-			  filtering_update_interval = 24;
-		  };
-	  };
-  };
+  # services.resolved.enable = false;
 
-  services.dnscrypt-proxy = {
-	  enable = true;
-	  settings = {
-		  listen_addresses = ["127.0.0.1:5353"];
-		  ipv6_servers = false;
-		  require_dnssec = true;
-	  };
-  };
+  # services.adguardhome = {
+	 #  enable = true;
+	 #  openFirewall = true;
+	 #  port = 666;
+	 #  settings = {
+		#   dns = {
+		# 	  bind_hosts = [ "0.0.0.0" ];
+		# 	  port = 53;
+		# 	  upstream_dns = [ "127.0.0.1:5353" ];
+		# 	  allowed_clients = [ "127.0.0.1" "::1" ];
+		#   };
+		#   filtering = {
+		# 	  protection_enabled = true;
+		# 	  filtering_update_interval = 24;
+		#   };
+	 #  };
+  # };
+
+  # services.dnscrypt-proxy = {
+	 #  enable = true;
+	 #  settings = {
+		#   listen_addresses = ["127.0.0.1:5353"];
+		#   ipv6_servers = false;
+		#   require_dnssec = true;
+	 #  };
+  # };
 
   services.zapret-discord-youtube = {
     enable = true;
@@ -80,7 +101,7 @@
       "renoise.com"
       "www.renoise.com"
 
-		    # Telegram
+	    # Telegram
 		  "t.me"
 		  "tg.dev"
 		  "tg.org"

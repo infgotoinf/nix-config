@@ -4,12 +4,13 @@
     ./input
 
     ./tty-console.nix
+    ./ssh.nix
 
     ./display-manager-ly.nix
 
     ./xserver.nix
     ./virtual-machine.nix
-    ./podman.nix
+    ./docker.nix
 
     ./nh.nix
   ];
