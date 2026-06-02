@@ -6,6 +6,9 @@
     ./home-modules
   ];
 
+  # stylix.enableReleaseChecks = false;
+  # home.enableNixpkgsReleaseCheck = false;
+
   gtk.gtk4.theme = config.gtk.theme;
 
   stylix.targets.gtk.extraCss = ''
@@ -14,8 +17,8 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  # xorg.enable = true;
-  wayland.enable = true;
+  # i3.enable = true;
+  sway.enable = true;
 
   services.udiskie.enable = true;
 
@@ -23,21 +26,6 @@
   # manage.
   home.username = username;
   home.homeDirectory = "/home/${username}";
-
-
-  home.shellAliases = {
-    cd = "z ";
-    ls = "eza ";
-    gdb = "gdb-dashboard ";
-    # rmv = "~/nix-config/etc/rmv.sh ";
-    nix-zshell = "nix-shell --run zsh";
-    ds = "devbox shell";
-    xdg-list-avalible-apps = "echo $XDG_DATA_DIRS | tr -d '\n' | xargs -d : -I % find %/applications -name '*.desktop'";
-    btrfs-balance = "sudo btrfs balance start -dusage=10 -musage=10 /";
-    btrfs-defrag = "sudo btrfs filesystem defragment -r / 2&> /dev/null";
-    dd-measure-disk-write-speed = "dd if=/dev/zero of=$HOME/lol.img bs=1G count=1 oflag=dsync; rm -rf $HOME/lol.img";
-    run-system-benchmark = "NIXPKGS_ALLOW_UNFREE=1 nix run github:dbeley/nixos-benchmark -- --benchmarks openssl-speed,7zip-benchmark,stress-ng,sysbench-cpu,sysbench-memory,furmark-gl,stressapptest-memory,fio-seq,iozone,bonnie++,ioping,furmark-vk,clpeak,hashcat-gpu,lz4-benchmark,zstd-compress,cryptsetup-benchmark,sqlite-mixed,sqlite-speedtest,ffmpeg-transcode,netperf,wrk-http";
-  };
 
   home.sessionVariables = {
     BROWSER = "${pkgs.qutebrowser}/bin/qutebrowser";

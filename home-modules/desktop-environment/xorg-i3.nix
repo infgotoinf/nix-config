@@ -4,12 +4,12 @@ let
 
 in {
   options = {
-    xorg.enable = lib.mkEnableOption ''
-      Enables X11 based environments.
+    i3.enable = lib.mkEnableOption ''
+      Enables i3 wm environment.
     '';
   };
 
-  config = lib.mkIf config.xorg.enable {
+  config = lib.mkIf config.i3.enable {
     xsession.windowManager.i3 = {
       enable = true;
       config = {

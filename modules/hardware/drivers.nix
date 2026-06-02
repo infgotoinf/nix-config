@@ -3,7 +3,6 @@
     loginLimits = [
       { domain = "@users"; item = "rtprio"; type = "-"; value = 1; }
     ];
-    # services.i3lock = enable;
   };
 
   services.autorandr.enable = true;

@@ -1,4 +1,4 @@
-{ pkgs, nixpkgs-stable, username, ...}:
+{ pkgs, username, ...}:
 {
   users.users.${username} = {
     linger = true;
@@ -8,11 +8,11 @@
   virtualisation.docker = {
     enable = true;
     storageDriver = "btrfs";
-    package = nixpkgs-stable.docker;
+    # package = stable.docker;
     rootless = {
       enable = true;
       setSocketVariable = true;
-      package = nixpkgs-stable.docker;
+      # package = stable.docker;
       daemon.settings = {
         # dns = [ "1.1.1.1" "8.8.8.8" ];
         registry-mirrors = [
@@ -26,7 +26,7 @@
     };
   };
 
-  environment.systemPackages = with nixpkgs-stable; [
+  environment.systemPackages = with pkgs; [
     docker-buildx
     docker-client
     docker-compose

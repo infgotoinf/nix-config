@@ -4,12 +4,12 @@ let
 
 in {
   options = {
-    wayland.enable = lib.mkEnableOption ''
-      Enables wayland based environments.
+    sway.enable = lib.mkEnableOption ''
+      Enables sway wm environment.
     '';
   };
 
-  config = lib.mkIf config.wayland.enable {
+  config = lib.mkIf config.sway.enable {
     wayland = {
       windowManager.sway = {
         enable = true;

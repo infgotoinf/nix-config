@@ -1,6 +1,9 @@
 { pkgs, config, username, ... }:
 
 with config; {
+
+  # gnome-boxes.enable = true;
+
   programs.nix-ld.enable = true;
 
   programs.gpu-screen-recorder = {
@@ -10,7 +13,7 @@ with config; {
   environment.sessionVariables = {
     TERM = "xterm-256color";
     NIXOS_OZONE_WL = 1;
-    # NIX_BUILD_SHELL = "${pkgs.zsh}/bin/zsh";
+    NIX_BUILD_SHELL = "${pkgs.fish}/bin/fish";
   };
 
   imports = [
@@ -28,12 +31,10 @@ with config; {
     git
     vim
     w3m
-    zsh
   ];
 
   security.sudo.extraConfig = ''
     Defaults pwfeedback
-    Defaults insults
 
     Defaults use_pty
   '';
@@ -100,10 +101,12 @@ with config; {
     jack.enable = true;
   };
 
-  programs.zsh.enable = true;
+  # programs.zsh.enable = true;
+  programs.fish.enable = true;
 
   users.users.${username} = {
-    shell = pkgs.zsh;
+    # shell = pkgs.zsh;
+    shell = pkgs.fish;
     isNormalUser = true;
     extraGroups = [
       "wheel"

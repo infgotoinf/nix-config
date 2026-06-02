@@ -1,21 +1,21 @@
-{ pkgs, nixpkgs-stable, ... }:
+{ pkgs, unstable, ... }:
 
 {
   nixpkgs.config.allowUnfree = true;
   home.packages = with pkgs; [
-    nixpkgs-stable.krita
-    nixpkgs-stable.krita-plugin-gmic
+    unstable.krita
+    unstable.krita-plugin-gmic
     aseprite
     kdePackages.kdenlive
     blender
     # material-maker
 
     # This one is stable cause I'm tired of turning on proxy to download it
-    nixpkgs-stable.renoise
+    renoise
     audacity
 
     # piano-rs
-    nixpkgs-stable.guitarix
+    guitarix
     # nixpkgs-stable.surge
     surge-xt
     # bespokesynth-with-vst2
@@ -38,7 +38,7 @@
 
     gnome-system-monitor
     gpu-screen-recorder-gtk
-    librewolf
+    # librewolf
   ];
 
   programs.obs-studio = {

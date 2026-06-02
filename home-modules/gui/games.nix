@@ -1,4 +1,4 @@
-{ pkgs, nixpkgs-stable, ... }:
+{ pkgs,  ... }:
 
 {
   home.packages = with pkgs; [
@@ -6,11 +6,11 @@
     # mindustry
     # cataclysm-dda
     retroarch
+    the-powder-toy
   ];
 
   programs.lutris = {
-    enable = true;
-    package = nixpkgs-stable.lutris;
+    # enable = true;
   };
 
   programs.prismlauncher = {

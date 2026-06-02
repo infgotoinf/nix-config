@@ -5,7 +5,7 @@
       "NEO_DISABLE_MITIGATIONS=1"
     ];
     loader = {
-      timeout = 0; # Mash space to select different generation
+      timeout = 0; # Mash space on boot to select different generation
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };

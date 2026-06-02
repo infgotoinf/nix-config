@@ -35,6 +35,4 @@
       verbose = true;
     };
   };
-
-  # TODO: configure bat
 }

@@ -2,8 +2,9 @@
  description = "A very basic flake. You can edit username and add more hosts here.";
 
   inputs = {
+    # nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
+    unstable.url = "github:nixos/nixpkgs/nixos-25.11";
     flake-utils.url = "github:numtide/flake-utils";
     nur = {
       url = "github:nix-community/NUR";
@@ -34,7 +35,7 @@
   };
 
 
-  outputs = { nixpkgs, nur, nixpkgs-stable, ... }@inputs:
+  outputs = { nixpkgs, nur, unstable, ... }@inputs:
   let
     system = "x86_64-linux";
     username = "inf"; #< Here you can change username
@@ -43,7 +44,7 @@
     # https://discourse.nixos.org/t/how-to-make-one-flake-nix-for-multiple-hosts/62056
     mkHostConfig = hostname: nixpkgs.lib.nixosSystem {
       specialArgs = {
-        nixpkgs-stable = import nixpkgs-stable {
+        unstable = import unstable {
           inherit system;
         };
         nur = import nur {
@@ -64,15 +65,15 @@
         (
           {pkgs, ...}:
           {
-            nixpkgs.overlays = [ nix-cachyos-kernel.overlays.default ];
-
             # Using architecure specific kernel don't really seem to change anything that much
             # lto also doesn't really change performance according to benchmarks (but compiles
             # 50% slower)
             # Amoung all default kernels 'zen' seems like the best one, so if you don't want to
             # wait chachy kernel compilation, you can use zen kernel, but you will sacrifice a
             # little bit of performance.
-            # boot.kernelPackages = pkgs.linuxPackages_zen;
+            boot.kernelPackages = pkgs.linuxPackages_zen;
+
+            # nixpkgs.overlays = [ nix-cachyos-kernel.overlays.default ]; # Uncomment this if you want to use cashyos kernel
             # boot.kernelPackages = let
             #   kernel = pkgs.cachyosKernels.linux-cachyos-latest.override {
             #     pname = "linux-cachyos-latest-rt-bore-x86_64-v3";
@@ -82,7 +83,7 @@
             #   };
             # in
             # pkgs.linuxKernel.packagesFor kernel;
-            boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-x86_64-v3;
+            # boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore-x86_64-v3;
             # boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-cachyos-bore;
             # boot.kernelPackages = pkgs.cachyosKernels.linuxPackages-rt;
           }
@@ -99,7 +100,7 @@
 
     homeConfigurations.${username} = inputs.home-manager.lib.homeManagerConfiguration {
       extraSpecialArgs = {
-        nixpkgs-stable = import nixpkgs-stable {
+        unstable = import unstable {
           inherit system;
         };
         nur = import nur {
