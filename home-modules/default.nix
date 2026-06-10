@@ -1,6 +1,5 @@
 {
   imports = [
-    # ./shell-zsh.nix
     ./shell-fish.nix
     ./starship.nix
 

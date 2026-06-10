@@ -2,7 +2,7 @@
 # qutebrowser's command prompt
 # :set -u https://accounts.google.com/* content.headers.user_agent "Mozilla/5.0 ({os_info}; rv:135.0) Gecko/20100101 Firefox/135"
 
-{ lib, config, ... }:
+{ pkgs, lib, config, ... }:
 
 {
   # For some reason then I go into follow link mode I have to wait about 2-3 seconds till the
@@ -13,6 +13,52 @@
 
   programs.qutebrowser = {
     enable = true;
+    greasemonkey = [
+      (pkgs.fetchurl {
+        url = "https://raw.githubusercontent.com/afreakk/greasemonkeyscripts/1ab9f20435cdc39c6551e940fb7788d3207161e6/youtube_sponsorblock.js";
+        sha256 = "1pk05gsmbr3kp37214x8h0020gh5jli9frbagf606f0apmc6bhys";
+      })
+      (pkgs.fetchurl {
+        url = "https://raw.githubusercontent.com/afreakk/greasemonkeyscripts/1ab9f20435cdc39c6551e940fb7788d3207161e6/youtube_shorts_block.js";
+        sha256 = "sha256-e9qCSAuEMoNivepy7W/W5F9D1PJZrPAJoejsBi9ejiY=";
+      })
+      (pkgs.fetchurl {
+        url = "https://raw.githubusercontent.com/iamfugui/youtube-adb/ddceb665747980df3411e9081fda9286d53ccea5/index.user.js";
+        sha256 = "1s04dgmlj75d49bgz9afl50bg0d6srrlxjlnndgjvg5piwjz1yfv";
+      })
+      # https://github.com/qutebrowser/qutebrowser/issues/6480#issuecomment-1596047025
+    #   (pkgs.writeText "some-script.js" ''
+    #     // ==UserScript==
+    #     // @name         Auto Skip YouTube Ads
+    #     // @version      1.1.0
+    #     // @description  Speed up and skip YouTube ads automatically
+    #     // @author       jso8910
+    #     // @match        *://*.youtube.com/*
+    #     // @exclude      *://*.youtube.com/subscribe_embed?*
+    #     // ==/UserScript==
+    #     setInterval(() => {
+    #         const btn = document.querySelector('.videoAdUiSkipButton,.ytp-ad-skip-button')
+    #         if (btn) {
+    #             btn.click()
+    #         }
+    #         const ad = [...document.querySelectorAll('.ad-showing')][0];
+    #         if (ad) {
+    #             const video = document.querySelector('video')
+    #             video.muted = true;
+    #             video.hidden = true;
+
+    #             // This is not necessarily available right at the start
+    #             if(video.duration != NaN) {
+    #                 video.currentTime = video.duration;
+    #             }
+
+    #             // 16 seems to be the highest rate that works, mostly this isn't needed
+    #             video.playbackRate = 16;
+    #         }
+    #     }, 50)
+    # '')
+    ];
+
     settings = let
       mkf = lib.mkForce;
       qb_colors = config.programs.qutebrowser.settings.colors;
@@ -39,6 +85,7 @@
       keyhint.radius = 0;
       prompt.radius  = 0;
       content.user_stylesheets = "~/nix-config/etc/qutebrowser/style.css";
+      content.blocking.method = "both";
 
       hints.border = mkf "1px solid ${green}";
 

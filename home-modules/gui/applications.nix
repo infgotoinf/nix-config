@@ -5,12 +5,11 @@
   home.packages = with pkgs; [
     unstable.krita
     unstable.krita-plugin-gmic
-    aseprite
+    # aseprite
     kdePackages.kdenlive
     blender
     # material-maker
 
-    # This one is stable cause I'm tired of turning on proxy to download it
     renoise
     audacity
 
@@ -32,14 +31,16 @@
     easyeffects
     qpwgraph
 
-    qbittorrent
-
-    altair
+    # altair
 
     gnome-system-monitor
     gpu-screen-recorder-gtk
     # librewolf
   ];
+
+  programs.rtorrent = {
+    enable = true;
+  };
 
   programs.obs-studio = {
     enable = true;

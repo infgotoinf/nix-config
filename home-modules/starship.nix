@@ -50,7 +50,8 @@
         before_repo_root_style = "cyan";
         read_only_style        = "red";
         truncate_to_repo       = true;
-        truncation_length      = 4;
+        truncation_length      = 3;
+        fish_style_pwd_dir_length = 1;
       };
       jobs = {
         format           = " [j$number]($style)";

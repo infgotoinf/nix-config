@@ -18,6 +18,9 @@
         auto-pairs = false;
         auto-save.focus-lost = true;
       };
+      keys.normal = {
+        "A-e" = ":toggle soft-wrap.enable";
+      };
     };
 
     languages = {
@@ -39,6 +42,7 @@
       ruff
       lua-language-server
       perlnavigator
+      ruby-lsp
 
       superhtml
       vscode-css-languageserver

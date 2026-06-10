@@ -1,4 +1,4 @@
-{ config, lib }:
+{ pkgs, config, lib }:
 
 {
   terminal = "wezterm";
@@ -13,6 +13,8 @@
   };
 
   bars = [{
+    # statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ${config.xdg.configHome}/i3status-rust/config-cool.toml";
+    statusCommand = "${pkgs.i3blocks}/bin/i3blocks";
     position = "top";
     trayPadding = 4;
     fonts = let
@@ -25,20 +27,15 @@
       stylix_colors = config.lib.stylix.colors;
       bg_color = "#${stylix_colors.base00}";
       bg_color2 = "#${stylix_colors.base01}";
-      bg_color3 = "#${stylix_colors.base02}";
-      bg_color4 = "#${stylix_colors.base03}";
       fg_color = "#${stylix_colors.base06}";
-      fg_color2 = "#${stylix_colors.base07}";
-      yellow = "#${stylix_colors.base0A}";
-      green = "#${stylix_colors.base0B}";
     in {
       background = "${bg_color}";
       statusline = "${bg_color}";
       separator = "${bg_color}";
       focusedStatusline = "${fg_color}";
       focusedWorkspace = {
-        background = bg_color2;
-        border = bg_color2;
+        background = bg_color;
+        border = bg_color;
         text = fg_color;
       };
       activeWorkspace = {

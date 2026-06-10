@@ -13,7 +13,7 @@ with config; {
   environment.sessionVariables = {
     TERM = "xterm-256color";
     NIXOS_OZONE_WL = 1;
-    NIX_BUILD_SHELL = "${pkgs.fish}/bin/fish";
+    # NIX_BUILD_SHELL = "${pkgs.fish}/bin/fish";
   };
 
   imports = [
@@ -85,13 +85,14 @@ with config; {
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
 
-  # fonts = {
-  #   fontDir.enable = true;
-  #   packages = with pkgs; [
-  #     unifont
-  #     unifont_upper
-  #   ];
-  # };
+  fonts = {
+    enableDefaultPackages = true;
+    enableGhostscriptFonts = true;
+    fontDir.enable = true;
+    # packages = with pkgs; [
+    #   font-awesome_6
+    # ];
+  };
 
   # Enable sound.
   services.pipewire = {

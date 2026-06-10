@@ -10,6 +10,7 @@
 	      email = "infgotoinf@gmail.com";
       };
       init.defaultBranch = "main";
+      core.editor = "hx";
     };
   };
 

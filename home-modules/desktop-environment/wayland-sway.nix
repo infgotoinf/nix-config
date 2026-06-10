@@ -26,7 +26,7 @@ in {
             { command = ''swaybg -c "#1d2021"''; always = true; }
             { command = "wezterm"; always = true; }
           ];
-        } // (commonConfig {config = config; lib = lib;});
+        } // (commonConfig {pkgs = pkgs; config = config; lib = lib;});
       };
       # systemd.target = "sway-session.target";
     };
@@ -42,18 +42,14 @@ in {
       swaybg
     ];
 
-    programs = {
-      satty = {
-        enable = true;
-        settings = {
-          general = {
-            floating-hack = true;
-            corner-roundness = 0;
-            resize.mode = "smart";
-            initial-tool = "brush";
-            output-filename = "~/Pictures/Screenshots/%Y-%m-%d_%H:%M:%S.png";
-          };
-        };
+    programs.satty = {
+      enable = true;
+      settings.general = {
+        floating-hack = true;
+        corner-roundness = 0;
+        resize.mode = "smart";
+        initial-tool = "brush";
+        output-filename = "~/Pictures/Screenshots/%Y-%m-%d_%H:%M:%S.png";
       };
     };
   };

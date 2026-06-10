@@ -17,7 +17,10 @@
 
     };
     shellAbbrs = {
-
+      ns = "nix-shell --run fish";
+      oss = "sudo nh os switch -R";
+      ost = "sudo nh os test -R";
+      osb = "sudo nh os boot -R";
     };
     shellAliases = {
       cd = "z";
@@ -28,8 +31,8 @@
       diff = "batdiff ";
       gdb = "gdb-dashboard ";
       ds = "devbox shell";
-      ns = "nix-shell --run fish ";
-      nix-shell = "nix-shell --run fish ";
+      hs = "NIXPKGS_ALLOW_UNFREE=1 nh home switch --impure .";
+
       xdg-list-avalible-apps = "echo $XDG_DATA_DIRS | tr -d '\n' | xargs -d : -I % find %/applications -name '*.desktop'";
       btrfs-balance = "sudo btrfs balance start -dusage=10 -musage=10 /";
       dd-measure-disk-write-speed = "dd if=/dev/zero of=$HOME/lol.img bs=1G count=1 oflag=dsync; rm -rf $HOME/lol.img";
