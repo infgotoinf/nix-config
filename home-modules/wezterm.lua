@@ -31,9 +31,12 @@ return {
 		{key="k", mods="CTRL|" .. modifier, action=act{AdjustPaneSize={"Up", 1}}},
 		{key="l", mods="CTRL|" .. modifier, action=act{AdjustPaneSize={"Right", 1}}},
 
+		{key="H", mods="CTRL|" .. modifier, action=act.MoveTabRelative(-1)},
+		{key="L", mods="CTRL|" .. modifier, action=act.MoveTabRelative(1)},
+		{key="H", mods=modifier, action=act.ActivateTabRelative(-1)},
+		{key="L", mods=modifier, action=act.ActivateTabRelative(1)},
+
 		{key="c", mods=modifier, action=act{SpawnTab="CurrentPaneDomain"}},
-		{key="J", mods=modifier, action=act.ActivateTabRelative(1)},
-		{key="K", mods=modifier, action=act.ActivateTabRelative(-1)},
 		{key=".", mods=modifier, action=act.ActivateLastTab},
 
 		{key="1", mods=modifier, action=act{ActivateTab=1}},
@@ -51,7 +54,11 @@ return {
     {key="v", mods=modifier, action=act.PasteFrom("PrimarySelection")},
 
 
-    {key="=", mods="WIN", action=disable},
+    {key="=", mods="WIN",  action=disable},
+    {key="+", mods="CTRL", action=disable},
+    {key="-", mods="CTRL", action=disable},
+    {key="=", mods="CTRL", action=disable},
+    {key="_", mods="CTRL", action=disable},
   },
 
   key_tables = {

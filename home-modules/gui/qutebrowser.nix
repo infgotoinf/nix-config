@@ -13,6 +13,33 @@
 
   programs.qutebrowser = {
     enable = true;
+    searchEngines = {
+
+    };
+
+    keyBindings = {
+      normal = {
+        "H" = "tab-prev";
+        "L" = "tab-next";
+        "J" = "back";
+        "K" = "forward";
+        "<Ctrl-Shift-H>" = "tab-move -";
+        "<Ctrl-Shift-L>" = "tab-move +";
+
+        "<Alt-c>" = "open -t";
+      };
+    };
+
+    perDomainSettings = {
+      "discord.com" = {
+        content.media.audio_capture = true;
+        colors.webpage.darkmode.enabled = false;
+      };
+      "github.com" = {
+        colors.webpage.darkmode.enabled = false;
+      };
+    };
+
     greasemonkey = [
       (pkgs.fetchurl {
         url = "https://raw.githubusercontent.com/afreakk/greasemonkeyscripts/1ab9f20435cdc39c6551e940fb7788d3207161e6/youtube_sponsorblock.js";
@@ -26,37 +53,6 @@
         url = "https://raw.githubusercontent.com/iamfugui/youtube-adb/ddceb665747980df3411e9081fda9286d53ccea5/index.user.js";
         sha256 = "1s04dgmlj75d49bgz9afl50bg0d6srrlxjlnndgjvg5piwjz1yfv";
       })
-      # https://github.com/qutebrowser/qutebrowser/issues/6480#issuecomment-1596047025
-    #   (pkgs.writeText "some-script.js" ''
-    #     // ==UserScript==
-    #     // @name         Auto Skip YouTube Ads
-    #     // @version      1.1.0
-    #     // @description  Speed up and skip YouTube ads automatically
-    #     // @author       jso8910
-    #     // @match        *://*.youtube.com/*
-    #     // @exclude      *://*.youtube.com/subscribe_embed?*
-    #     // ==/UserScript==
-    #     setInterval(() => {
-    #         const btn = document.querySelector('.videoAdUiSkipButton,.ytp-ad-skip-button')
-    #         if (btn) {
-    #             btn.click()
-    #         }
-    #         const ad = [...document.querySelectorAll('.ad-showing')][0];
-    #         if (ad) {
-    #             const video = document.querySelector('video')
-    #             video.muted = true;
-    #             video.hidden = true;
-
-    #             // This is not necessarily available right at the start
-    #             if(video.duration != NaN) {
-    #                 video.currentTime = video.duration;
-    #             }
-
-    #             // 16 seems to be the highest rate that works, mostly this isn't needed
-    #             video.playbackRate = 16;
-    #         }
-    #     }, 50)
-    # '')
     ];
 
     settings = let
@@ -87,8 +83,8 @@
       content.user_stylesheets = "~/nix-config/etc/qutebrowser/style.css";
       content.blocking.method = "both";
 
+      # Color settings
       hints.border = mkf "1px solid ${green}";
-
       colors = {
         tabs = {
           indicator.start = mkf yellow;
