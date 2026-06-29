@@ -10,8 +10,9 @@
         color = "red";
         host_user_path = "$hostname[@](${color})$username[:](${color})$directory";
         git_stuff = "$git_branch$git_commit$git_status";
+        other_stuff = "$nix_shell";
       in ''
-        $status$cmd_duration$shlvl[\[](${color})${host_user_path}[\]](${color})$jobs${git_stuff}$all
+        $status$cmd_duration$shlvl[\[](${color})${host_user_path}[\]](${color})$jobs${git_stuff}${other_stuff}
         $character'';
 
       status = {
@@ -95,20 +96,17 @@
         vimcmd_visual_symbol      = "%";
       };
 
-      python = {
-        format = " [\\($virtualenv\\)]($style)";
-        style  = "green";
-      };
+      # python = {
+      #   format = " [\\($virtualenv\\)]($style)";
+      #   style  = "green";
+      # };
       nix_shell = {
         format     = " [nix]($style)";
         style      = "blue";
         impure_msg = "";
         pure_msg   = "";
       };
-      container = {
-        format = " [$name]($style)";
-        style  = "magenta";
-      };
+      container.disabled = true;
       fill.disabled = true;
       c.disabled = true;
       cmake.disabled = true;

@@ -37,6 +37,7 @@ return {
 		{key="L", mods=modifier, action=act.ActivateTabRelative(1)},
 
 		{key="c", mods=modifier, action=act{SpawnTab="CurrentPaneDomain"}},
+		{key="Enter", mods=modifier, action=act{SpawnTab="CurrentPaneDomain"}},
 		{key=".", mods=modifier, action=act.ActivateLastTab},
 
 		{key="1", mods=modifier, action=act{ActivateTab=1}},

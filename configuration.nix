@@ -39,18 +39,6 @@ with config; {
     Defaults use_pty
   '';
 
-  services.flatpak.enable = true;
-  xdg.portal = {
-    enable = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk
-      xdg-desktop-portal-wlr
-      xdg-desktop-portal-termfilechooser
-      kdePackages.xdg-desktop-portal-kde
-    ];
-    config.common.default = "*";
-  };
-
   programs.steam = {
     enable = true;
     extest.enable = true;
@@ -58,7 +46,10 @@ with config; {
     protontricks.enable = true;
   };
 
-  systemd.user.extraConfig = "DefaultTimeoutStopSec=10s";
+  # systemd.user.settings.Manager = {
+  #   DefaultTimeoutStopSec = 10;
+  # };
+  systemd.user.extraConfig = "DefaultTimeoutStartSec=10";
 
   services.journald.extraConfig = ''
     Storage=volotile

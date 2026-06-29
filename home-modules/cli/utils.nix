@@ -5,10 +5,9 @@
     unzip
     zip
     dtrx
-    file-rename
     wget
-    viu
     calc
+    cloc
     killall
     ffmpeg-full
     mermaid-filter

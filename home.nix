@@ -1,4 +1,4 @@
-{ pkgs, config, username, ... }:
+{ pkgs, username, ... }:
 
 {
   imports = [
@@ -8,8 +8,6 @@
 
   # stylix.enableReleaseChecks = false;
   # home.enableNixpkgsReleaseCheck = false;
-
-  gtk.gtk4.theme = config.gtk.theme;
 
   stylix.targets.gtk.extraCss = ''
     * { border-radius: 0; }
@@ -33,24 +31,67 @@
 
   xdg = {
     enable = true;
-    # portal = {
-    #   enable = true;
-    #   extraPortals = with pkgs; [
-    #     xdg-desktop-portal-gtk
-    #     xdg-desktop-portal-wlr
-    #     xdg-desktop-portal-termfilechooser
-    #     kdePackages.xdg-desktop-portal-kde
-    #   ];
-    #   config.common.default = "*";
-    # };
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-gtk
+        xdg-desktop-portal-wlr
+        xdg-desktop-portal-termfilechooser
+        kdePackages.xdg-desktop-portal-kde
+      ];
+
+      config = {
+        sway = {
+          default = [ "wlr" "gtk" "kde" "termfilechooser" ];
+          "org.freedesktop.impl.portal.FileChooser" = [ "termfilechooser" ];
+          "org.freedesktop.impl.portal.Screenshot" = [ "wlr" ];
+          "org.freedesktop.impl.portal.ScreenCast" = [ "wlr" ];
+        };
+      };
+    };
     userDirs = {
       enable = true;
       setSessionVariables = true;
     };
-    mimeApps.defaultApplications = {
-      "application/pdf" = "org.qutebrowser.qutebrowser.desktop";
-      "text/html" = "org.qutebrowser.qutebrowser.desktop";
-      "image/*" = "satty.desktop";
+    mimeApps = {
+      enable = true;
+      defaultApplications = {
+        "text/html" = "org.qutebrowser.qutebrowser.desktop";
+        "x-scheme-handler/http" = "org.qutebrowser.qutebrowser.desktop";
+        "x-scheme-handler/https" = "org.qutebrowser.qutebrowser.desktop";
+        "x-scheme-handler/about" = "org.qutebrowser.qutebrowser.desktop";
+        "x-scheme-handler/unknown" = "org.qutebrowser.qutebrowser.desktop";
+
+        "application/pdf" = "onlyoffice-desktopeditors.desktop";
+        "image/gif" = "org.qutebrowser.qutebrowser.desktop";
+        # And yes for some reason wildcards (image/*) don't work
+        "image/png" = "satty.desktop";
+        "image/jpg" = "satty.desktop";
+        "image/webp" = "satty.desktop";
+        "image/svg+xml" = "satty.desktop";
+
+        "video/mp4" = "mpv.desktop";
+        "video/x-matroska" = "mpv.desktop";
+        "video/webm" = "mpv.desktop";
+        "video/x-msvideo" = "mpv.desktop";
+        "video/quicktime" = "mpv.desktop";
+      };
+    };
+    configFile = {
+      "xdg-desktop-portal-termfilechooser/config" = {
+        force = true;
+        executable = true;
+        text = ''
+          [filechooser]
+          cmd=${pkgs.xdg-desktop-portal-termfilechooser}/share/xdg-desktop-portal-termfilechooser/yazi-wrapper.sh
+          default_dir=$HOME/downloads
+          create_help_file=1
+          env=TERMCMD='kitty --title filechooser'
+          env=PATH="$PATH:/run/current-system/sw/bin"
+          open_mode=suggested
+          save_mode=last
+        '';
+      };
     };
   };
 
@@ -78,7 +119,7 @@
   # You should not change this value, even if you update Home Manager. If you do
   # want to update the value, then make sure to first check the Home Manager
   # release notes.
-  home.stateVersion = "25.11"; # Please read the comment before changing.
+  home.stateVersion = "26.05"; # Please read the comment before changing.
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;

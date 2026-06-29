@@ -7,10 +7,14 @@
     # cataclysm-dda
     retroarch
     the-powder-toy
+    flatpak
   ];
 
+  # Run this if you get an error in Lutris with flathub games:
+  # flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+
   programs.lutris = {
-    # enable = true;
+    enable = true;
   };
 
   programs.prismlauncher = {

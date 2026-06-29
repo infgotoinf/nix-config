@@ -27,6 +27,9 @@
         "<Ctrl-Shift-L>" = "tab-move +";
 
         "<Alt-c>" = "open -t";
+        "<Alt-Return>" = "open -t";
+
+        "pv" = "spawn mpv {url}";
       };
     };
 
@@ -83,7 +86,6 @@
       content.user_stylesheets = "~/nix-config/etc/qutebrowser/style.css";
       content.blocking.method = "both";
 
-      # Color settings
       hints.border = mkf "1px solid ${green}";
       colors = {
         tabs = {

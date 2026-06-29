@@ -19,12 +19,13 @@
     surge-xt
     # bespokesynth-with-vst2
     distrho-ports
-    zam-plugins
+    # zam-plugins
     # dexed
     # zynaddsubfx
     # geonkick
     # carla
     cardinal
+    rubberband
     # vcv-rack
 
     pavucontrol
