@@ -33,8 +33,9 @@
                 mountpoint = "/";
                 # https://btrfs.readthedocs.io/en/latest/ch-mount-options.html
                 mountOptions = [
-                  "compress=zstd"
                   "noatime"
+                  "nodatacow"
+                  "nodatasum"
                 ];
               };
             };
