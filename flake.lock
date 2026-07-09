@@ -457,6 +457,7 @@
         "nixpkgs": "nixpkgs_2",
         "nur": "nur",
         "stylix": "stylix",
+        "ultrastable": "ultrastable",
         "unstable": "unstable",
         "xremap": "xremap",
         "zapret-discord-youtube": "zapret-discord-youtube"
@@ -587,6 +588,22 @@
       "original": {
         "owner": "tinted-theming",
         "repo": "base16-zed",
+        "type": "github"
+      }
+    },
+    "ultrastable": {
+      "locked": {
+        "lastModified": 1782847189,
+        "narHash": "sha256-twXPFqFsrrY5r28Zh7Homgcp2gUMBgQ6WDS98Q/3xFI=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "b6018f87da91d19d0ab4cf979885689b469cdd41",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-25.11",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },

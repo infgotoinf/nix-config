@@ -15,7 +15,7 @@
 
   nixpkgs.config.allowUnfree = true;
 
-  # i3.enable = true;
+  i3.enable = true;
   sway.enable = true;
 
   services.udiskie.enable = true;

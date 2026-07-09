@@ -17,10 +17,12 @@
 
     };
     shellAbbrs = {
+      hs = "NIXPKGS_ALLOW_UNFREE=1 nh home switch --impure .";
       ns = "nix-shell --run fish";
       oss = "sudo nh os switch -R";
       ost = "sudo nh os test -R";
       osb = "sudo nh os boot -R";
+      call = "nh clean all --optimise";
     };
     shellAliases = {
       cd = "z";
@@ -31,9 +33,7 @@
       diff = "batdiff ";
       gdb = "gdb-dashboard ";
       ds = "devbox shell";
-      hs = "NIXPKGS_ALLOW_UNFREE=1 nh home switch --impure .";
 
-      xdg-list-avalible-apps = "echo $XDG_DATA_DIRS | tr -d '\n' | xargs -d : -I % find %/applications -name '*.desktop'";
       btrfs-balance = "sudo btrfs balance start -dusage=10 -musage=10 /";
       dd-measure-disk-write-speed = "dd if=/dev/zero of=$HOME/lol.img bs=1G count=1 oflag=dsync; rm -rf $HOME/lol.img";
       run-system-benchmark = "NIXPKGS_ALLOW_UNFREE=1 nix run github:dbeley/nixos-benchmark -- --benchmarks openssl-speed,7zip-benchmark,stress-ng,sysbench-cpu,sysbench-memory,furmark-gl,stressapptest-memory,fio-seq,iozone,bonnie++,ioping,furmark-vk,clpeak,hashcat-gpu,lz4-benchmark,zstd-compress,cryptsetup-benchmark,sqlite-mixed,sqlite-speedtest,ffmpeg-transcode,netperf,wrk-http";

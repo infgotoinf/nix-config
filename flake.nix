@@ -2,10 +2,10 @@
  description = "A very basic flake. You can edit username and add more hosts here.";
 
   inputs = {
+    ultrastable.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
-    # unstable.url = "github:nixos/nixpkgs/nixos-25.11";
     flake-utils.url = "github:numtide/flake-utils";
     nur = {
       url = "github:nix-community/NUR";
@@ -38,10 +38,24 @@
   };
 
 
-  outputs = { nixpkgs, nur, unstable, ... }@inputs:
+  outputs = { nixpkgs, nur, unstable, ultrastable, ... }@inputs:
   let
     system = "x86_64-linux";
     username = "inf"; #< Here you can change username
+    system_info = {
+      has_backlight = builtins.attrNames (builtins.readDir /sys/class/backlight) != [];
+      has_battery = builtins.attrNames (builtins.readDir /sys/class/power_supply) != [];
+      has_amd_gpu = (builtins.readFile (
+        pkgs.runCommand "amd_gpu_check" {} ''
+          ${pkgs.pciutils}/bin/lspci | grep -i vga | grep -i amd > $out || true
+        ''
+      ) != "");
+      has_nvidia_gpu = (builtins.readFile (
+        pkgs.runCommand "nvidia_gpu_check" {} ''
+          ${pkgs.pciutils}/bin/lspci | grep -i vga | grep -i nvidia > $out || true
+        ''
+      ) != "");
+    };
 
     pkgs = nixpkgs.legacyPackages.${system};
     # https://discourse.nixos.org/t/how-to-make-one-flake-nix-for-multiple-hosts/62056
@@ -50,12 +64,16 @@
         unstable = import unstable {
           inherit system;
         };
+        ultrastable = import ultrastable {
+          inherit system;
+        };
         nur = import nur {
           inherit system;
         };
         inherit inputs system;
         inherit username;
         inherit hostname;
+        inherit system_info;
       };
       modules = with inputs; [
         ./configuration.nix
@@ -106,10 +124,14 @@
         unstable = import unstable {
           inherit system;
         };
+        ultrastable = import ultrastable {
+          inherit system;
+        };
         nur = import nur {
           inherit system;
         };
         inherit username pkgs;
+        inherit system_info;
       };
       inherit pkgs;
       modules = with inputs; [

@@ -16,7 +16,6 @@
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/bdd2dc41-6124-4278-9aea-802bb4a533a6";
       fsType = "btrfs";
-      options = [ "noatime" "nodatacow" "nodatasum" ];
     };
 
   fileSystems."/boot" =

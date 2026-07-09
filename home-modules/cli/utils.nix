@@ -9,8 +9,14 @@
     calc
     cloc
     killall
+    file-rename
     ffmpeg-full
     mermaid-filter
+    # I REALLY NEED THOSE
+    cowsay
+    kittysay
+    lolcat
+    uwuify
   ];
 
   programs.pandoc = {

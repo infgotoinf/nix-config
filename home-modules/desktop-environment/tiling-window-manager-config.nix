@@ -13,8 +13,8 @@
   };
 
   bars = [{
-    # statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ${config.xdg.configHome}/i3status-rust/config-cool.toml";
-    statusCommand = "${pkgs.i3blocks}/bin/i3blocks";
+    statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ${config.xdg.configHome}/i3status-rust/config-bar.toml";
+    # statusCommand = "${pkgs.i3blocks}/bin/i3blocks";
     position = "top";
     trayPadding = 4;
     fonts = let

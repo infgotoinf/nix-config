@@ -2,7 +2,7 @@
 {
   programs.rofi = {
     enable = true;
-    terminal = "${pkgs.alacritty}/bin/alacritty";
+    terminal = "${pkgs.wezterm}/bin/wezterm";
     extraConfig = {
       max-history = 99;
     };

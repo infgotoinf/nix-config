@@ -3,7 +3,7 @@
 {
   stylix = {
     enable = true;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+    base16Scheme = etc/sheme.yaml;
 
     fonts = {
       monospace = {
@@ -25,8 +25,8 @@
     icons = {
       enable = true;
       dark = "Gruvbox Dark";
-      # package = pkgs.gruvbox-plus-icons;
-      package = pkgs.gruvbox-dark-icons-gtk;
+      package = pkgs.gruvbox-plus-icons;
+      # package = pkgs.gruvbox-dark-icons-gtk;
     };
     polarity = "dark";
   };

@@ -83,7 +83,7 @@
       hints.radius   = 0;
       keyhint.radius = 0;
       prompt.radius  = 0;
-      content.user_stylesheets = "~/nix-config/etc/qutebrowser/style.css";
+      content.user_stylesheets = "${../../etc/qutebrowser}/style.css";
       content.blocking.method = "both";
 
       hints.border = mkf "1px solid ${green}";

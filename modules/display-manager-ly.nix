@@ -1,3 +1,4 @@
+{ system_info, ... }:
 {
   services.displayManager.ly = {
     enable = true;
@@ -7,7 +8,10 @@
       animation_frame_delay = 10;
       auth_fails = 3;
 
-      #battery_id = "BAT1";
+      battery_id = if system_info.has_battery then
+        "BAT1"
+      else
+        null;
       clock = "%a %B %Y";
       bigclock = "en";
       #bigclock_seconds = true;
