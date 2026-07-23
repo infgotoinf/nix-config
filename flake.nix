@@ -4,7 +4,6 @@
   inputs = {
     ultrastable.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
-    # nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
     nur = {
@@ -31,8 +30,18 @@
       url = "github:musnix/musnix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    zapret-discord-youtube = {
-      url = "github:kartavkun/zapret-discord-youtube";
+    # Idk what happened, this repo just disappeared
+    # zapret-discord-youtube = {
+    #   url = "github:kartavkun/zapret-discord-youtube";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    # omnisearch = {
+    #   # url = "git+https://git.bwaaa.monster/omnisearch";
+    #   url = ./omnisearch;
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
+    xlibre-overlay = {
+      url = "git+https://codeberg.org/takagemacoed/xlibre-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -67,9 +76,7 @@
         ultrastable = import ultrastable {
           inherit system;
         };
-        nur = import nur {
-          inherit system;
-        };
+        nur = import nur {};
         inherit inputs system;
         inherit username;
         inherit hostname;
@@ -82,7 +89,13 @@
         stylix.nixosModules.stylix
 
         musnix.nixosModules.musnix
-        zapret-discord-youtube.nixosModules.withTestTools
+        # zapret-discord-youtube.nixosModules.withTestTools
+        xlibre-overlay.nixosModules.overlay-xlibre-xserver
+        xlibre-overlay.nixosModules.overlay-all-xlibre-drivers
+        # omnisearch.nixosModules.default
+        # {
+        #   services.omnisearch.enable = true;
+        # }
         (
           {pkgs, ...}:
           {
@@ -127,9 +140,7 @@
         ultrastable = import ultrastable {
           inherit system;
         };
-        nur = import nur {
-          inherit system;
-        };
+        nur = import nur {};
         inherit username pkgs;
         inherit system_info;
       };

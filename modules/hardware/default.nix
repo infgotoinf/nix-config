@@ -7,7 +7,7 @@
     ./drivers.nix
     ./boot-kernel.nix
     ./network.nix
-    ./zram-swap.nix
+    ./memory.nix
     ./performance.nix
   ];
 }

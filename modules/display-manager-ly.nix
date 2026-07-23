@@ -1,7 +1,22 @@
-{ system_info, ... }:
+{ system_info, pkgs, unstable, ... }:
 {
+  environment.etc."ly/custom-sessions/sway.desktop".text = ''
+    [Desktop Entry]
+    Name=Sway
+    Exec=${pkgs.sway}/bin/sway
+    Type=Application
+  '';
+
+  environment.etc."ly/custom-sessions/i3.desktop".text = ''
+    [Desktop Entry]
+    Name=i3
+    Exec=${pkgs.i3}/bin/i3
+    Type=Application
+  '';
+
   services.displayManager.ly = {
     enable = true;
+    package = unstable.ly;
     settings = {
       # doom, matrix, colormix, gameoflife
       animation = "doom";
@@ -29,7 +44,7 @@
       vi_mode = true;
       vi_default_mode = "insert";
 
-      #xinitrc = null;
+      xinitrc = null;
     };
   };
 }

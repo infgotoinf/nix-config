@@ -1,4 +1,4 @@
-# Template from https://github.com/nix-community/disko/example/btrfs-only-root-subvolume.nix
+# Template from https://github.com/nix-community/disko/blob/master/example/btrfs-only-root-subvolume.nix
 {
   disko.devices = {
     disk = {
@@ -24,6 +24,14 @@
                 format = "vfat";
                 mountpoint = "/boot";
                 mountOptions = [ "umask=0077" ];
+              };
+            };
+
+            swap = {
+              size = "<RAM-SIZE>"; # For example "8G" or "16G"
+              content = {
+                type = "swap";
+                resumeDevice = true;
               };
             };
 

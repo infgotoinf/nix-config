@@ -75,6 +75,8 @@
         "video/webm" = "mpv.desktop";
         "video/x-msvideo" = "mpv.desktop";
         "video/quicktime" = "mpv.desktop";
+
+        "audio/mp3" = "mpv.desktop";
       };
     };
     configFile = {

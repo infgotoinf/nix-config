@@ -33,7 +33,7 @@
       # plugins in `etc/plugins/` folder work. The other way is to use `nix-ld`, but it's a global
       # programm and kinda cringe for such purpose.
       postFixup = oldAttrs.postFixup + ''
-        sed -i "s|^Exec=|Exec=${pkgs.steam-run-free}/bin/steam-run |" $out/share/applications/renoise.desktop
+        sed -i "s|^Exec=|Exec=env GTK_USE_PORTAL=0 ${pkgs.steam-run-free}/bin/steam-run |" $out/share/applications/renoise.desktop
       '';
     }))
     audacity
@@ -51,7 +51,6 @@
     # synthv1
     # ultrastable.lsp-plugins
     calf
-    # zynaddsubfx
     # geonkick
     # carla
     cardinal

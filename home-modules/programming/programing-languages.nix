@@ -7,5 +7,6 @@
     cmake
     lua
     ruby
+    nodejs
   ];
 }

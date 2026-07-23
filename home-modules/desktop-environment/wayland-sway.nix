@@ -22,13 +22,14 @@ in {
             xkb_options = "grp:caps_toggle";
           };
           startup = [
-            { command = "systemctl --user restart xremap"; always = true; }
-            { command = ''swaybg -c "#1d2021"''; always = true; }
+            { command = ''swaybg -c "${config.lib.stylix.colors.withHashtag.base00}"''; always = true; }
             { command = "wezterm"; always = true; }
+            # This fixes xremap not starting in time/not stating correctly
+            { command = "systemctl --user import-environment SWAYSOCK WAYLAND_DISPLAY XDG_RUNTIME_DIR"; always = true; }
+            { command = "systemctl --user restart xremap"; always = true; }
           ];
         } // (commonConfig {pkgs = pkgs; config = config; lib = lib;});
       };
-      # systemd.target = "sway-session.target";
     };
 
     home.packages = with pkgs; [

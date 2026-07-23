@@ -24,7 +24,22 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  swapDevices = [ ];
+  # sudo btrfs filesystem mkswapfile --size 32G /swapfile
+  swapDevices = [{
+    device = "/swapfile";
+    size = 32*1024; # 32 GiB
+  }];
+
+  boot.resumeDevice = "/dev/disk/by-uuid/bdd2dc41-6124-4278-9aea-802bb4a533a6";
+  boot.kernelParams = [
+    # findmnt -no UUID /
+    "resume=UUID=bdd2dc41-6124-4278-9aea-802bb4a533a6"
+    # sudo btrfs inspect-internal map-swapfile -r /swapfile
+    "resume_offset=71771392"
+    "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+  ];
+
+  hardware.nvidia.powerManagement.enable = true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;

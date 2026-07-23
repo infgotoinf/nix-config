@@ -24,39 +24,36 @@
       names = [ stylix_fonts.monospace.name ];
     };
     colors = let
-      stylix_colors = config.lib.stylix.colors;
-      bg_color = "#${stylix_colors.base00}";
-      bg_color2 = "#${stylix_colors.base01}";
-      fg_color = "#${stylix_colors.base06}";
+      colors = config.lib.stylix.colors.withHashtag;
     in {
-      background = "${bg_color}";
-      statusline = "${bg_color}";
-      separator = "${bg_color}";
-      focusedStatusline = "${fg_color}";
+      background = colors.base00;
+      statusline = colors.base00;
+      separator = colors.base00;
+      focusedStatusline = colors.base00;
       focusedWorkspace = {
-        background = bg_color;
-        border = bg_color;
-        text = fg_color;
+        background = colors.base00;
+        border = colors.base00;
+        text = colors.base06;
       };
       activeWorkspace = {
-        background = bg_color2;
-        border = bg_color2;
-        text = fg_color;
+        background = colors.base01;
+        border = colors.base01;
+        text = colors.base06;
       };
       inactiveWorkspace = {
-        background = bg_color2;
-        border = bg_color2;
-        text = fg_color;
+        background = colors.base01;
+        border = colors.base01;
+        text = colors.base06;
       };
       urgentWorkspace = {
-        background = bg_color2;
-        border = bg_color2;
-        text = fg_color;
+        background = colors.base01;
+        border = colors.base01;
+        text = colors.base06;
       };
       bindingMode = {
-        background = bg_color2;
-        border = bg_color2;
-        text = fg_color;
+        background = colors.base01;
+        border = colors.base01;
+        text = colors.base06;
       };
     };
   }];
