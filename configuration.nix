@@ -19,10 +19,7 @@ with config; {
   imports = [
     ./stylix.nix
     ./modules
-    ./happ-nixos/happ-module.nix
   ];
-
-  services.happ.enable = true;
 
   nixpkgs.config.allowUnfree = true;
 
