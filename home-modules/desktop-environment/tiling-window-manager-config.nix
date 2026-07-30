@@ -1,4 +1,4 @@
-{ pkgs, config, lib }:
+{ pkgs, config, lib }: # Don't remove lib
 
 {
   terminal = "wezterm";
@@ -8,15 +8,15 @@
   #   #"1: console" = [{ class = "^Wezterm$"; }];
   # };
   menu = "rofi -show drun";
-  gaps = {
-    outer = 1;
-  };
+  # gaps = {
+  #   bottom = 1;
+  #   horizontal = 1;
+  # };
 
   bars = [{
     statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ${config.xdg.configHome}/i3status-rust/config-bar.toml";
-    # statusCommand = "${pkgs.i3blocks}/bin/i3blocks";
     position = "top";
-    trayPadding = 4;
+    # trayPadding = 4;
     fonts = let
       stylix_fonts = config.stylix.fonts;
     in {
@@ -57,10 +57,6 @@
       };
     };
   }];
-
-  # startup = [
-  #   { command = "wezterm"; always = true; }
-  # ];
 
   # window = [
 

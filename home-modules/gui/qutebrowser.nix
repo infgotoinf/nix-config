@@ -68,22 +68,22 @@
         url = "https://update.greasyfork.org/scripts/34613/YouTube%E2%84%A0%20Ultimate%20Downloader%20v132%20%F0%9F%9A%80%20%E2%80%94%20All-in-One%20Media%20Suite%20%F0%9F%8C%8D%F0%9F%8E%A5%F0%9F%8E%B5%20%7C%20Ad-Free%20%2B%20SponsorBlock%20%F0%9F%9B%A1.user.js";
         sha256 = "sha256-LqacAqsgYXQkGSlyYVe5Kvm4BqYF6l+etaLRTkWX/NQ=";
       })
-      (pkgs.fetchurl { # Lower youtube footprint
-        url = "https://update.greasyfork.org/scripts/431573/YouTube%20CPU%20Tamer%20by%20AnimationFrame.user.js";
-        sha256 = "sha256-5/OXukzb/IIhUQb1o4p4pWBeLtx6cCO930PvUYHuAxw=";
-      })
+      # (pkgs.fetchurl { # Lower youtube footprint
+      #   url = "https://update.greasyfork.org/scripts/431573/YouTube%20CPU%20Tamer%20by%20AnimationFrame.user.js";
+      #   sha256 = "sha256-5/OXukzb/IIhUQb1o4p4pWBeLtx6cCO930PvUYHuAxw=";
+      # })
       (pkgs.fetchurl { # Prioritises video loading on media sites
         url = "https://update.greasyfork.org/scripts/571522/I%20Hate%20Waiting.user.js";
         sha256 = "sha256-nx7GIpnV+dOq6Yt4TVI5T4xZRsEHoL187u/pXVimjYU=";
       })
-      (pkgs.fetchurl { # Lowers CPU usage by optimising js events
-        url = "https://update.greasyfork.org/scripts/531874/Web%20CPU%20Tamer.user.js";
-        sha256 = "sha256-ov1FouQmzCgfi4iYnRuVGtsqa1XnAa17KTCmLCspjGk=";
-      })
-      (pkgs.fetchurl { # Lets you select text on sites that prevent you from selecting text
-        url = "https://raw.githubusercontent.com/qxinGitHub/Remove-web-limits-/refs/heads/master/Remove-web-limits-网页限制解除(改).js";
-        sha256 = "sha256-L4tOP7ukMkFI6BseJ5VdZvgTMcOtkf79Lz8awo4N57k=";
-      })
+      # (pkgs.fetchurl { # Lowers CPU usage by optimising js events
+      #   url = "https://update.greasyfork.org/scripts/531874/Web%20CPU%20Tamer.user.js";
+      #   sha256 = "sha256-ov1FouQmzCgfi4iYnRuVGtsqa1XnAa17KTCmLCspjGk=";
+      # })
+      # (pkgs.fetchurl { # Lets you select text on sites that prevent you from selecting text
+      #   url = "https://raw.githubusercontent.com/qxinGitHub/Remove-web-limits-/refs/heads/master/Remove-web-limits-网页限制解除(改).js";
+      #   sha256 = "sha256-L4tOP7ukMkFI6BseJ5VdZvgTMcOtkf79Lz8awo4N57k=";
+      # })
       # Why do they keep adding this annoying shit, like really why
       (pkgs.writeText "remove-annoying-football-add-near-the-youtube-logo.js" ''
         // ==UserScript==

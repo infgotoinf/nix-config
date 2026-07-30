@@ -6,7 +6,6 @@
   };
 
   services.autorandr.enable = true;
-  services.picom.enable = true;
 
   hardware = {
     graphics = {
@@ -14,6 +13,7 @@
     };
     nvidia = {
       open = false;
+      forceFullCompositionPipeline = true;
       # TODO: add PRIME configuration for laptop
     };
   };
@@ -22,5 +22,5 @@
 
   # Early drivers startup
   boot.initrd.kernelModules = [ "nvidia" "nvidia_modeset" "nvidia_uvm" "nvidia_drm" ];
-  boot.kernelParams = [ "nvidia-drm.modeset=1" ];
+  boot.kernelParams = [ "nvidia-drm.modeset=1" "nvidia-drm.fbdev=1" ];
 }

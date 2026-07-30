@@ -20,7 +20,7 @@
       url = "github:nix-community/stylix/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
+    # nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
     xremap = {
       url = "github:xremap/nix-flake";
@@ -35,6 +35,10 @@
     #   url = "github:kartavkun/zapret-discord-youtube";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+    happ-nix = {
+      url = "github:DaHL-gh/happ-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # omnisearch = {
     #   # url = "git+https://git.bwaaa.monster/omnisearch";
     #   url = ./omnisearch;
@@ -90,6 +94,19 @@
 
         musnix.nixosModules.musnix
         # zapret-discord-youtube.nixosModules.withTestTools
+        happ-nix.nixosModules.default
+        {
+          programs.happ = {
+            enable = true;
+            tunMode.enable = true;
+          };
+          # systemd.services.happ.serviceConfig.Capabilities = [ "CAP_NET_ADMIN" ];
+          systemd.services.happ.serviceConfig = {
+            Capabilities = [ "CAP_NET_ADMIN" ];
+            AmbientCapabilities = [ "CAP_NET_ADMIN" ];
+            CapabilityBoundingSet = [ "CAP_NET_ADMIN" ];
+          };
+        }
         xlibre-overlay.nixosModules.overlay-xlibre-xserver
         xlibre-overlay.nixosModules.overlay-all-xlibre-drivers
         # omnisearch.nixosModules.default

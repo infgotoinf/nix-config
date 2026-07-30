@@ -1,7 +1,20 @@
+{ pkgs, ... }:
 let
-  wlroots-screenshot-command = ["bash" "-c" ''grim -g "$(slurp)" - | satty -f -''];
-  wlroots-screenshot-command2 = ["bash" "-c" ''grim - | satty -f -''];
-  # x11-screenshot-command = ''grim -g "$(slurp)" - | satty --filename -'';
+  screenshot = ["bash" "-c" ''
+    if [ -n "$WAYLAND_DISPLAY" ]; then
+      ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | satty -f -
+    else
+      flameshot gui
+    fi
+  ''];
+
+  screenshot-full = ["bash" "-c" ''
+    if [ -n "$WAYLAND_DISPLAY" ]; then
+      ${pkgs.grim}/bin/grim - | satty -f -
+    else
+      flameshot gui
+    fi
+  ''];
 in
 {
   services.xremap = {
@@ -11,8 +24,8 @@ in
         {
           name = "Screenshot";
           remap = {
-            "Win-Shift-s".launch = wlroots-screenshot-command;
-            "Win-s".launch = wlroots-screenshot-command2;
+            "Win-Shift-s".launch = screenshot;
+            "Win-s".launch = screenshot-full;
           };
         }
         {
@@ -23,12 +36,12 @@ in
             "Win-Ctrl-Alt-Space".launch = ["bash" "-c" "rofi -show nerdy"];
           };
         }
-        {
-          name = "Killer";
-          remap = {
-            "Win-Alt-x".launch = ["bash" "-c" "swaymsg kill"];
-          };
-        }
+        # {
+        #   name = "Killer";
+        #   remap = {
+        #     "Win-Alt-x".launch = ["bash" "-c" "swaymsg kill"];
+        #   };
+        # }
       ];
     };
   };

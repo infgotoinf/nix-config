@@ -10,4 +10,6 @@
       '';
     };
   };
+
+  security.pam.services.i3lock = {};
 }

@@ -1,16 +1,22 @@
 { system_info, pkgs, unstable, ... }:
 {
+  environment.systemPackages = with pkgs; [
+    sway
+    i3
+    xinit
+  ];
+
   environment.etc."ly/custom-sessions/sway.desktop".text = ''
     [Desktop Entry]
     Name=Sway
-    Exec=${pkgs.sway}/bin/sway
+    Exec=${pkgs.sway}/bin/sway --unsupported-gpu
     Type=Application
   '';
 
   environment.etc."ly/custom-sessions/i3.desktop".text = ''
     [Desktop Entry]
     Name=i3
-    Exec=${pkgs.i3}/bin/i3
+    Exec=${pkgs.xinit}/bin/startx
     Type=Application
   '';
 

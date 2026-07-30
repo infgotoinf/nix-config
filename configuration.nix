@@ -31,9 +31,6 @@ with config; {
     git
     vim
     w3m
-    # For ly to work with those
-    sway
-    i3
   ];
 
   security.sudo.extraConfig = ''
@@ -124,6 +121,8 @@ with config; {
       "wireshark"
     ];
   };
+
+  nix.settings.trusted-users = [ "${username}" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

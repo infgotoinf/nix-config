@@ -9,6 +9,7 @@
     ./display-manager-ly.nix
 
     ./xserver.nix
+    ./wayland.nix
     ./virtual-machine-gnome-boxes.nix
     ./docker.nix
 

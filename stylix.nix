@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, nur, config, ... }:
 
 {
   stylix = {
@@ -30,14 +30,14 @@
       #   name = "ProggyClean Nerd Font";
       #   package = pkgs.nerd-fonts.proggy-clean-tt;
       # };
+
       emoji = {
         name = "Twitter Color Emoji";
         package = pkgs.twitter-color-emoji;
       };
-      sizes.applications = 12;
       sizes.desktop = 12;
-      # sizes.applications = 14;
       # sizes.desktop = 14;
+      sizes.applications = config.stylix.fonts.sizes.desktop;
     };
 
     icons = {
@@ -45,6 +45,12 @@
       dark = "Gruvbox Dark";
       package = pkgs.gruvbox-plus-icons;
       # package = pkgs.gruvbox-dark-icons-gtk;
+    };
+
+    cursor = {
+      name = "retrosmart-xcursor-black";
+      package = nur.repos.infgotoinf.retrosmart-x11-cursors;
+      size = config.stylix.fonts.sizes.desktop;
     };
     polarity = "dark";
   };

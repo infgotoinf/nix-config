@@ -11,7 +11,6 @@
 
     ./tmux.nix
     ./terminal-emulator-wezterm.nix
-    ./terminal-emulator-alacritty.nix
     ./application-launcher-rofi.nix
   ];
 }

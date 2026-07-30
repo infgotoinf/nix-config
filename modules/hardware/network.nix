@@ -17,6 +17,10 @@
     "net.ipv4.tcp_fin_timeout" = 10;
     "net.ipv4.tcp_slow_start_after_idle" = 0;
     "net.ipv4.tcp_mtu_probing" = 1;
+
+    "net.ipv6.conf.all.disable_ipv6" = 1;
+    "net.ipv6.conf.default.disable_ipv6" = 1;
+    "net.ipv6.conf.lo.disable_ipv6" = 1;
   };
 
   # programs.amnezia-vpn = {
@@ -34,7 +38,7 @@
   #   usbmon.enable = true;
   # };
 
-  services.v2raya.enable = true;
+  # services.v2raya.enable = true;
 
   # Use this if can't install a package cause of a timeout error
   # environment.variables =
@@ -53,6 +57,7 @@
   networking = {
     hostName = hostname;
 	  firewall.enable = false;
+	  enableIPv6 = false;
     # Uncomment this line if internet doesn't work (it bypasses all those DNS
     # encryptors I have there, exept zapret-discord-youtube)
     # nameservers = [ "8.8.8.8" "1.1.1.1" ];
