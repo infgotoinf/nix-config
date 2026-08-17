@@ -14,7 +14,6 @@ in {
       windowManager.sway = {
         enable = true;
         systemd.variables = ["--all"];
-        # swaynag.enable = true;
         config = {
           input."*" = {
             # modules/keyboard/locales-keyboard-layouts.nix
@@ -27,7 +26,19 @@ in {
             # { command = ''${pkgs.swaybg}/bin/swaybg -c "${config.lib.stylix.colors.withHashtag.base00}"''; always = true; }
             { command = "${pkgs.windowtolayer}/bin/windowtolayer alacritty -e weathr"; always = true; }
             { command = "wezterm"; always = true; }
-            # This fixes xremap not starting in time/not stating correctly
+            # { # swayidle is here. The reason is that if you use a systemd service it fails to start
+            #   # and then you have to import enviroment into it to make it work, and this also doesn't
+            #   # work like meh, this is easier.
+            #   # command = "swayidle -w timeout 7 'swaylock-plugin' \
+            #   #                        timeout 12 'swaymsg \"output * power off\"' \
+            #   #                        resume 'swaymsg \"output * power on\"'";
+            #   command = ''bash -lc "${pkgs.swayidle}/bin/swayidle -w \
+            #                   timeout ''$((7*60)) 'swaylock-plugin' \
+            #                   timeout ''$((12*60)) 'swaymsg \"output * power off\"' \
+            #                   resume 'swaymsg \"output * power on\"'"
+            #             '';
+            #   always = true;
+            # }
             { command = "systemctl --user import-environment SWAYSOCK WAYLAND_DISPLAY XDG_RUNTIME_DIR"; always = true; }
             { command = "systemctl --user restart xremap"; always = true; }
           ];
@@ -38,7 +49,6 @@ in {
     home.packages = with pkgs; [
       # brightnessctl
       wl-clipboard
-      weathr
     ];
 
     programs.alacritty = {
@@ -74,6 +84,17 @@ in {
       };
     };
 
+    programs.weathr = {
+      enable = true;
+      package = pkgs.weathr;
+      settings = {
+        location = {
+          auto = true;
+          display = "city";
+        };
+      };
+    };
+
     programs.swaylock = {
       enable = true;
       package = pkgs.swaylock-plugin;
@@ -101,23 +122,6 @@ in {
 
         command-each = "${pkgs.windowtolayer}/bin/windowtolayer alacritty -e weathr";
       };
-    };
-
-    services.swayidle = {
-      enable = true;
-      timeouts = let
-        display = status: "swaymsg 'output * power ${status}'";
-      in [
-        {
-          timeout = 60 * 7;
-          command = "swaylock-plugin";
-        }
-        {
-          timeout = 60 * 12;
-          command = display "off";
-          resumeCommand = display "on";
-        }
-      ];
     };
   };
 }

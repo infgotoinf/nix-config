@@ -40,14 +40,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # omnisearch = {
-    #   # url = "git+https://git.bwaaa.monster/omnisearch";
-    #   url = ./omnisearch;
+    #   url = "github:infgotoinf/omnisearch-flake";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
     xlibre-overlay = {
       url = "git+https://codeberg.org/takagemacoed/xlibre-overlay";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    weathr.url = "github:Veirt/weathr";
   };
 
 
@@ -71,6 +71,10 @@
     };
 
     pkgs = nixpkgs.legacyPackages.${system};
+    # I'm tired of waiting for this patch to get merged
+    # omnisearch-fixed = inputs.omnisearch.packages.x86_64-linux.default.overrideAttrs (oldAttrs: {
+    #   patches = (oldAttrs.patches or []) ++ [ ./etc/0001-chore-nix-perform-nix-flake-update.patch ];
+    # });
     # https://discourse.nixos.org/t/how-to-make-one-flake-nix-for-multiple-hosts/62056
     mkHostConfig = hostname: nixpkgs.lib.nixosSystem {
       specialArgs = {
@@ -110,9 +114,6 @@
         xlibre-overlay.nixosModules.overlay-xlibre-xserver
         xlibre-overlay.nixosModules.overlay-all-xlibre-drivers
         # omnisearch.nixosModules.default
-        # {
-        #   services.omnisearch.enable = true;
-        # }
         (
           {pkgs, ...}:
           {
@@ -166,6 +167,7 @@
         ./home.nix
         stylix.homeModules.stylix
         xremap.homeManagerModules.default
+        weathr.homeModules.weathr
       ];
     };
   };

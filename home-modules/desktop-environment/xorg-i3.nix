@@ -18,9 +18,8 @@ in {
           { command = ''${pkgs.feh}/bin/feh --bg-fill "${config.lib.stylix.colors.withHashtag.base00}"''; always = true; }
           { command = "wezterm"; always = true; }
           { command = "xset r rate 750 25"; always = true; }
-          # This fixes xremap not starting in time/not stating correctly
-          { command = "systemctl --user import-environment DISPLAY XAUTHORITY"; always = true; }
-          { command = "systemctl --user restart xremap"; always = true; }
+          # { command = "systemctl --user import-environment DISPLAY XAUTHORITY"; always = true; }
+          # { command = "systemctl --user restart xremap"; always = true; }
         ];
       } // (commonConfig {pkgs = pkgs; config = config; lib = lib;});
     };

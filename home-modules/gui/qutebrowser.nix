@@ -44,6 +44,9 @@
       "youtube.com" = {
         colors.webpage.darkmode.enabled = false;
       };
+      "web.telegram.org" = {
+        colors.webpage.darkmode.enabled = false;
+      };
       # Fixes the error with not being able to login in Google account
       # https://github.com/qutebrowser/qutebrowser/issues/5182
       "accounts.google.com" = {
@@ -72,10 +75,10 @@
       #   url = "https://update.greasyfork.org/scripts/431573/YouTube%20CPU%20Tamer%20by%20AnimationFrame.user.js";
       #   sha256 = "sha256-5/OXukzb/IIhUQb1o4p4pWBeLtx6cCO930PvUYHuAxw=";
       # })
-      (pkgs.fetchurl { # Prioritises video loading on media sites
-        url = "https://update.greasyfork.org/scripts/571522/I%20Hate%20Waiting.user.js";
-        sha256 = "sha256-nx7GIpnV+dOq6Yt4TVI5T4xZRsEHoL187u/pXVimjYU=";
-      })
+      # (pkgs.fetchurl { # Prioritises video loading on media sites
+      #   url = "https://update.greasyfork.org/scripts/571522/I%20Hate%20Waiting.user.js";
+      #   sha256 = "sha256-nx7GIpnV+dOq6Yt4TVI5T4xZRsEHoL187u/pXVimjYU=";
+      # })
       # (pkgs.fetchurl { # Lowers CPU usage by optimising js events
       #   url = "https://update.greasyfork.org/scripts/531874/Web%20CPU%20Tamer.user.js";
       #   sha256 = "sha256-ov1FouQmzCgfi4iYnRuVGtsqa1XnAa17KTCmLCspjGk=";
@@ -85,24 +88,24 @@
       #   sha256 = "sha256-L4tOP7ukMkFI6BseJ5VdZvgTMcOtkf79Lz8awo4N57k=";
       # })
       # Why do they keep adding this annoying shit, like really why
-      (pkgs.writeText "remove-annoying-football-add-near-the-youtube-logo.js" ''
-        // ==UserScript==
-        // @name         Remove annoting football add near the YouTube logo
-        // @version      1.0.0
-        // @author       infgotoinf
-        // @license      MIT
-        // @match        *://*.youtube.com/*
-        // @grant        none
-        // ==/UserScript==
+      # (pkgs.writeText "remove-annoying-football-add-near-the-youtube-logo.js" ''
+      #   // ==UserScript==
+      #   // @name         Remove annoting football add near the YouTube logo
+      #   // @version      1.0.0
+      #   // @author       infgotoinf
+      #   // @license      MIT
+      #   // @match        *://*.youtube.com/*
+      #   // @grant        none
+      #   // ==/UserScript==
 
-        (function () {
-          setInterval(function () {
-            document
-              .querySelectorAll('img.style-scope.ytd-yoodle-renderer')
-              .forEach((x) => x.removeAttribute('src'));
-          }, 1000);
-        })();
-      '')
+      #   (function () {
+      #     setInterval(function () {
+      #       document
+      #         .querySelectorAll('img.style-scope.ytd-yoodle-renderer')
+      #         .forEach((x) => x.removeAttribute('src'));
+      #     }, 1000);
+      #   })();
+      # '')
     ];
 
     settings = let

@@ -99,7 +99,7 @@
               "English (US)" = "EN";
               "Russian (N/A)" = "RU";
             };
-            format = "$layout";
+            format = "$layout ";
             error_format = "";
             theme_overrides.idle_fg = colors.blue;
           }
@@ -110,33 +110,9 @@
               "us (N/A)" = "EN";
               "ru (N/A)" = "RU";
             };
-            format = "$layout";
+            format = "$layout ";
             error_format = "";
             theme_overrides.idle_fg = colors.blue;
-          }
-          {
-            block = "menu";
-            text = "MENU ";
-            items = [
-              {
-                display = "  SLEEP   ";
-                cmd = "systemctl suspend";
-              }
-              # {
-              #   display = "HIBERNATE ";
-              #   cmd = "systemctl hibernate";
-              # }
-              {
-                display = "POWER OFF ";
-                cmd = "poweroff";
-                confirm_msg = "Are you sure you want to power off?";
-              }
-              {
-                display = " REBOOT   ";
-                cmd = "reboot";
-                confirm_msg = "Are you sure you want to reboot?";
-              }
-            ];
           }
         ];
         settings = {
@@ -154,7 +130,6 @@
           };
         };
         # icons = "awesome5";
-        # theme = "gruvbox-dark";
       };
     };
   };

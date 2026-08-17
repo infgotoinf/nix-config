@@ -15,11 +15,11 @@
       #   bar = mkLiteral "abc"; => bar: abc;
       # };
       inherit (config.lib.formats.rasi) mkLiteral;
-      stylix-colors = config.lib.stylix.colors;
-      # bg-color = "#${stylix-colors.base00}";
-      bg-color3 = "#${stylix-colors.base02}";
-      fg-color2 = "#${stylix-colors.base07}";
-      accent = "#${stylix-colors.base09}";
+      colors = config.lib.stylix.colors.withHashtag;
+      # bg-color = colors.base00;
+      bg-color3 = colors.base02;
+      fg-color2 = colors.base07;
+      accent = colors.orange;
       element-padding = "1 2";
 
     in {

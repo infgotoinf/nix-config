@@ -40,12 +40,12 @@
       sizes.applications = config.stylix.fonts.sizes.desktop;
     };
 
-    icons = {
-      enable = true;
-      dark = "Gruvbox Dark";
-      package = pkgs.gruvbox-plus-icons;
-      # package = pkgs.gruvbox-dark-icons-gtk;
-    };
+    # icons = {
+    #   enable = true;
+    #   dark = "Gruvbox Dark";
+    #   package = pkgs.gruvbox-plus-icons;
+    #   # package = pkgs.gruvbox-dark-icons-gtk;
+    # };
 
     cursor = {
       name = "retrosmart-xcursor-black";

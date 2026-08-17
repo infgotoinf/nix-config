@@ -23,6 +23,7 @@
       ost = "sudo nh os test -R";
       osb = "sudo nh os boot -R";
       call = "nh clean all --optimise";
+      unfree = "NIXPKGS_ALLOW_UNFREE=1";
     };
     shellAliases = {
       s = "ls";

@@ -6,7 +6,7 @@
     # mindustry
     # cataclysm-dda
     retroarch
-    the-powder-toy
+    # the-powder-toy
     flatpak
   ];
 

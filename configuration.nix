@@ -46,6 +46,17 @@ with config; {
     protontricks.enable = true;
   };
 
+  # For lutris esync
+  systemd.settings.Manager = {
+    DefaultLimitNOFILE = 524288;
+  };
+  security.pam.loginLimits = [{
+    domain = username;
+    type = "hard";
+    item = "nofile";
+    value = "524288";
+  }];
+
   # systemd.user.settings.Manager = {
   #   DefaultTimeoutStopSec = 10;
   # };
@@ -76,6 +87,11 @@ with config; {
       # "https://mirrors.ustc.edu.cn/nix-channels/store"
       # "https://mirror.sjtu.edu.cn/nix-channels/store"
       # Ok, they don't work in 1984
+
+      "https://cache.nixos-cuda.org"
+    ];
+    trusted-public-keys = [
+      "cache.nixos-cuda.org:74DUi4Ye579gUqzH4ziL9IyiJBlDpMRn9MBN8oNan9M="
     ];
   };
 
@@ -90,9 +106,11 @@ with config; {
     enableDefaultPackages = true;
     enableGhostscriptFonts = true;
     fontDir.enable = true;
-    # packages = with pkgs; [
-    #   font-awesome_6
-    # ];
+    packages = with pkgs; [
+      # google-fonts
+      liberation_ttf
+      # noto-fonts
+    ];
   };
 
   # Enable sound.

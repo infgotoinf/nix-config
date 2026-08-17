@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  screenshot = ["bash" "-c" ''
+  screenshot = ["bash" "-l" "-c" ''
     if [ -n "$WAYLAND_DISPLAY" ]; then
       ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | satty -f -
     else
@@ -8,11 +8,19 @@ let
     fi
   ''];
 
-  screenshot-full = ["bash" "-c" ''
+  screenshot-full = ["bash" "-l" "-c" ''
     if [ -n "$WAYLAND_DISPLAY" ]; then
       ${pkgs.grim}/bin/grim - | satty -f -
     else
       flameshot gui
+    fi
+  ''];
+
+  screenlock = ["bash" "-l" "-c" ''
+    if [ -n "$WAYLAND_DISPLAY" ]; then
+      swaylock-plugin
+    else
+      ${pkgs.i3lock}/bin/i3lock
     fi
   ''];
 in
@@ -31,17 +39,20 @@ in
         {
           name = "Application launcher";
           remap = {
-            "Win-Space".launch = ["bash" "-c" "rofi -show drun"];
-            "Win-Alt-Space".launch = ["bash" "-c" "rofi -show emoji"];
-            "Win-Ctrl-Alt-Space".launch = ["bash" "-c" "rofi -show nerdy"];
+            "Win-Space".launch = ["bash" "-l" "-c" "rofi -show drun"];
+            "Win-Alt-Space".launch = ["bash" "-l" "-c" "rofi -show emoji"];
+            "Win-Ctrl-Alt-Space".launch = ["bash" "-l" "-c" "rofi -show nerdy"];
           };
         }
-        # {
-        #   name = "Killer";
-        #   remap = {
-        #     "Win-Alt-x".launch = ["bash" "-c" "swaymsg kill"];
-        #   };
-        # }
+        {
+          name = "Pc control";
+          remap = {
+            "Win-Ctrl-Shift-l".launch = screenlock;
+            "Win-Ctrl-Shift-r".launch = ["bash" "-c" "reboot"];
+            "Win-Ctrl-Shift-p".launch = ["bash" "-c" "poweroff"];
+            "Win-Ctrl-Shift-h".launch = ["bash" "-c" "systemctl hibernate"];
+          };
+        }
       ];
     };
   };
