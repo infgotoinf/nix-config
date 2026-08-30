@@ -1,11 +1,10 @@
 # -inf's nix config
 
+<!-- TODO: create a script for simpler installation and change installation steps -->
 > [!WARNING]
-> Very-very work in progress, don't recomend to use.
+> Installation guide has too many steps. Gonna fix this later.
 
 ## Installation
-
-TODO: Make a script
 
 1. Edit disco config
 
