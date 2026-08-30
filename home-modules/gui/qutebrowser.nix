@@ -1,5 +1,4 @@
 { pkgs, lib, config, ... }:
-
 {
   # https://github.com/qutebrowser/qutebrowser/issues/5378
   home.sessionVariables = {
@@ -41,7 +40,7 @@
         content.javascript.clipboard = "access";
         colors.webpage.darkmode.enabled = false;
       };
-      "youtube.com" = {
+      "www.youtube.com" = {
         colors.webpage.darkmode.enabled = false;
       };
       "web.telegram.org" = {

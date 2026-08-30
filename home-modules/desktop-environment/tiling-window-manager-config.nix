@@ -13,6 +13,14 @@
   #   horizontal = 1;
   # };
 
+  keybindings = lib.mkOptionDefault {
+    "Mod4+Shift+Ctrl+q" = "kill";
+    "Mod4+q" = null;
+    "Mod4+r" = null;
+    "Mod4+k" = null;
+    "Mod4+b" = null;
+  };
+
   bars = [{
     statusCommand = "${pkgs.i3status-rust}/bin/i3status-rs ${config.xdg.configHome}/i3status-rust/config-bar.toml";
     position = "top";

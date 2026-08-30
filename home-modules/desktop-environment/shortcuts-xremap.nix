@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  screenshot = ["bash" "-l" "-c" ''
+  screenshot = ["bash" "-c" ''
     if [ -n "$WAYLAND_DISPLAY" ]; then
       ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - | satty -f -
     else
@@ -8,7 +8,7 @@ let
     fi
   ''];
 
-  screenshot-full = ["bash" "-l" "-c" ''
+  screenshot-full = ["bash" "-c" ''
     if [ -n "$WAYLAND_DISPLAY" ]; then
       ${pkgs.grim}/bin/grim - | satty -f -
     else
@@ -16,7 +16,7 @@ let
     fi
   ''];
 
-  screenlock = ["bash" "-l" "-c" ''
+  screenlock = ["bash" "-c" ''
     if [ -n "$WAYLAND_DISPLAY" ]; then
       swaylock-plugin
     else
@@ -28,6 +28,7 @@ in
   services.xremap = {
     enable = true;
     config = {
+      # throttle_ms = 200;
       keymap = [
         {
           name = "Screenshot";
@@ -37,11 +38,41 @@ in
           };
         }
         {
-          name = "Application launcher";
+          name = "Rofi";
           remap = {
-            "Win-Space".launch = ["bash" "-l" "-c" "rofi -show drun"];
-            "Win-Alt-Space".launch = ["bash" "-l" "-c" "rofi -show emoji"];
-            "Win-Ctrl-Alt-Space".launch = ["bash" "-l" "-c" "rofi -show nerdy"];
+            "Win-Space".launch = ["bash" "-c" "rofi -show drun"];
+            "Win-Alt-Space".launch = ["bash" "-c" "rofi -show emoji"];
+            "Win-Ctrl-Alt-Space".launch = ["bash" "-c" "rofi -show nerdy"];
+          };
+        }
+        {
+          name = "Applications";
+          remap = {
+            # It breaks saved pages of previous session if u runed qutebrowser with rofi, so screw it lol
+            # "Win-U".launch       = ["bash" "-c" "${pkgs.glib}/bin/gio launch ~/.nix-profile/share/applications/org.qutebrowser.qutebrowser.desktop"];
+            "Win-R".launch       = ["bash" "-c" "${pkgs.glib}/bin/gio launch ~/.nix-profile/share/applications/renoise.desktop"];
+            "Win-Shift-K".launch = ["bash" "-c" "${pkgs.glib}/bin/gio launch ~/.nix-profile/share/applications/org.kde.krita.desktop"];
+            "Win-B".launch       = ["bash" "-c" "${pkgs.glib}/bin/gio launch ~/.nix-profile/share/applications/blender.desktop"];
+            "Win-G".launch       = ["bash" "-c" "${pkgs.glib}/bin/gio launch ~/.nix-profile/share/applications/com.dec05eba.gpu_screen_recorder.desktop"];
+            "Win-M".launch = ["bash" "-c" "wezterm start -- rmpc"];
+          };
+        }
+        {
+          name = "MPC";
+          remap = {
+            "Win-P".launch           = ["bash" "-c" "mpc toggle"];
+            "Win-Shift-Comma".launch = ["bash" "-c" "mpc volume -5"];
+            "Win-Shift-Dot".launch   = ["bash" "-c" "mpc volume +5"];
+            "Win-Comma".launch       = ["bash" "-c" "mpc prev"];
+            "Win-Dot".launch         = ["bash" "-c" "mpc next"];
+          };
+        }
+        {
+          name = "Volume control";
+          remap = {
+            "Win-Ctrl-Shift-M".launch = ["bash" "-c" "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"];
+            "Win-Minus".launch = ["bash" "-c" "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"];
+            "Win-Equal".launch = ["bash" "-c" "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+"];
           };
         }
         {

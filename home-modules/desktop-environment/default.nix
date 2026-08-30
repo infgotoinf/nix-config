@@ -4,5 +4,7 @@
     ./wayland-sway.nix
     ./i3status-rust.nix
     ./shortcuts-xremap.nix
+    ./gammastep.nix
+    ./xdg.nix
   ];
 }

@@ -7,16 +7,19 @@
 
     fonts = {
       monospace = {
-        # name = "UnifontExMono";
-        # package = nur.repos.infgotoinf.UnifontEX;
+        name = "UnifontExMono";
+        package = nur.repos.infgotoinf.UnifontExMono;
 
-        name = "Unifont";
-        package = pkgs.unifont;
+        # name = "Unifont";
+        # package = pkgs.unifont;
 
-        # name = "unifont";
+        # name = "Unifont";
+        # package = pkgs.unifont-csur;
+
+        # name = "Unifont";
         # package = pkgs.runCommand "unifont-custom" {} ''
         #   mkdir -p $out/share/fonts
-        #   cp ${./.}/UnifontNFNerdFont-Regular.otf $out/share/fonts/
+        #   cp ${./etc/fonts}/UnifontCSURNerdFontPlusFontAwesomePlusFontAwesomeExtensionPlusMaterialDesignIcons-Regular.otf $out/share/fonts/
         # '';
 
         # Need to fix Wezterm, to make it work
@@ -40,12 +43,20 @@
       sizes.applications = config.stylix.fonts.sizes.desktop;
     };
 
-    # icons = {
-    #   enable = true;
-    #   dark = "Gruvbox Dark";
-    #   package = pkgs.gruvbox-plus-icons;
-    #   # package = pkgs.gruvbox-dark-icons-gtk;
-    # };
+    icons = {
+      enable = true;
+      dark = "Gruvbox-Plus-Dark";
+      package = (pkgs.gruvbox-plus-icons.overrideAttrs (oldAttrs: {
+        preInstall = ''
+          rm -rf Gruvbox-Plus-*/apps/*
+        '';
+        })
+      );
+      # dark = "oomox-gruvbox-dark";
+      # package = pkgs.gruvbox-dark-icons-gtk;
+      # dark = "Mint-Y";
+      # package = pkgs.mint-y-icons;
+    };
 
     cursor = {
       name = "retrosmart-xcursor-black";

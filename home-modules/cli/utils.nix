@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 {
   home.packages = with pkgs; [
     unzip
@@ -11,33 +10,37 @@
     killall
     file-rename
     ffmpeg-full
-    mermaid-filter
+    # mermaid-filter
     # I REALLY NEED THOSE
-    cowsay
-    kittysay
-    lolcat
-    uwuify
+    # cowsay
+    # kittysay
+    # lolcat
+    # uwuify
   ];
 
-  programs.pandoc = {
+  programs.fastfetch = {
     enable = true;
   };
+
+  # programs.pandoc = {
+  #   enable = true;
+  # };
 
   programs.mpv = {
     enable = true;
   };
 
   # TODO: configure this thing fully
-  programs.translate-shell = {
-    enable = true;
-    settings = {
-      hl = "ru";
-      tl = [
-        "ru"
-        "en"
-      ];
-      # engine = "yandex";
-      verbose = true;
-    };
-  };
+  # programs.translate-shell = {
+  #   enable = true;
+  #   settings = {
+  #     hl = "ru";
+  #     tl = [
+  #       "ru"
+  #       "en"
+  #     ];
+  #     # engine = "yandex";
+  #     verbose = true;
+  #   };
+  # };
 }

@@ -1,12 +1,14 @@
+{ nur, ... }:
 {
   console = {
-    font = "${../etc/fonts/Unifont-APL8x16-17.0.03.psf.gz}";
+    # font = "${../etc/fonts/Unifont-APL8x16-17.0.03.psf.gz}";
+    font = "${nur.repos.infgotoinf.unifont-psf}/share/fonts/Unifont-psf.psf.gz";
     # font = "Lat2-Terminus16";
     earlySetup = true;
     useXkbConfig = true; # use xkb.options in tty.
   };
 
-  environment.variables = {
-    TERM = "xterm-256color";
-  };
+  # environment.variables = {
+  #   TERM = "xterm-256color";
+  # };
 }

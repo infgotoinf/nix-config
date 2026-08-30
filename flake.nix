@@ -2,7 +2,7 @@
  description = "A very basic flake. You can edit username and add more hosts here.";
 
   inputs = {
-    ultrastable.url = "github:nixos/nixpkgs/nixos-25.11";
+    # ultrastable.url = "github:nixos/nixpkgs/nixos-25.11";
     nixpkgs.url = "github:nixos/nixpkgs/nixos-26.05";
     unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
@@ -43,15 +43,15 @@
     #   url = "github:infgotoinf/omnisearch-flake";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
-    xlibre-overlay = {
-      url = "git+https://codeberg.org/takagemacoed/xlibre-overlay";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    # xlibre-overlay = {
+    #   url = "git+https://codeberg.org/takagemacoed/xlibre-overlay";
+    #   inputs.nixpkgs.follows = "nixpkgs";
+    # };
     weathr.url = "github:Veirt/weathr";
   };
 
 
-  outputs = { nixpkgs, nur, unstable, ultrastable, ... }@inputs:
+  outputs = { nixpkgs, nur, unstable, ... }@inputs:
   let
     system = "x86_64-linux";
     username = "inf"; #< Here you can change username
@@ -81,9 +81,9 @@
         unstable = import unstable {
           inherit system;
         };
-        ultrastable = import ultrastable {
-          inherit system;
-        };
+        # ultrastable = import ultrastable {
+        #   inherit system;
+        # };
         nur = import nur {};
         inherit inputs system;
         inherit username;
@@ -111,8 +111,8 @@
             CapabilityBoundingSet = [ "CAP_NET_ADMIN" ];
           };
         }
-        xlibre-overlay.nixosModules.overlay-xlibre-xserver
-        xlibre-overlay.nixosModules.overlay-all-xlibre-drivers
+        # xlibre-overlay.nixosModules.overlay-xlibre-xserver
+        # xlibre-overlay.nixosModules.overlay-all-xlibre-drivers
         # omnisearch.nixosModules.default
         (
           {pkgs, ...}:
@@ -155,9 +155,9 @@
         unstable = import unstable {
           inherit system;
         };
-        ultrastable = import ultrastable {
-          inherit system;
-        };
+        # ultrastable = import ultrastable {
+        #   inherit system;
+        # };
         nur = import nur {};
         inherit username pkgs;
         inherit system_info;

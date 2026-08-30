@@ -1,11 +1,11 @@
 {
   imports = [
-    ./text-editor-vim.nix
-    ./music-player-mpd.nix
+    ./vim.nix
+    ./mpd.nix
     ./nix-search-tv.nix
-    ./file-manager-yazi.nix
-    ./zathura-pdf-viewer.nix
+    ./yazi.nix
     ./htop.nix
+    ./tmux.nix
     ./other.nix
   ];
 }

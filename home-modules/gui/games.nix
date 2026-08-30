@@ -1,13 +1,16 @@
 { pkgs,  ... }:
-
 {
   home.packages = with pkgs; [
     # supertuxkart
     # mindustry
     # cataclysm-dda
-    retroarch
+    # retroarch
     # the-powder-toy
     flatpak
+    r2modman
+    # It's both for Lutris and just to use
+    wineWow64Packages.full
+    winetricks
   ];
 
   # Run this if you get an error in Lutris with flathub games:

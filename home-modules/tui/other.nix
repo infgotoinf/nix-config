@@ -1,12 +1,11 @@
 { pkgs, username, ... }:
-
 {
   home.packages = with pkgs; [
     ncdu
     _2048-in-terminal
   ];
 
-  # TODO: Configure mpd, zathura, aerc and weathr
+  # TODO: Configure aerc
   # Configure nnn or ranger or lf or broot
 
   # accounts.email.accounts.${username}.aerc = {

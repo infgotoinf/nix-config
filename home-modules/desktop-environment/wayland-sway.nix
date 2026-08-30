@@ -10,6 +10,12 @@ in {
   };
 
   config = lib.mkIf config.sway.enable {
+    # TODO: move it in startup or smth later, so you don't have problems with i3
+    home.sessionVariables = {
+      NIXOS_OZONE_WL = 1;
+      QT_QPA_PLATFORM = "wayland";
+    };
+
     wayland = {
       windowManager.sway = {
         enable = true;
@@ -54,10 +60,15 @@ in {
     programs.alacritty = {
       enable = true;
       settings.window.padding = {
-        x = config.stylix.fonts.sizes.desktop;
-        y = config.stylix.fonts.sizes.desktop;
+        x = config.stylix.fonts.sizes.desktop;  # horizontal padding
+        y = config.stylix.fonts.sizes.desktop;  # vertical padding
       };
     };
+
+    # programs.foot = {
+    #   enable = true;
+    #   # settings.main.pad = config.stylix.fonts.sizes.desktop;
+    # };
 
     programs.satty = {
       enable = true;

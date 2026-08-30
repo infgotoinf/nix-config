@@ -1,12 +1,8 @@
-{ hostname, ... }:
-
 {
   imports = [
-    ./${hostname}.nix
-
+    ./hosts
     ./drivers.nix
     ./boot-kernel.nix
-    ./network.nix
     ./memory.nix
     ./performance.nix
   ];

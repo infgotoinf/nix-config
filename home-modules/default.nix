@@ -1,16 +1,14 @@
 {
   imports = [
-    ./shell-fish.nix
-    ./starship.nix
+    ./fish.nix
+    ./fixes.nix
+    ./home-manager.nix
+    ./nh.nix
 
     ./cli
     ./tui
     ./gui
-    ./programming
+    ./art-creation
     ./desktop-environment
-
-    ./tmux.nix
-    ./terminal-emulator-wezterm.nix
-    ./application-launcher-rofi.nix
   ];
 }
