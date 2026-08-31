@@ -4,6 +4,7 @@
     ./input
     ./desktop-environment
     ./services-programs
+    ./hosts
 
     ./network.nix
     ./tty-console.nix

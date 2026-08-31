@@ -11,24 +11,19 @@
     file-rename
     ffmpeg-full
     # mermaid-filter
-    # I REALLY NEED THOSE
-    # cowsay
-    # kittysay
-    # lolcat
-    # uwuify
   ];
 
   programs.fastfetch = {
     enable = true;
   };
 
+  programs.password-store = {
+    enable = true;
+  };
+
   # programs.pandoc = {
   #   enable = true;
   # };
-
-  programs.mpv = {
-    enable = true;
-  };
 
   # TODO: configure this thing fully
   # programs.translate-shell = {

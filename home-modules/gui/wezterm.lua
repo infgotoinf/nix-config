@@ -14,7 +14,7 @@ return {
 
   cell_width = 0.5,
   use_fancy_tab_bar = false,
-  scrollback_lines = 10000,
+  scrollback_lines = 5000,
 
   default_cursor_style = 'BlinkingBlock',
   cursor_blink_ease_in = 'Constant',

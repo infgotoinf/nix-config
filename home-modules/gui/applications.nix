@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, unstable, ... }:
 {
   home.packages = with pkgs; [
     # aseprite
@@ -9,21 +9,26 @@
     # qpwgraph
 
     gnome-system-monitor
+    audacity
     gpu-screen-recorder-gtk
     # librewolf
     qbittorrent
+    # rn proton-authenticator fix is only in unstable brach sadly
+    unstable.proton-authenticator
+
     pcmanfm
     # thunar
     # nemo
+    # For file managers to show image preview icons
     ffmpegthumbnailer
     gdk-pixbuf
     shared-mime-info
     imagemagick
   ];
 
-  # programs.rtorrent = {
-  #   enable = true;
-  # };
+  programs.mpv = {
+    enable = true;
+  };
 
   programs.onlyoffice = {
     enable = true;

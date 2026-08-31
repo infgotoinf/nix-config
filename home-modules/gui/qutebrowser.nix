@@ -1,9 +1,9 @@
 { pkgs, lib, config, ... }:
 {
   # https://github.com/qutebrowser/qutebrowser/issues/5378
-  home.sessionVariables = {
-    QTWEBENGINE_CHROMIUM_FLAGS = "--enable-gpu-rasterization";
-  };
+  # home.sessionVariables = {
+  #   QTWEBENGINE_CHROMIUM_FLAGS = "--enable-gpu-rasterization";
+  # };
 
   programs.qutebrowser = {
     enable = true;
@@ -119,6 +119,9 @@
       colors = config.lib.stylix.colors.withHashtag;
 
     in {
+      qt.args = [
+        "--enable-gpu-rasterization"
+      ];
       auto_save.session = true;
 
       colors.webpage.darkmode.enabled = true;

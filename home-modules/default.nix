@@ -10,5 +10,6 @@
     ./gui
     ./art-creation
     ./desktop-environment
+    ./hosts
   ];
 }

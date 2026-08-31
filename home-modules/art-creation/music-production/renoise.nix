@@ -18,6 +18,5 @@
         sed -i "s|^Exec=|Exec=env GTK_USE_PORTAL=0 ${pkgs.steam-run-free}/bin/steam-run |" $out/share/applications/renoise.desktop
       '';
     }))
-    audacity
   ];
 }

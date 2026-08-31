@@ -23,6 +23,17 @@
     "net.ipv6.conf.lo.disable_ipv6" = 1;
   };
 
+  programs.happ = {
+    enable = true;
+    tunMode.enable = true;
+  };
+  # systemd.services.happ.serviceConfig.Capabilities = [ "CAP_NET_ADMIN" ];
+  systemd.services.happ.serviceConfig = {
+    Capabilities = [ "CAP_NET_ADMIN" ];
+    AmbientCapabilities = [ "CAP_NET_ADMIN" ];
+    CapabilityBoundingSet = [ "CAP_NET_ADMIN" ];
+  };
+
   # programs.amnezia-vpn = {
   #   enable = true;
   #   package = unstable.amnezia-vpn;

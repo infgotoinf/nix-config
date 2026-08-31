@@ -1,5 +1,6 @@
 {
   imports = [
+    ./neomutt.nix
     ./vim.nix
     ./mpd.nix
     ./nix-search-tv.nix

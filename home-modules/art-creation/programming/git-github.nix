@@ -5,10 +5,11 @@
     enable = true;
     lfs.enable = true;
     settings = {
-      user = {
-        name = "-inf";
-	      email = "infgotoinf@gmail.com";
-      };
+      # Moved to ../../hosts
+      # user = {
+      #   name = "-inf";
+      #   email = "infgotoinf@gmail.com";
+      # };
       init.defaultBranch = "main";
       core.editor = "hx";
     };

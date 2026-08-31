@@ -1,26 +1,14 @@
-{ pkgs, username, ... }:
+{ pkgs, ... }:
 {
   home.packages = with pkgs; [
     ncdu
-    _2048-in-terminal
   ];
 
-  # TODO: Configure aerc
-  # Configure nnn or ranger or lf or broot
-
-  # accounts.email.accounts.${username}.aerc = {
-  #   enable = true;
-  # };
-
-  programs.aerc = {
+  programs.w3m = {
     enable = true;
+    extraPackages = with pkgs; [
+      rdrview
+      libsixel
+    ];
   };
-
-  # programs.alot = {
-  #   enable = true;
-  # };
-
-  # programs.notmuch = {
-  #   enable = true;
-  # };
 }

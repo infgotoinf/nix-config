@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-
+{ pkgs, hostname, ... }:
 {
   programs.fish = {
     enable = true;
@@ -18,11 +17,11 @@
     };
     shellAbbrs = {
       # hs = "NIXPKGS_ALLOW_UNFREE=1 nh home switch --impure --show-activation-logs";
-      hs = "nh home switch --impure --show-activation-logs";
+      hs = "nh home switch --impure --show-activation-logs -c ${hostname}";
       ns = "nix-shell --run fish";
-      oss = "sudo nh os switch --impure -RH";
-      ost = "sudo nh os test --impure -RH";
-      osb = "sudo nh os boot --impure -RH";
+      oss = "sudo nh os switch --impure -RH ${hostname}";
+      ost = "sudo nh os test --impure -RH ${hostname}";
+      osb = "sudo nh os boot --impure -RH ${hostname}";
       call = "nh clean all --optimise";
       # unfree = "NIXPKGS_ALLOW_UNFREE=1";
     };
