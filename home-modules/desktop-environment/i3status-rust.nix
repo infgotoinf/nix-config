@@ -10,7 +10,7 @@
         blocks = [
           {
             block = "music";
-            format = "{$combo.str|}";
+            format = "{$combo.str|} {$volume|}";
           }
           {
              block = "disk_space";

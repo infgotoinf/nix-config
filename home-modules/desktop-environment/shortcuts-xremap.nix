@@ -42,19 +42,19 @@ in
           remap = {
             "Win-Space".launch = ["bash" "-c" "rofi -show drun"];
             "Win-Alt-Space".launch = ["bash" "-c" "rofi -show emoji"];
-            "Win-Ctrl-Alt-Space".launch = ["bash" "-c" "rofi -show nerdy"];
+            # "Win-Ctrl-Alt-Space".launch = ["bash" "-c" "rofi -show nerdy"];
           };
         }
         {
           name = "Applications";
           remap = {
             # It breaks saved pages of previous session if u runed qutebrowser with rofi, so screw it lol
-            # "Win-U".launch       = ["bash" "-c" "${pkgs.glib}/bin/gio launch ~/.nix-profile/share/applications/org.qutebrowser.qutebrowser.desktop"];
-            "Win-R".launch       = ["bash" "-c" "${pkgs.glib}/bin/gio launch ~/.nix-profile/share/applications/renoise.desktop"];
-            "Win-Shift-K".launch = ["bash" "-c" "${pkgs.glib}/bin/gio launch ~/.nix-profile/share/applications/org.kde.krita.desktop"];
-            "Win-B".launch       = ["bash" "-c" "${pkgs.glib}/bin/gio launch ~/.nix-profile/share/applications/blender.desktop"];
-            "Win-G".launch       = ["bash" "-c" "${pkgs.glib}/bin/gio launch ~/.nix-profile/share/applications/com.dec05eba.gpu_screen_recorder.desktop"];
-            "Win-M".launch = ["bash" "-c" "wezterm start -- rmpc"];
+            # "Win-Ctrl-U".launch       = ["bash" "-c" "${pkgs.glib}/bin/gio launch ~/.nix-profile/share/applications/org.qutebrowser.qutebrowser.desktop"];
+            "Win-Ctrl-R".launch = ["bash" "-c" "${pkgs.glib}/bin/gio launch ~/.nix-profile/share/applications/renoise.desktop"];
+            "Win-Ctrl-K".launch = ["bash" "-c" "${pkgs.glib}/bin/gio launch ~/.nix-profile/share/applications/org.kde.krita.desktop"];
+            "Win-Ctrl-B".launch = ["bash" "-c" "${pkgs.glib}/bin/gio launch ~/.nix-profile/share/applications/blender.desktop"];
+            "Win-Ctrl-G".launch = ["bash" "-c" "${pkgs.glib}/bin/gio launch ~/.nix-profile/share/applications/com.dec05eba.gpu_screen_recorder.desktop"];
+            "Win-Ctrl-M".launch = ["bash" "-c" "wezterm start -- rmpc"];
           };
         }
         {

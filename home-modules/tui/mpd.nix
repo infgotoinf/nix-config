@@ -15,6 +15,9 @@
 
   programs.rmpc = {
     enable = true;
+    config = ''(
+      keybinds: (global: { "H": PreviousTab, "L": NextTab  })
+    )'';
   };
 
   services.mpd = {
@@ -30,6 +33,7 @@
     '';
   };
 
+  # For i3status-rust status
   services.mpdris2 = {
     enable = true;
   };

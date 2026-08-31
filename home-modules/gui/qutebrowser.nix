@@ -87,24 +87,30 @@
       #   sha256 = "sha256-L4tOP7ukMkFI6BseJ5VdZvgTMcOtkf79Lz8awo4N57k=";
       # })
       # Why do they keep adding this annoying shit, like really why
-      # (pkgs.writeText "remove-annoying-football-add-near-the-youtube-logo.js" ''
-      #   // ==UserScript==
-      #   // @name         Remove annoting football add near the YouTube logo
-      #   // @version      1.0.0
-      #   // @author       infgotoinf
-      #   // @license      MIT
-      #   // @match        *://*.youtube.com/*
-      #   // @grant        none
-      #   // ==/UserScript==
+      (pkgs.writeText "remove-annoying-ad-youtube-logo.js" ''
+        // ==UserScript==
+        // @name         Remove annoying ad YouTube logo
+        // @version      1.1.0
+        // @author       infgotoinf
+        // @license      MIT
+        // @match        *://*.youtube.com/*
+        // @grant        none
+        // ==/UserScript==
 
-      #   (function () {
-      #     setInterval(function () {
-      #       document
-      #         .querySelectorAll('img.style-scope.ytd-yoodle-renderer')
-      #         .forEach((x) => x.removeAttribute('src'));
-      #     }, 1000);
-      #   })();
-      # '')
+        (function () {
+          function removeElements() {
+            document
+              .querySelectorAll('img.style-scope.ytd-yoodle-renderer')
+              .forEach((x) => x.remove());
+          }
+
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', removeElements);
+          } else {
+            removeElements();
+          }
+        })();
+      '')
     ];
 
     settings = let
@@ -124,73 +130,68 @@
       hints.radius   = 0;
       keyhint.radius = 0;
       prompt.radius  = 0;
-      # Other custom css ctyling
+      # Other custom css styling
       content.user_stylesheets = [(toString (pkgs.writeText "style.css" ''
-        @font-face {
-            font-family: 'UnifontExMono';
-            src: url(https://github.com/stgiga/UnifontEX/releases/download/16/UnifontExMono.woff) format('woff');
-          }
+        /* Remove every border radius */
+        *,
+        *::before,
+        *::after {
+          border-radius: 0px !important;
+          clip-path: none !important;
+        }
 
-          /* Remove every border radius */
-          *,
-          *::before,
-          *::after {
-            border-radius: 0px !important;
-            clip-path: none !important;
-          }
+        /* Scrollbar */
+        *::-webkit-scrollbar {
+          width: 12px !important;
+          height: 12px !important;
+        }
 
-          /* Scrollbar */
-          *::-webkit-scrollbar {
-            width: 12px !important;
-            height: 12px !important;
-          }
+        *::-webkit-scrollbar-track {
+          background-color: ${colors.base00} !important;
+          border-radius: 0px !important;
+        }
 
-          *::-webkit-scrollbar-track {
-            background-color: ${colors.base00} !important;
-            border-radius: 0px !important;
-          }
+        *::-webkit-scrollbar-thumb {
+          background-color: ${colors.base03};
+          border-radius: 0px !important;
+          min-height: 30px !important;
+        }
 
-          *::-webkit-scrollbar-thumb {
-            background-color: ${colors.base03};
-            border-radius: 0px !important;
-            min-height: 30px !important;
-          }
+        *::-webkit-scrollbar-thumb:hover,
+        *::-webkit-scrollbar-thumb:active {
+          background-color: ${colors.base04};
+        }
 
-          *::-webkit-scrollbar-thumb:hover,
-          *::-webkit-scrollbar-thumb:active {
-            background-color: ${colors.base04};
-          }
+        /* Apply UnifontExMono font everythere except PUA icons and stuff */
+        *:not([class*="icon"]):not([class*="fa"]):not([class*="material"]):not([class*="glyph"]) {
+          font-family: "Unifont", "Twitter Color Emoji" !important;
+        }
 
-          /* Appli UnifontExMono font everythere except PUA icons and stuff */
-          *:not([class*="icon"]):not([class*="fa"]):not([class*="material"]):not([class*="glyph"]) {
-            font-family: UnifontExMono !important;
-          }
+        /* Make every regular text have the same size */
+        :is(a,
+          b,
+          i,
+          p,
+          li,
+          body,
+          input,
+          textarea,
+          button,
+          select):not([class*="icon"]):not([class*="fa"]):not([class*="material"]):not([class*="glyph"]) {
+          font-size: 16px !important;
+        }
 
-          /* Make every regular text have the same size */
-          :is(a,
-            b,
-            i,
-            p,
-            li,
-            body,
-            input,
-            textarea,
-            button,
-            select):not([class*="icon"]):not([class*="fa"]):not([class*="material"]):not([class*="glyph"]) {
-            font-size: 16px !important;
-          }
+        /* Makes bold text work if it doesn't (cause it doesn't in Github markdown)*/
+        strong,
+        b {
+          font-weight: bold !important;
+        }
 
-          /* Makes bold text work if it doesn't (cause it doesn't in Github markdown)*/
-          strong,
-          b {
-            font-weight: bold !important;
-          }
-
-          /********** COLOR **********/
-          /* Change selection color */
-          ::selection {
-            background-color: ${colors.blue} !important;
-          }
+        /********** COLOR **********/
+        /* Change selection color */
+        ::selection {
+          background-color: ${colors.blue} !important;
+        }
       ''))];
 
 

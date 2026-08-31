@@ -1,13 +1,8 @@
 { pkgs, config, ... }:
 {
-  # programs.kitty = {
-  #   enable = true;
-  # };
-
   programs.rofi = {
     enable = true;
     terminal = "${pkgs.wezterm}/bin/wezterm";
-    # terminal = "${pkgs.kitty}/bin/kitty";
     extraConfig = {
       max-history = 99;
       "kb-accept-entry" = "Return,KP_Enter";
@@ -119,12 +114,12 @@
     modes = [
       "drun"
       "emoji"
-      "nerdy"
+      # "nerdy"
       # "top"
     ];
     plugins = with pkgs; [
       rofi-emoji
-      rofi-nerdy
+      # rofi-nerdy
       # rofi-top
     ];
   };

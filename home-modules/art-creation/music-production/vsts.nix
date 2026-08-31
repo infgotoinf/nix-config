@@ -1,7 +1,10 @@
 { pkgs, ... }:
 {
+  # I tried to create a package for GVST, tho I failed, cause GVST download link has some
+  # sort of bot detection, so if you try to download it via curl you'll get just an HTML page
+  # That sucks :(
   home.file.".vst" = {
-    source = builtins.toPath "${../../../etc/plugins/vst}";
+    source = builtins.toPath "${./vst}";
     recursive = true;
   };
 
