@@ -122,10 +122,10 @@
 	 #  };
   # };
 
-#   services.zapret-discord-youtube = {
-#     # enable = true;
-#     configName = "general(ALT3)";
-#     # configName = "general (FAKE_TLS_AUTO_ALT)";
-#     gameFilter = "all";
-#   };
+  services.zapret-discord-youtube = {
+    # enable = true;
+    configName = "general(ALT3)";
+    # configName = "general (FAKE_TLS_AUTO_ALT)";
+    gameFilter = "all";
+  };
 }

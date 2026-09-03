@@ -351,6 +351,22 @@
         "type": "github"
       }
     },
+    "nixpkgs_3": {
+      "locked": {
+        "lastModified": 1788179007,
+        "narHash": "sha256-hn1oU2rue2SYK8dAr8+WNZWtbsz1S2W5mnHlSEuh3bo=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "34ab99075ac4f7e40cf037eef32cb1c360bb85e9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nur": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -408,7 +424,8 @@
         "stylix": "stylix",
         "unstable": "unstable",
         "weathr": "weathr",
-        "xremap": "xremap"
+        "xremap": "xremap",
+        "zapret-discord-youtube": "zapret-discord-youtube"
       }
     },
     "stylix": {
@@ -611,6 +628,41 @@
         "owner": "k0kubun",
         "ref": "v0.15.11",
         "repo": "xremap",
+        "type": "github"
+      }
+    },
+    "zapret-discord-youtube": {
+      "inputs": {
+        "nixpkgs": "nixpkgs_3",
+        "zapret-flowseal": "zapret-flowseal"
+      },
+      "locked": {
+        "lastModified": 1788258486,
+        "narHash": "sha256-PZ8xxxA6ANHqPgloMWZocfsn1W7DZinVZlKqx6Wa/c4=",
+        "owner": "kartavkun",
+        "repo": "zapret-discord-youtube",
+        "rev": "d8d82a29af13751b78fc935e1e367deb0c1c615f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kartavkun",
+        "repo": "zapret-discord-youtube",
+        "type": "github"
+      }
+    },
+    "zapret-flowseal": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1788121958,
+        "narHash": "sha256-WMpxbtA2OH340e4uuXR0tcUW0D6V9Kzs0KI1iKqkXBM=",
+        "owner": "Flowseal",
+        "repo": "zapret-discord-youtube",
+        "rev": "6cec828910d0809863205702182a3557d9d0e8c3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Flowseal",
+        "repo": "zapret-discord-youtube",
         "type": "github"
       }
     }
