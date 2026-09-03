@@ -7,8 +7,8 @@
       max-history = 99;
       "kb-accept-entry" = "Return,KP_Enter";
       "kb-remove-to-eol" = "";
-      "kb-row-up" = "Control+k";
-      "kb-row-down" = "Control+j";
+      "kb-row-up" = "Control+k,Up";
+      "kb-row-down" = "Control+j,Down";
     };
     theme =
     let

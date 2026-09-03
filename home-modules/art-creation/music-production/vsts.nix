@@ -9,7 +9,7 @@
   };
 
   home.packages = with pkgs; [
-    # guitarix
+    guitarix-vst
     # surge
     surge-xt
     # bespokesynth-with-vst2
@@ -20,10 +20,12 @@
     # zynaddsubfx
     # synthv1
     # ultrastable.lsp-plugins
+    ladspaPlugins
     calf
     # geonkick
     # carla
     cardinal
+    # vcv-rack
     rubberband
     # airwindows
     (airwindows.overrideAttrs {
@@ -48,6 +50,5 @@
         rm *Desk*.so *Dither*.so
       '';
     })
-    # vcv-rack
   ];
 }

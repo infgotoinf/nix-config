@@ -1,4 +1,4 @@
-{ hostname, pkgs, unstable, ... }:
+{ hostname, ... }:
 
 {
   systemd.services.NetworkManager-wait-online.enable = false;
@@ -36,7 +36,6 @@
 
   # programs.amnezia-vpn = {
   #   enable = true;
-  #   package = unstable.amnezia-vpn;
   # };
 
   # environment.systemPackages = with pkgs; [

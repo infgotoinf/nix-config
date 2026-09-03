@@ -52,6 +52,7 @@
       lua-language-server
       perlnavigator
       ruby-lsp
+      bash-language-server
 
       superhtml
       vscode-css-languageserver

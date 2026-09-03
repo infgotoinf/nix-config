@@ -6,7 +6,7 @@
     };
     mappings = {
       D = "toggle_page_mode";
-      i = "recolor";
+      "<C-i>" = "recolor";
       "<C-k>" = "scroll full-up";
       "<C-j>" = "scroll full-down";
     };

@@ -15,17 +15,17 @@
         enable = true;
         neomutt.enable = true;
       };
-      mbsync = {
-        enable = true;
-        create = "maildir";
-        patterns = [
-          "INBOX"
-          "[Gmail]/Drafts"
-          "[Gmail]/Sent Mail"
-          "[Gmail]/Spam"
-          "[Gmail]/Trash"
-        ];
-      };
+      # mbsync = {
+      #   enable = true;
+      #   create = "maildir";
+      #   patterns = [
+      #     "INBOX"
+      #     "[Gmail]/Drafts"
+      #     "[Gmail]/Sent Mail"
+      #     "[Gmail]/Spam"
+      #     "[Gmail]/Trash"
+      #   ];
+      # };
       # aerc.enable = true;
       neomutt.enable = true;
       imap = {

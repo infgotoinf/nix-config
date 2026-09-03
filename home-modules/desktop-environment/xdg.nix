@@ -56,11 +56,11 @@
         "x-scheme-handler/about" = "org.qutebrowser.qutebrowser.desktop";
         "x-scheme-handler/unknown" = "org.qutebrowser.qutebrowser.desktop";
 
-        "application/pdf" = "onlyoffice-desktopeditors.desktop";
+        "application/pdf" = "org.pwmt.zathura.desktop";
         "image/gif" = "org.qutebrowser.qutebrowser.desktop";
         # And yes for some reason wildcards (image/*) don't work
         "image/png" = "satty.desktop";
-        "image/jpg" = "satty.desktop";
+        "image/jpeg" = "satty.desktop";
         "image/webp" = "satty.desktop";
         "image/svg+xml" = "satty.desktop";
 

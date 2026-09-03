@@ -6,9 +6,9 @@
     # };
   };
 
-  programs.mbsync = {
-    enable = true;
-  };
+  # programs.mbsync = {
+  #   enable = true;
+  # };
 
   # programs.aerc = {
   #   enable = true;

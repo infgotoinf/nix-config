@@ -1,11 +1,9 @@
 [Shortcuts]
 Cycle selection tools=M
-KisToolTransform=none
+KisToolTransform=Ctrl+T; Shift+T
+KisToolTransformPerspective=Ctrl+Shift+T
 KritaShape/KisToolLine=L
 Select Saturation Blending Mode=none
-Transform tool: free=Shift+T; Ctrl+T
-Transform tool: mesh=Ctrl+Alt+Shift+T
-Transform tool: perspective=Ctrl+Shift+T; Alt+Shift+T
 clear=none
 cut_sharp=Backspace
 decrease_brush_size=Shift+S

@@ -2,6 +2,7 @@
 {
   home.packages = with pkgs; [
     ncdu
+    sc-im
   ];
 
   programs.w3m = {

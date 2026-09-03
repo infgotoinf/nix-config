@@ -1,6 +1,7 @@
 {
   imports = [
-    ./video-editors.nix
+    ./kdenlive.nix
     ./obs.nix
+    ./plugins.nix
   ];
 }
