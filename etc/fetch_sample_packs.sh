@@ -134,6 +134,11 @@ drums=(
   'https://download2281.mediafire.com/grm9djod2sfgSC6MNHPYa-X4oHYoNFKSpZ_LkQ_Diy_7n1c68958_RJS5axqFTSPtrn9obDMdzkp1qQnE-RiG_UvfxJJPy_2o0iF8D1rqW66yrtHLwcneu_JVfDMGC8zXed8crpZ0Afbbtz5HSVHcvj95f9MMFWkI4IxklIa_ZMo5MAF/1267oypxy9ayfwa/PeeJay+-+Volume+I+%28Drum+Kit%29.zip'
 )
 
+sound_design=(
+  'https://opengameart.org/sites/default/files/rpg_sound_pack.zip'
+  'https://opengameart.org/sites/default/files/Owlish%20Media%20Sound%20Effects.zip'
+)
+
 array_array_of_links=(
   piano
   percussion
@@ -144,6 +149,7 @@ array_array_of_links=(
   synths
   sound_sets
   drums
+  sound_design
 )
 
 archive_pattern="\.(zip|7z|tar\..{2,3})$"

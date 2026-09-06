@@ -2,14 +2,16 @@
 {
   home.packages = with pkgs; [
     ncdu
-    sc-im
+    # sc-im
   ];
 
-  programs.w3m = {
-    enable = true;
-    extraPackages = with pkgs; [
-      rdrview
-      libsixel
-    ];
-  };
+  # programs.chawan = {
+  #   enable = true;
+  #   settings = {
+  #     buffer = {
+  #       autofocus = true;
+  #       images = true;
+  #     };
+  #   };
+  # };
 }

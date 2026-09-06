@@ -13,6 +13,15 @@
   #   horizontal = 1;
   # };
 
+  window.commands = [
+    {
+      command = "floating enable, sticky enable";
+      criteria = {
+        app_id = "screenkey";
+      };
+    }
+  ];
+
   keybindings = lib.mkOptionDefault {
     "Mod4+Shift+Ctrl+q" = "kill";
     "Mod4+q" = null;

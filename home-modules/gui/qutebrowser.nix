@@ -7,23 +7,22 @@
 
   programs.qutebrowser = {
     enable = true;
-    searchEngines = {
-
-    };
 
     keyBindings = {
       normal = {
-        "H" = "tab-prev";
-        "L" = "tab-next";
-        "J" = "back";
-        "K" = "forward";
+        H = "tab-prev";
+        L = "tab-next";
+        J = "back";
+        K = "forward";
         "<Ctrl-Shift-H>" = "tab-move -";
         "<Ctrl-Shift-L>" = "tab-move +";
+        "<Ctrl-j>" = "scroll-page 0 0.5";
+        "<Ctrl-k>" = "scroll-page 0 -0.5";
 
         "<Alt-c>" = "open -t";
         "<Alt-Return>" = "open -t";
 
-        "pv" = "spawn mpv {url}";
+        pv = "spawn mpv {url}";
         "<Ctrl-i>" = "config-cycle colors.webpage.darkmode.enabled true false";
       };
     };
@@ -45,6 +44,7 @@
         colors.webpage.darkmode.enabled = false;
       };
       "web.telegram.org" = {
+        content.javascript.clipboard = "access";
         colors.webpage.darkmode.enabled = false;
       };
       # Fixes the error with not being able to login in Google account

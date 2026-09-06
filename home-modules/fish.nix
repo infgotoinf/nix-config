@@ -5,9 +5,9 @@
     interactiveShellInit = ''
       set fish_greeting # Disable greeting
 
-      set -U fish_color_valid_path blue
+      set fish_color_valid_path blue
 
-      set -U sponge_delay 5
+      set sponge_delay 5
     '';
     binds = {
 
@@ -39,7 +39,7 @@
 
       btrfs-balance = "sudo btrfs balance start -dusage=10 -musage=10 /";
       dd-measure-disk-write-speed = "dd if=/dev/zero of=$HOME/lol.img bs=1G count=1 oflag=dsync; rm -rf $HOME/lol.img";
-      run-system-benchmark = "NIXPKGS_ALLOW_UNFREE=1 nix run github:dbeley/nixos-benchmark -- --benchmarks openssl-speed,7zip-benchmark,stress-ng,sysbench-cpu,sysbench-memory,furmark-gl,stressapptest-memory,fio-seq,iozone,bonnie++,ioping,furmark-vk,clpeak,hashcat-gpu,lz4-benchmark,zstd-compress,cryptsetup-benchmark,sqlite-mixed,sqlite-speedtest,ffmpeg-transcode,netperf,wrk-http";
+      run-system-benchmark = "NIXPKGS_ALLOW_UNFREE=1 nix run github:dbeley/nixos-benchmark -- --benchmarks openssl-speed,7zip-benchmark,stress-ng,sysbench-cpu,sysbench-memory,furmark-Ul,stressapptest-memory,fio-seq,iozone,bonnie++,ioping,furmark-vk,clpeak,hashcat-Upu,lz4-benchmark,zstd-compress,cryptsetup-benchmark,sqlite-mixed,sqlite-speedtest,ffmpeg-transcode,netperf,wrk-http";
     };
     plugins = with pkgs.fishPlugins; [
       { # Automaitcally clears history from typos

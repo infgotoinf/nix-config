@@ -3,6 +3,7 @@
   home.packages = with pkgs; [
     # aseprite
     # material-maker
+    # gucharmap
 
     pavucontrol
     # easyeffects
@@ -11,6 +12,7 @@
     gnome-system-monitor
     audacity
     gpu-screen-recorder-gtk
+    showmethekey
     # librewolf
     qbittorrent
     # rn proton-authenticator fix is only in unstable brach sadly
@@ -30,7 +32,7 @@
     enable = true;
   };
 
-  programs.onlyoffice = {
-    enable = true;
-  };
+  # programs.onlyoffice = {
+  #   enable = true;
+  # };
 }

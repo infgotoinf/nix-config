@@ -5,12 +5,14 @@
     calc
     cloc
     _7zz
+    file
     killall
     file-rename
     ffmpeg-full
     # mermaid-filter
-    # groff
+    typst
     catdocx
+    libreoffice-still
   ];
 
   programs.fastfetch = {

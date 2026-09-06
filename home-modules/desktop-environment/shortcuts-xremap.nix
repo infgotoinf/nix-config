@@ -54,7 +54,8 @@ in
             "Win-Ctrl-K".launch = ["bash" "-c" "${pkgs.glib}/bin/gio launch ~/.nix-profile/share/applications/org.kde.krita.desktop"];
             "Win-Ctrl-B".launch = ["bash" "-c" "${pkgs.glib}/bin/gio launch ~/.nix-profile/share/applications/blender.desktop"];
             "Win-Ctrl-G".launch = ["bash" "-c" "${pkgs.glib}/bin/gio launch ~/.nix-profile/share/applications/com.dec05eba.gpu_screen_recorder.desktop"];
-            "Win-Ctrl-M".launch = ["bash" "-c" "wezterm start -- rmpc"];
+            "Win-M".launch = ["bash" "-c" "mpc update; wezterm start -- rmpc"];
+            "Win-Ctrl-S".launch = ["bash" "-c" "${pkgs.glib}/bin/gio launch ~/.nix-profile/share/applications/one.alynx.showmethekey.desktop"];
           };
         }
         {

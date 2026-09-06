@@ -20,6 +20,7 @@
       };
       keys.normal = {
         "A-e" = ":toggle soft-wrap.enable";
+        # https://github.com/helix-editor/helix/discussions/12934#discussioncomment-12438498
         "C-y" = [
         	'':sh rm -f /tmp/unique-ca1ea106''
         	'':insert-output yazi "%{buffer_name}" --chooser-file=/tmp/unique-ca1ea106''

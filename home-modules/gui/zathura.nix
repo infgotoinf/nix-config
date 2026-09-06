@@ -7,8 +7,9 @@
     mappings = {
       D = "toggle_page_mode";
       "<C-i>" = "recolor";
-      "<C-k>" = "scroll full-up";
-      "<C-j>" = "scroll full-down";
+      KPEqual = "adjust_window best_fit";
+      "<C-k>" = "navigate previous";
+      "<C-j>" = "navigate next";
     };
   };
 }

@@ -11,6 +11,7 @@
       unifont
       nur.repos.infgotoinf.UnifontExMono
       twitter-color-emoji
+      times-newer-roman
     ];
   };
 }
