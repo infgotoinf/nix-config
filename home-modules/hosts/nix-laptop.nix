@@ -1,5 +1,5 @@
 {
   imports = [
-    ./nix-pc.nix
+    ./nix-laptop.nix
   ];
 }

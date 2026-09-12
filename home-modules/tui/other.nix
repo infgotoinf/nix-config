@@ -5,13 +5,13 @@
     # sc-im
   ];
 
-  # programs.chawan = {
-  #   enable = true;
-  #   settings = {
-  #     buffer = {
-  #       autofocus = true;
-  #       images = true;
-  #     };
-  #   };
-  # };
+  programs.chawan = {
+    enable = true;
+    settings = {
+      buffer = {
+        autofocus = true;
+        images = true;
+      };
+    };
+  };
 }

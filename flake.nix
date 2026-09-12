@@ -44,7 +44,7 @@
     username = "inf"; #< Here you can change username
     hostnames = [
       # Here you can add more hosts
-      "nix-ssd"
+      "nix-laptop"
       "nix-pc"
     ];
     system_info = {
