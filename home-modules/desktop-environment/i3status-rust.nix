@@ -1,5 +1,14 @@
 { lib, config, system_info, ... }:
 {
+  options = {
+    has_nvidia_gpu = lib.mkEnableOption ''
+      Enables nvidia gpu specific options
+    '';
+    has_amd_gpu= lib.mkEnableOption ''
+      Enables amd gpu specific options
+    '';
+  };
+
   config = lib.mkIf (config.i3.enable || config.sway.enable) {
     programs.i3status-rust = {
       enable = true;
@@ -46,13 +55,13 @@
             # theme_overrides.idle_fg = colors.magenta;
             theme_overrides.idle_fg = colors.orange;
           }
-          (lib.mkIf (system_info.has_amd_gpu) {
+          (lib.mkIf (config.has_amd_gpu) {
             block = "amd_gpu";
             format = "$icon $utilization";
             interval = 2;
             theme_overrides.idle_fg = colors.green;
           })
-          (lib.mkIf (system_info.has_nvidia_gpu) {
+          (lib.mkIf (config.has_nvidia_gpu) {
             block = "nvidia_gpu";
             format = "$icon $utilization $memory $temperature";
             interval = 2;
@@ -75,7 +84,10 @@
             theme_overrides.idle_fg = colors.yellow;
           })
           (lib.mkIf (system_info.has_battery) { block = "battery";
-            format = "$icon $percentage";
+            format              = "$icon $percentage ($time_remaining)";
+            charging_format     = "$icon $percentage ($time_remaining)";
+            empty_format        = "$icon $percentage ($time_remaining)";
+            not_charging_format = "$icon $percentage ($time_remaining)";
             interval = 30;
             theme_overrides.idle_fg = colors.magenta;
           })

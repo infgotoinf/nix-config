@@ -19,6 +19,10 @@
       url = "github:nix-community/stylix/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixos-hardware = {
+      url = "github:NixOS/nixos-hardware";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # nix-cachyos-kernel.url = "github:xddxdd/nix-cachyos-kernel/release";
 
     xremap = {
@@ -50,16 +54,16 @@
     system_info = {
       has_backlight = builtins.attrNames (builtins.readDir /sys/class/backlight) != [];
       has_battery = builtins.attrNames (builtins.readDir /sys/class/power_supply) != [];
-      has_amd_gpu = (builtins.readFile (
-        pkgs.runCommand "amd_gpu_check" {} ''
-          ${pkgs.pciutils}/bin/lspci | grep -i vga | grep -i amd > $out || true
-        ''
-      ) != "");
-      has_nvidia_gpu = (builtins.readFile (
-        pkgs.runCommand "nvidia_gpu_check" {} ''
-          ${pkgs.pciutils}/bin/lspci | grep -i vga | grep -i nvidia > $out || true
-        ''
-      ) != "");
+      # has_amd_gpu = (builtins.readFile (
+      #   pkgs.runCommand "amd_gpu_check" {} ''
+      #     ${pkgs.pciutils}/bin/lspci | grep -i vga | grep -i amd > $out || true
+      #   ''
+      # ) != "");
+      # has_nvidia_gpu = (builtins.readFile (
+      #   pkgs.runCommand "nvidia_gpu_check" {} ''
+      #     ${pkgs.pciutils}/bin/lspci | grep -i vga | grep -i nvidia > $out || true
+      #   ''
+      # ) != "");
     };
 
     args = {

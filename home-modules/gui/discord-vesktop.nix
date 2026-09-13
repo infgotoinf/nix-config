@@ -3,7 +3,7 @@
   programs.discord.enable = true;
 
   programs.vesktop = {
-    enable = true;
+    # enable = true;
     settings = {
       appBadge = false;
       arRPC = true;

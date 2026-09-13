@@ -7,7 +7,7 @@
     # retroarch
     # the-powder-toy
     flatpak
-    r2modman
+    # r2modman
     # It's both for Lutris and just to use
     wineWow64Packages.full
     winetricks
@@ -20,7 +20,7 @@
     enable = true;
   };
 
-  programs.prismlauncher = {
-    enable = true;
-  };
+  # programs.prismlauncher = {
+  #   enable = true;
+  # };
 }

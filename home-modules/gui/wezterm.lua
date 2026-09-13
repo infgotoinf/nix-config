@@ -85,8 +85,8 @@ return {
       {key="UpArrow",    mods="NONE", action=act.CopyMode("MoveUp")},
       {key="RightArrow", mods="NONE", action=act.CopyMode("MoveRight")},
 
-      {key="u", mods="CTRL", action=act.CopyMode{MoveByPage=0.5}},
-      {key="d", mods="CTRL", action=act.CopyMode{MoveByPage=-0.5}},
+      {key="u", mods="CTRL", action=act.CopyMode{MoveByPage=-0.5}},
+      {key="d", mods="CTRL", action=act.CopyMode{MoveByPage=0.5}},
 
       {key="w", mods="NONE", action=act.CopyMode("MoveForwardWord")},
       {key="b", mods="NONE",  action=act.CopyMode("MoveBackwardWord")},

@@ -18,17 +18,19 @@
   #     force = true;
   #   };
   # };
-  home.activation.krita_plugins = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  home.activation.krita_setup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     mkdir -p ~/.config/gmic
     chmod -R u+rw ~/.config/gmic
     cp ${./krita-settings}/gmic_qt_faves.json ~/.config/gmic/
 
+    touch ~/.config/kritashortcutsrc
     chmod -R u+rw ~/.config/kritashortcutsrc
     cp ${./krita-settings}/infs_krita_shortcuts2.shortcuts ~/.config/kritashortcutsrc
 
-    mkdir -p ~/.local/share/krita/palettes
-    chmod -R u+rw ~/.local/share/krita/palettes
-    cp ${./krita-settings}/krita_spectrum_palette.kpl ~/.local/share/krita/palettes/
+    # Useless, you need to import pallet manually anyway
+    # mkdir -p ~/.local/share/krita/palettes
+    # chmod -R u+rw ~/.local/share/krita/palettes
+    # cp ${./krita-settings}/krita_spectrum_palette.kpl ~/.local/share/krita/palettes/
 
     mkdir -p ~/.local/share/krita/workspaces
     chmod -R u+rw ~/.local/share/krita/workspaces

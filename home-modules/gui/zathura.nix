@@ -3,6 +3,7 @@
     enable = true;
     options = {
       font = "monospace normal 12";
+      selection-clipboard = "clipboard";
     };
     mappings = {
       D = "toggle_page_mode";

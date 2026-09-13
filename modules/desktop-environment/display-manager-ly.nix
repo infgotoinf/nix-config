@@ -30,7 +30,7 @@
       auth_fails = 3;
 
       battery_id = if system_info.has_battery then
-        "BAT1"
+        "BAT0"
       else
         null;
       clock = "%a %B %Y";

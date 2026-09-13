@@ -18,4 +18,6 @@
   fileSystems."/".options = [ "noatime" "nodatacow" "nodatasum" ];
 
   systemd.oomd.enable = true;
+
+  services.fstrim.enable = true;
 }

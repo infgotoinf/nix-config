@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   home.file.".config/Renoise/V${pkgs.renoise.version}/Themes/Gruvbox_Dark_Hard.xrnc" = {
     source = "${./.}/Gruvbox_Dark_Hard.xrnc";

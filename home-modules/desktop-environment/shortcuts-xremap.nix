@@ -62,6 +62,7 @@ in
           name = "MPC";
           remap = {
             "Win-P".launch           = ["bash" "-c" "mpc toggle"];
+            "Win-Shift-P".launch     = ["bash" "-c" "mpc stop"];
             "Win-Shift-Comma".launch = ["bash" "-c" "mpc volume -5"];
             "Win-Shift-Dot".launch   = ["bash" "-c" "mpc volume +5"];
             "Win-Comma".launch       = ["bash" "-c" "mpc prev"];
@@ -72,8 +73,15 @@ in
           name = "Volume control";
           remap = {
             "Win-Ctrl-Shift-M".launch = ["bash" "-c" "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"];
-            "Win-Minus".launch = ["bash" "-c" "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"];
-            "Win-Equal".launch = ["bash" "-c" "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+"];
+            "Win-Shift-Minus".launch = ["bash" "-c" "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"];
+            "Win-Shift-Equal".launch = ["bash" "-c" "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+"];
+          };
+        }
+        {
+          name = "Brightness control";
+          remap = {
+            "Win-Shift-Leftbrace".launch  = ["bash" "-c" "${pkgs.brightnessctl}/bin/brightnessctl set 5%-"];
+            "Win-Shift-Rightbrace".launch = ["bash" "-c" "${pkgs.brightnessctl}/bin/brightnessctl set 5%+"];
           };
         }
         {

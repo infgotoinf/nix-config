@@ -3,5 +3,5 @@
 {
   services.irqbalance.enable = true;
 
-  powerManagement.cpuFreqGovernor = "performance";
+  # powerManagement.cpuFreqGovernor = "performance";
 }

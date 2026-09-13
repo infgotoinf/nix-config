@@ -6,7 +6,7 @@
   ];
 
   programs.chawan = {
-    enable = true;
+    # enable = true;
     settings = {
       buffer = {
         autofocus = true;

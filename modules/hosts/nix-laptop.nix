@@ -6,6 +6,7 @@
 {
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
+      "${fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/lenovo/thinkpad/x230"
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "ahci" "usb_storage" "usbhid" "sd_mod" ];
@@ -27,7 +28,7 @@
   # sudo btrfs filesystem mkswapfile --size 32G /swapfile
   swapDevices = [{
     device = "/swapfile";
-    size = 32*1024; # 32 GiB
+    size = 12*1024; # 12 GiB
   }];
 
   boot.resumeDevice = "/dev/disk/by-uuid/bdd2dc41-6124-4278-9aea-802bb4a533a6";
@@ -35,11 +36,8 @@
     # findmnt -no UUID /
     "resume=UUID=bdd2dc41-6124-4278-9aea-802bb4a533a6"
     # sudo btrfs inspect-internal map-swapfile -r /swapfile
-    "resume_offset=71771392"
-    "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+    "resume_offset=79963392"
   ];
-
-  hardware.nvidia.powerManagement.enable = true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.amd.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
