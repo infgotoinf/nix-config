@@ -20,6 +20,23 @@
       fsType = "btrfs";
     };
 
+  # sudo parted /dev/sdX -- mklabel gpt
+  # sudo parted /dev/sdX -- mkpart primary btrfs 1MiB 100%
+  # sudo mkfs.btrfs -L media /dev/sdX1
+  # sudo mkdir -p /mnt/media
+  # sudo mount UUID=<UUID> /mnt/media
+  # sudo btrfs subvolume create /mnt/media/media
+  # sudo mkdir -p /mnt/media/media/{Music,Videos,Pictures}
+  # sudo umount /mnt/media
+  # sudo rmdir /mnt/media
+  fileSystems."/srv/media" = {
+    device = "/dev/disk/by-uuid/88521b04-538b-41a4-8ad1-c6c750713e3b";
+    fsType = "btrfs";
+    options = [
+      "subvol=media"
+    ];
+  };
+
   fileSystems."/boot" =
     { device = "/dev/disk/by-uuid/6B27-AB52";
       fsType = "vfat";

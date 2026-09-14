@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 # This script depends on atool, curl and 7zz
+# Changelog:
+# V1.1: Now if it can't extract any reasonable name from the link, just append `|NAME.format` to the link!
 
 set -e
 # ❤️ http://freepats.zenvoid.org/
@@ -32,8 +34,8 @@ percussion=(
   # 'http://freepats.zenvoid.org/Percussion/SynthesizerPercussion/SynthesizerPercussion-SFZ-20220718.7z'
   'https://github.com/freepats/world-percussion/releases/download/2020-09-05/WorldPercussion-SFZ+FLAC-20200905.7z'
 
-  'https://download1478.mediafire.com/4cvjknxjkfsgfDHdwFCOwIBKZAwor3GPn9m9K79TYAjku7n5Rupo7AzFucwGg-ytHPc7Srdt1RsUUIriq1QNsddirGxZFvfrQQlSN8iSLBxm61b8p2eCYgHwGL5CuqL5eGOlsoxAzV3dc2RdIfsDuYK3CGZII7gmkoCcBUH0O6sWlta6/6wmk6gexd4wgv8t/Live+Percussion+Sample+Pack.zip'
-  'https://download2389.mediafire.com/pjmxlgfmp1bgS5xhMhrfnshQ7Wlu-4B6ox1eZtWZOe9ioe-tybTiYUwV4e1E2B63PExIVBNCqlMQ6aMRAA5FiMQiYMEnzxA1UDTa2mq17UZBgYKDyVZ5KLAx8gKGHMc0HeHo_7A6jkl7TUz8rjTD9fGytrkV91SNk1mhSeH-To-ekOtg/0230qm71pt6t122/Music_2000_Sample_library_44k_WAV.zip'
+  'https://www.mediafire.com/?6wmk6gexd4wgv8t|Live+Percussion+Sample+Pack.zip'
+  'https://www.mediafire.com/?0230qm71pt6t122|Music_2000_Sample_library_44k_WAV.zip'
   'http://oceanswift.net/files/products/Ocean_Swift_-_Sounds_Of_Life.zip'
 
   # Ethnic
@@ -120,18 +122,20 @@ sound_sets=(
   # VCSL KEys
   'https://versilian-studios.com/Distro/VCSL_Keys.zip'
 
-  'https://download2294.mediafire.com/3c375mclhtugZr5HHU9hCB61Uaoy-pE0vhHQVvDZRHjdBZmFq88qbLL33fppdhOqStaxqHnAfYRM6vBYBT88y_tdYmtpVxZWOXe3j34-vM4Tw3cOJEnhXx01g5wxpR9BflNvX8EFMO-EDLhnk-a7eb8I_GCgg2XoazxdZ3xJ4Cqa2BIK/v9ga7r6oprv0n72/G-Town+Church+Sampling+Project.zip'
+  'https://www.mediafire.com/?v9ga7r6oprv0n72|G-Town+Church+Sampling+Project.zip'
 )
 
 drums=(
+  'https://www.bandshed.net/sounds/AVLDrumkits_SFZ/BLONDE_BOP_SFZ.zip'
+
   'https://archive.org/compress/breakcore-is-not-a-good-way-to-get-laid-sample-pack/formats=FLAC&file=/breakcore-is-not-a-good-way-to-get-laid-sample-pack.zip'
 
-  'https://download1500.mediafire.com/k4sukdowvcjg_sgSdYzVPtYgovwREFTzRACbFpIkvHT8e59jE2l4Y89_7utOGZV4nGgbujAz06BxU_Vqvs4p5sNhdX8li0KCcUhXcqlbhYXej5508VKiG9-amwgTB-JvLVs601PDob1LIgLMXbWNPYntF_Icgqa-Ji3AlqIFFqe3Nz_R/7y485sc5j4e30ve/0__PROD.+DESTROYED+drum+kit.zip'
-  'https://download2390.mediafire.com/5do51byo1rpgzhNEifMgxjW6tWN8bPd3U_ilM0TLIoYJXZ3TVLJ_RfI-MecwLlWNnGL4UzcAqOQlgS3BBiCB5SimuMGQJV3c-Lxn4fXIA3IIHm9jiqtIV2ieX57tmQPMZl3tr8D4zNN-984CDtaE9kyS2MFqLqwMbeWebwtj_hte1KIY/08ymkkzkjx6drmd/deep_house_drum_samples.zip'
-  'https://download2391.mediafire.com/3g5ok3bf2dlgCRWcNAZxChGy8LJsPhzItWengz2IiRCOFJwBe6ldx27Ac3v4ngR6pWX0AT-fqoQ4smtlMFquXPqzh9RKJOR1f0ng8xPu-8kxW11ta59YTfTdUOevWlekP0D9Q1naAzDCiP9z_GZUrNpzODKQ_rr25NdN9HDYgeRhl09f/7q81baqf23ybz7x/dubstep_empire_drum_kit.zip'
-  'https://download2389.mediafire.com/vufwrl184dxgCAylrUNwUDfmn9VILU8RXWmxXll36Tyx6qvXeMnaIWTeFWEpCe3nMeCEpvmofd9UjbBERsNZMAHp1MuA5-EIGVeu7LkJgundjt4Qf-4G1vIcfkhrkIgBegA88yRuSgtzjAV4zLo1PKxPGK3rO2-gl4sClst-SRlG6nI2/k1qanbqvm3bftdn/NiKUTRAX+RESOURCES+%5BVOL1%5D.zip'
-  'https://download1655.mediafire.com/9z3ttvxpd6ngPpBocgfWtTEVS8a6vV1puzob6QvE-wRlu5BDXbNQVgIXb0-2rG_d-s_Q6Iuqm7g8FK_e-k_2rwAdVo4vY6h12J6aiskPfvU8b_RoAhLnZAzxdW-HLzpae_u6CP_oAObh5QbRR27AHrmY1zKuwp-cTNvYMyHgEV-XVaLH/u93flcgf3amh1cb/op-1_drum_sampler_patches.zip'
-  'https://download2281.mediafire.com/grm9djod2sfgSC6MNHPYa-X4oHYoNFKSpZ_LkQ_Diy_7n1c68958_RJS5axqFTSPtrn9obDMdzkp1qQnE-RiG_UvfxJJPy_2o0iF8D1rqW66yrtHLwcneu_JVfDMGC8zXed8crpZ0Afbbtz5HSVHcvj95f9MMFWkI4IxklIa_ZMo5MAF/1267oypxy9ayfwa/PeeJay+-+Volume+I+%28Drum+Kit%29.zip'
+  'https://www.mediafire.com/?7y485sc5j4e30ve|0__PROD.+DESTROYED+drum+kit.zip'
+  'https://www.mediafire.com/?08ymkkzkjx6drmd|deep_house_drum_samples.zip'
+  'https://www.mediafire.com/?7q81baqf23ybz7x|dubstep_empire_drum_kit.zip'
+  'https://archive.org/download/e0fafeb1f136717ef96884b8a4111417_nikutrax_resources_sample_pack1/nikutrax_resources_sample_pack1.zip'
+  'https://www.mediafire.com/?u93flcgf3amh1cb|op-1_drum_sampler_patches.zip'
+  'https://www.mediafire.com/?1267oypxy9ayfwa|PeeJay+-+Volume+I+%28Drum+Kit%29.zip'
 )
 
 sound_design=(
@@ -168,8 +172,12 @@ for link_array_name in "${array_array_of_links[@]}"; do
   mkdir -p "$out_path"
 
   for link in "${links[@]}"; do
-    download_path="$out_path/$(echo "$link" | sed 's|.*/||')"
-    # download_path="$out_path/${link//.*\//}"
+    if [[ $link =~ .*\|.* ]]; then
+      download_path="$out_path/$(echo "$link" | sed 's/.*|//')"
+      link=$(echo "$link" | sed 's/|.*//')
+    else
+      download_path="$out_path/$(echo "$link" | sed 's|.*/||')"
+    fi
 
     extract_path=$(get_extract_path "$download_path")
     if [[ -e  $extract_path && $(ls -A "$extract_path") != '' ]]; then

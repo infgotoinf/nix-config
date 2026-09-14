@@ -25,7 +25,7 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-  # sudo btrfs filesystem mkswapfile --size 32G /swapfile
+  # sudo btrfs filesystem mkswapfile --size 12G /swapfile
   swapDevices = [{
     device = "/swapfile";
     size = 12*1024; # 12 GiB
