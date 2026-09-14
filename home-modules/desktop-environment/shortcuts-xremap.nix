@@ -87,10 +87,11 @@ in
         {
           name = "Pc control";
           remap = {
-            "Win-Ctrl-Shift-l".launch = screenlock;
-            "Win-Ctrl-Shift-r".launch = ["bash" "-c" "reboot"];
-            "Win-Ctrl-Shift-p".launch = ["bash" "-c" "poweroff"];
-            "Win-Ctrl-Shift-h".launch = ["bash" "-c" "systemctl hibernate"];
+            "Win-Ctrl-Shift-L".launch = screenlock;
+            "Win-Ctrl-Shift-R".launch = ["bash" "-c" "reboot"];
+            "Win-Ctrl-Shift-P".launch = ["bash" "-c" "poweroff"];
+            "Win-Ctrl-Shift-H".launch = ["bash" "-c" "systemctl hibernate"];
+            "Win-Ctrl-Shift-S".launch = ["bash" "-c" "systemctl sleep"];
           };
         }
       ];
