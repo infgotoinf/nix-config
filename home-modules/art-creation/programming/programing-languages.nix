@@ -6,7 +6,11 @@
     gnumake
     cmake
     lua
-    ruby
+    # ruby
     nodejs
+    typst
+
+    # Docs
+    cppman
   ];
 }

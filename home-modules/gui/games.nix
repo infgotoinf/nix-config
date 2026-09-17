@@ -11,7 +11,7 @@
 
     # Run this if you get an error in Lutris with flathub games:
     # flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-    flatpak
+    # flatpak
 
     # It's both for Lutris and just to use
     wineWow64Packages.full

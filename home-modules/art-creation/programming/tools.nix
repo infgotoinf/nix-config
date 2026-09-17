@@ -3,9 +3,9 @@
   home.packages = with pkgs; [
     # Debug tools
     gdb-dashboard
-    rr
+    # rr
 
     # Others
-    devbox
+    # devbox
   ];
 }

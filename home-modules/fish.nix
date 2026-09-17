@@ -10,10 +10,21 @@
       set sponge_delay 5
     '';
     binds = {
+      # TODO: Come up with fish binds
+      # "alt-B".command = "backward-word";
+      # "alt-F".command = "forward-word";
 
+      # "ctrl-W".command = "backward-kill-word";
+      # "alt-D".command = "kill-word";
+
+      # "ctrl-A".command = "beginning-of-line";
+      # "ctrl-E".command = "end-of-line";
+
+      # "ctrl-K".command = "kill-line";
     };
     functions = {
-
+      path-info = "nix path-info nixpkgs#$argv[1]";
+      build-package-path = ''nix-build -E "with import <nixpkgs> {}; callPackage $argv[1] {}"'';
     };
     shellAbbrs = {
       # hs = "NIXPKGS_ALLOW_UNFREE=1 nh home switch --impure --show-activation-logs";
@@ -35,7 +46,7 @@
       cat = "bat --paging=never --style=plain ";
       diff = "batdiff ";
       gdb = "gdb-dashboard ";
-      ds = "devbox shell";
+      # ds = "devbox shell";
 
       btrfs-balance = "sudo btrfs balance start -dusage=10 -musage=10 /";
       dd-measure-disk-write-speed = "dd if=/dev/zero of=$HOME/lol.img bs=1G count=1 oflag=dsync; rm -rf $HOME/lol.img";

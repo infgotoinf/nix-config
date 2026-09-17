@@ -10,9 +10,7 @@
     file-rename
     ffmpeg-full
     # mermaid-filter
-    typst
     catdocx
-    libreoffice-still
   ];
 
   programs.fastfetch = {

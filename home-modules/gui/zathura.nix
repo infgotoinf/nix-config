@@ -1,3 +1,4 @@
+{ nur, pkgs, ... }:
 {
   programs.zathura = {
     enable = true;
@@ -13,4 +14,10 @@
       "<C-j>" = "navigate next";
     };
   };
+
+  home.packages = with pkgs; [
+    nur.repos.infgotoinf.zaread
+    libreoffice-still
+    md2pdf
+  ];
 }

@@ -1,7 +1,7 @@
 {
   imports = [
     ./docker.nix
-    ./steam.nix
+    ./games.nix
     ./etc.nix
   ];
 }

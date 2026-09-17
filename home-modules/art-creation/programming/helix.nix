@@ -17,6 +17,7 @@
         trim-trailing-whitespace = true;
         auto-pairs = false;
         auto-save.focus-lost = true;
+        whitespace.render.tab = "all";
       };
       keys.normal = {
         "A-e" = ":toggle soft-wrap.enable";
@@ -34,10 +35,20 @@
     };
 
     languages = {
-      language = [{
-        name = "perl";
-        indent = { tab-width = 4; unit = "    "; };
-      }];
+      language = [
+        {
+          name = "perl";
+          indent = { tab-width = 4; unit = "    "; };
+        }
+        {
+          name = "c";
+          indent = { tab-width = 4; unit = "    "; };
+        }
+        {
+          name = "cpp";
+          indent = { tab-width = 4; unit = "    "; };
+        }
+      ];
     };
 
     # LSP's
