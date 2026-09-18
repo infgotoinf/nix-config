@@ -55,7 +55,7 @@
     # findmnt -no UUID /
     "resume=UUID=e05411b2-65ec-4afa-8ca4-f137c40acc0f"
     # sudo btrfs inspect-internal map-swapfile -r /swapfile
-    "13777487"
+    "resume_offset=13777487"
     "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
   ];
 
