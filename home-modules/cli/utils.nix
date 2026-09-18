@@ -11,6 +11,7 @@
     ffmpeg-full
     # mermaid-filter
     catdocx
+    poppler-utils # For pdftotext
   ];
 
   programs.fastfetch = {
