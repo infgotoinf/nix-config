@@ -31,6 +31,8 @@
         	'':set mouse false''
           '':set mouse true''
         ];
+        "C-j" = "page_cursor_half_down";
+        "C-k" = "page_cursor_half_up";
       };
     };
 
