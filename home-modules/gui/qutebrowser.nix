@@ -167,7 +167,8 @@
         }
 
         /* Apply UnifontExMono font everythere except PUA icons and stuff */
-        *:not([class*="icon"]):not([class*="fa"]):not([class*="material"]):not([class*="glyph"]) {
+        *:not([class*="icon"]):not([class*="fa"]):not([class*="material"]):not([class*="glyph"])
+        :not([class*="tgico"]) {
           font-family: "Unifont", "Twitter Color Emoji" !important;
         }
 
