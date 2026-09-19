@@ -1,8 +1,16 @@
 { pkgs, lib, ... }:
 {
   home.file.".config/Renoise/V${pkgs.renoise.version}/Themes/Gruvbox_Dark_Hard.xrnc" = {
-    source = "${./.}/Gruvbox_Dark_Hard.xrnc";
+    source = "${./renoise-settings}/Gruvbox_Dark_Hard.xrnc";
   };
+
+  home.activation.renoise_setup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    mkdir -p ~/.config/Renoise/V${pkgs.renoise.version}
+    chmod -R u+rw ~/.config/Renoise/V${pkgs.renoise.version}
+    cp ${./renoise-settings}/Config.xml ~/.config/Renoise/V${pkgs.renoise.version}/
+    cp ${./renoise-settings}/KeyBindings.xml ~/.config/Renoise/V${pkgs.renoise.version}/
+    cp ${./renoise-settings}/TemplateSong.xrns ~/.config/Renoise/V${pkgs.renoise.version}/
+  '';
 
   home.packages = with pkgs; [
     # reaper
