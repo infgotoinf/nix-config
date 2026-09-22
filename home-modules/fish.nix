@@ -14,7 +14,8 @@
       # "alt-B".command = "backward-word";
       # "alt-F".command = "forward-word";
 
-      # "ctrl-W".command = "backward-kill-word";
+      # This is ctrl-backspace btw lol 💀
+      "ctrl-h".command = "backward-kill-word";
       # "alt-D".command = "kill-word";
 
       # "ctrl-A".command = "beginning-of-line";

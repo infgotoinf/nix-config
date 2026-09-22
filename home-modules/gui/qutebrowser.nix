@@ -79,10 +79,10 @@
       #   url = "https://update.greasyfork.org/scripts/571522/I%20Hate%20Waiting.user.js";
       #   sha256 = "sha256-nx7GIpnV+dOq6Yt4TVI5T4xZRsEHoL187u/pXVimjYU=";
       # })
-      (pkgs.fetchurl { # Lowers CPU usage by optimising js events
-        url = "https://update.greasyfork.org/scripts/531874/Web%20CPU%20Tamer.user.js";
-        sha256 = "sha256-ov1FouQmzCgfi4iYnRuVGtsqa1XnAa17KTCmLCspjGk=";
-      })
+      # (pkgs.fetchurl { # Lowers CPU usage by optimising js events
+      #   url = "https://update.greasyfork.org/scripts/531874/Web%20CPU%20Tamer.user.js";
+      #   sha256 = "sha256-ov1FouQmzCgfi4iYnRuVGtsqa1XnAa17KTCmLCspjGk=";
+      # })
       # (pkgs.fetchurl { # Lets you select text on sites that prevent you from selecting text
       #   url = "https://raw.githubusercontent.com/qxinGitHub/Remove-web-limits-/refs/heads/master/Remove-web-limits-网页限制解除(改).js";
       #   sha256 = "sha256-L4tOP7ukMkFI6BseJ5VdZvgTMcOtkf79Lz8awo4N57k=";
@@ -167,9 +167,8 @@
         }
 
         /* Apply UnifontExMono font everythere except PUA icons and stuff */
-        *:not([class*="icon"]):not([class*="fa"]):not([class*="material"]):not([class*="glyph"])
-        :not([class*="tgico"]) {
-          font-family: "Unifont", "Twitter Color Emoji" !important;
+        *:not([class*="icon"]):not([class*="fa"]):not([class*="material"]):not([class*="glyph"]):not([class*="tgico"]) {
+          font-family: "UnifontExMono", "Twitter Color Emoji" !important;
         }
 
         /* Make every regular text have the same size */

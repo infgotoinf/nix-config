@@ -56,10 +56,8 @@
     "resume=UUID=e05411b2-65ec-4afa-8ca4-f137c40acc0f"
     # sudo btrfs inspect-internal map-swapfile -r /swapfile
     "resume_offset=13777487"
-    "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
+    # "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
   ];
-
-  hardware.nvidia.powerManagement.enable = true;
 
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking

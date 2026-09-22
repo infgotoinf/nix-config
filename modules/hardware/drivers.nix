@@ -34,6 +34,8 @@
             settingsSha256 = "sha256-QzT8Cw1luuZGP9DUje3HN/0ngiayqHURj+bqPsxlJ5w=";
             persistencedSha256 = "sha256-3JQBaNmkwxvCXv9q8aHKas6VZM/JjLsuilC2t7ET0u0=";
           };
+
+          powerManagement.enable = true;
           # open = true;
           open = false;
           forceFullCompositionPipeline = true;
