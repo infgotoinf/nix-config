@@ -84,10 +84,7 @@
             theme_overrides.idle_fg = colors.yellow;
           })
           (lib.mkIf (system_info.has_battery) { block = "battery";
-            format              = "$icon $percentage ($time_remaining)";
-            charging_format     = "$icon $percentage ($time_remaining)";
-            empty_format        = "$icon $percentage ($time_remaining)";
-            not_charging_format = "$icon $percentage ($time_remaining)";
+            format = "$icon $percentage ($time_remaining)";
             interval = 30;
             theme_overrides.idle_fg = colors.magenta;
           })

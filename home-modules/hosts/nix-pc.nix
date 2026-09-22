@@ -1,6 +1,6 @@
 {
   imports = [
-    ./nix-laptop.nix
+    ./email.nix
   ];
 
   has_nvidia_gpu = true;
