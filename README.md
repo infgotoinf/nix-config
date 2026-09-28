@@ -1,10 +1,20 @@
 # -inf's nix config
 
+## Installation
+
+### Non NixOS distro
+
+
+
+``` shell
+NIXPKGS_ALLOW_UNFREE=1 home-manager switch --extra-experimental-features nix-command --extra-experimental-features flakes --impure --flake .#HOSTNAME
+```
+
+### NixOS
+
 <!-- TODO: create a script for simpler installation and change installation steps -->
 > [!WARNING]
 > Installation guide has too many steps. Gonna fix this later.
-
-## Installation
 
 1. Edit disco config
 
