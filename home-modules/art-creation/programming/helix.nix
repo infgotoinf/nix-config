@@ -21,6 +21,7 @@
       };
       keys.normal = {
         "A-e" = ":toggle soft-wrap.enable";
+        "A-u" = ":reset-diff-change";
         # https://github.com/helix-editor/helix/discussions/12934#discussioncomment-12438498
         "C-y" = [
         	'':sh rm -f /tmp/unique-ca1ea106''

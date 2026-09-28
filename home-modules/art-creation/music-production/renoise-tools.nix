@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, lib, config, ... }:
 let
   tools = [
     # Shows note & FX info
@@ -106,9 +106,11 @@ in {
   #   force = true;
   # };
 
-  home.activation.renoise_tools = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-    mkdir -p ~/.config/Renoise/V${pkgs.renoise.version}/Scripts/Tools
-    cp -r ${renoise_tools}/* ~/.config/Renoise/V${pkgs.renoise.version}/Scripts/Tools/
-    chmod -R u+rw ~/.config/Renoise/V${pkgs.renoise.version}/Scripts/Tools/
-  '';
+  config = lib.mkIf config.music-production.enable {
+    home.activation.renoise_tools = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      mkdir -p ~/.config/Renoise/V${pkgs.renoise.version}/Scripts/Tools
+      cp -r ${renoise_tools}/* ~/.config/Renoise/V${pkgs.renoise.version}/Scripts/Tools/
+      chmod -R u+rw ~/.config/Renoise/V${pkgs.renoise.version}/Scripts/Tools/
+    '';
+  };
 }

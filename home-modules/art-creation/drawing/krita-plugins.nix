@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 let
   # Mainly used to use same shortcut for different things like different types of selection
   shortcut-composer = pkgs.stdenvNoCC.mkDerivation rec {
@@ -18,14 +18,16 @@ let
     '';
   };
 in {
-  home = {
-    file.".local/share/krita/pykrita/shortcut_composer" = {
-      source = "${shortcut-composer.src}/shortcut_composer";
-      force = true;
-    };
-    file.".local/share/krita/pykrita/shortcut_composer.desktop" = {
-      source = "${shortcut-composer.src}/shortcut_composer.desktop";
-      force = true;
+  config = lib.mkIf config.drawing.enable {
+    home = {
+      file.".local/share/krita/pykrita/shortcut_composer" = {
+        source = "${shortcut-composer.src}/shortcut_composer";
+        force = true;
+      };
+      file.".local/share/krita/pykrita/shortcut_composer.desktop" = {
+        source = "${shortcut-composer.src}/shortcut_composer.desktop";
+        force = true;
+      };
     };
   };
 }

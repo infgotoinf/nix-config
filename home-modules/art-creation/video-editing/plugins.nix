@@ -1,6 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 {
-  home.packages = with pkgs; [
-    frei0r
-  ];
+  config = lib.mkIf config.video-editing.enable {
+    home.packages = with pkgs; [
+      frei0r
+    ];
+  };
 }

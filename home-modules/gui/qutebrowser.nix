@@ -67,14 +67,14 @@
       #   url = "https://raw.githubusercontent.com/iamfugui/youtube-adb/ddceb665747980df3411e9081fda9286d53ccea5/index.user.js";
       #   sha256 = "1s04dgmlj75d49bgz9afl50bg0d6srrlxjlnndgjvg5piwjz1yfv";
       # })
-      (pkgs.fetchurl { # Youtube video downloader, adblocker and sponsorblocker
-        url = "https://update.greasyfork.org/scripts/34613/YouTube%20Ultimate%20Downloader%20v133%20%F0%9F%9A%80%20%E2%80%94%20All-in-One%20Media%20Suite%20%F0%9F%8C%8D%F0%9F%8E%A5%F0%9F%8E%B5%20%7C%20Ad-Free%20%2B%20SponsorBlock%20%F0%9F%9B%A1.user.js";
-        sha256 = "sha256-UCxyVu6ig4JPLPIUse84oRapauLrXpO6E8mFHThehAo=";
-      })
-      (pkgs.fetchurl { # Lower youtube footprint
-        url = "https://update.greasyfork.org/scripts/431573/YouTube%20CPU%20Tamer%20by%20AnimationFrame.user.js";
-        sha256 = "sha256-5/OXukzb/IIhUQb1o4p4pWBeLtx6cCO930PvUYHuAxw=";
-      })
+      # (pkgs.fetchurl { # Youtube video downloader, adblocker and sponsorblocker
+      #   url = "https://update.greasyfork.org/scripts/34613/YouTube%20Ultimate%20Downloader%20v133%20%F0%9F%9A%80%20%E2%80%94%20All-in-One%20Media%20Suite%20%F0%9F%8C%8D%F0%9F%8E%A5%F0%9F%8E%B5%20%7C%20Ad-Free%20%2B%20SponsorBlock%20%F0%9F%9B%A1.user.js";
+      #   sha256 = "sha256-UCxyVu6ig4JPLPIUse84oRapauLrXpO6E8mFHThehAo=";
+      # })
+      # (pkgs.fetchurl { # Lower youtube footprint
+      #   url = "https://update.greasyfork.org/scripts/431573/YouTube%20CPU%20Tamer%20by%20AnimationFrame.user.js";
+      #   sha256 = "sha256-5/OXukzb/IIhUQb1o4p4pWBeLtx6cCO930PvUYHuAxw=";
+      # })
       # (pkgs.fetchurl { # Prioritises video loading on media sites
       #   url = "https://update.greasyfork.org/scripts/571522/I%20Hate%20Waiting.user.js";
       #   sha256 = "sha256-nx7GIpnV+dOq6Yt4TVI5T4xZRsEHoL187u/pXVimjYU=";
@@ -166,9 +166,14 @@
           background-color: ${colors.base04};
         }
 
-        /* Apply UnifontExMono font everythere except PUA icons and stuff */
-        *:not([class*="icon"]):not([class*="fa"]):not([class*="material"]):not([class*="glyph"]):not([class*="tgico"]) {
+        /* Apply UnifontExMono font everythere except material icons and stuff */
+        /* *:not([class*="icon"]):not([class*="emoji"]):not([class*="fa"]):not([class*="material"]):not([class*="glyph"]):not([class*="tgico"]) { */
+        *:not([class*="icon"]):not([class*="emoji"]):not([class*="fa"]):not([class*="material"]):not([class*="glyph"]) {
           font-family: "UnifontExMono", "Twitter Color Emoji" !important;
+        }
+
+        .emoji {
+          font-family: "Twitter Color Emoji" !important;
         }
 
         /* Make every regular text have the same size */

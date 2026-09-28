@@ -9,12 +9,12 @@
       primary = true;
 
       # https://aerc-docs.com/providers/gmail/
-      passwordCommand = "pass email/gmail";
+      # passwordCommand = "pass email/gmail";
 
-      notmuch = {
-        enable = true;
-        neomutt.enable = true;
-      };
+      # notmuch = {
+      #   enable = true;
+      #   neomutt.enable = true;
+      # };
       # mbsync = {
       #   enable = true;
       #   create = "maildir";
@@ -27,17 +27,17 @@
       #   ];
       # };
       # aerc.enable = true;
-      neomutt.enable = true;
-      imap = {
-        host = "imap.gmail.com";
-        port = 993;
-        tls.enable = true;
-      };
-      smtp = {
-        host = "smtp.gmail.com";
-        port = 465;
-        tls.enable = true;
-      };
+      # neomutt.enable = true;
+      # imap = {
+      #   host = "imap.gmail.com";
+      #   port = 993;
+      #   tls.enable = true;
+      # };
+      # smtp = {
+      #   host = "smtp.gmail.com";
+      #   port = 465;
+      #   tls.enable = true;
+      # };
     };
   };
   programs.git.settings.user = {

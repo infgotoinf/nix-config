@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 let
   eo_bundle = pkgs.stdenvNoCC.mkDerivation {
     pname = "eo-bundle";
@@ -18,8 +18,10 @@ let
     '';
   };
 in {
-  home.file.".local/share/krita/EO_Bundle_v2.bundle" = {
-    source = eo_bundle.src;
-    force = true;
+  config = lib.mkIf config.drawing.enable {
+    home.file.".local/share/krita/EO_Bundle_v2.bundle" = {
+      source = eo_bundle.src;
+      force = true;
+    };
   };
 }

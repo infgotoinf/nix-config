@@ -1,6 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, lib, config, ... }:
 {
-  home.packages = with pkgs; [
-    blender
-  ];
+  config = lib.mkIf config.modeling.enable {
+    home.packages = with pkgs; [
+      blender
+    ];
+  };
 }
