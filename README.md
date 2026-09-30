@@ -2,13 +2,11 @@
 
 ## Installation
 
-### Non NixOS distro
+<!-- ### Non NixOS distro -->
 
-
-
-``` shell
-NIXPKGS_ALLOW_UNFREE=1 home-manager switch --extra-experimental-features nix-command --extra-experimental-features flakes --impure --flake .#HOSTNAME
-```
+<!-- ``` shell -->
+<!-- NIXPKGS_ALLOW_UNFREE=1 home-manager switch --extra-experimental-features nix-command --extra-experimental-features flakes --impure --flake .#HOSTNAME -->
+<!-- ``` -->
 
 ### NixOS
 
