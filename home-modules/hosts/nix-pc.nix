@@ -11,6 +11,8 @@
   modeling.enable = true;
   video-editing.enable = true;
 
+  discord.enable = true;
+
   has_nvidia_gpu = true;
 
   # services.wayvnc = {
