@@ -14,49 +14,60 @@
 > [!WARNING]
 > Installation guide has too many steps. Gonna fix this later.
 
+1. Install [Minimal NixOS ISO](https://nixos.org/download/#nixos-iso)
+
+1. Clone and enter the repo
+   ```sh
+   git clone https://github.com/infgotoinf/nix-config.git --depth 1 && cd nix-config
+   ```
+
 1. Edit disco config
 
 > [!NOTE]
-> You can learn more about disco on the [official disko repo](https://github.com/nix-community/disko)
+> You can learn more about disko on the [official disko repo](https://github.com/nix-community/disko)
 
-```shell
-EDITOR etc/disko/btrfs.nix
+```sh
+EDITOR etc/disko/btrfs-swap.nix
 ```
-2. Run it
+
+4. Run it
 
 > [!WARNING]
 > This action will destroy all data on sellected disk! Be sure you followed previous step.
 
-```shell
-sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount etc/disco/btrfs.nix
+```sh
+sudo nix --experimental-features "nix-command flakes" run github:nix-community/disko/latest -- --mode destroy,format,mount etc/disco/btrfs-swap.nix
 ```
-3. Install NixOS
+    
+5. Install NixOS
 
-```shell
-sudo nixos-generate-config --root /mnt && sudo nixos-install
-```
+   ```sh
+   sudo nixos-generate-config --root /mnt && sudo nixos-install
+   ```
 
-4. Edit config (add user, experimental features (nix.settings.experimental-features = [ "nix-command" "flakes" ])) passwd user
-```shell
-sudo nixos-enter
-nano /etc/nixos/configuration.nix
-nix-channel --add https://nixos.org/channels/nixpkgs-unstable && nix-channel --update
-nixos-rebuild boot
-ctrl+D sudo nixos-enter
-passwd USERNAME
-```
+1. Edit config (add user, experimental features (nix.settings.experimental-features = [ "nix-command" "flakes" ])) passwd user
 
-5. Login into user account, git clone this repo, replace modules/hardware/hardware-configuration.nix with /etc/nixos/hardware-configuration.nix and rebuild
-```shell
-cd /home/USER
-nix-shell -p git
-git clone https://github.com/infgotoinf/nix-config.git
-cd nix-config
-mv moudles/hardware/hardware-configuration.nix modules/hardware/hardware-configuration.nix.old
-cp /etc/nixos/hardware-configuration.nix moduels/hardware/
-nixos-rebuild boot --flake .
-reboot
-nh os home switch
-```
+   ```sh
+   sudo nixos-enter
+   nano /etc/nixos/configuration.nix
+   nix-channel --add https://nixos.org/channels/nixpkgs-unstable && nix-channel --update
+   nixos-rebuild boot
+   ctrl+D sudo nixos-enter
+   passwd USERNAME
+   ```
+
+1. Login into user account, git clone this repo, add host configs and rebuild
+
+   ```sh
+   cd /home/USER
+   nix-shell -p git
+   git clone https://github.com/infgotoinf/nix-config.git
+   cd nix-config
+   cp /etc/nixos/hardware-configuration.nix modules/hosts/HOST-NAME.nix
+   touch home-modules/hosts/HOST-NAME.nix
+   nixos-rebuild boot --flake .#HOSTNAME --impure
+   reboot
+   NIXPKGS_ALLOW_UNFREE=1 home-manager switch --impure --flake .#HOSTNAME
+   ```
 
 You're done!
