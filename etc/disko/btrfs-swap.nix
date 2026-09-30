@@ -4,7 +4,7 @@
     disk = {
       main = {
         type = "disk";
-        device = "/dev/sdX"; # Consider changing device to desired one. 'fdisk -l' to list all devices
+        device = "/dev/sdX"; # Consider changing device to desired one. 'lsblk' to list all devices
         content = {
           type = "gpt";
           partitions = {
@@ -13,11 +13,9 @@
               priority = 1;
               name = "ESP";
               start = "1M";
-              # Since NixOS stores all installed kernels' versions in boot, I don't recommend going below 512M
+              # Since NixOS stores all installed kernels' versions in boot, I don't recommend going below 0.5GiB
               # https://discourse.nixos.org/t/boot-partition-is-too-small-and-becoming-full/32194
-              # (but if you're too griddy you actually can. In my personal experience I didn't see boot parition
-              # taking more than 100M, but know that you're doing)
-              end = "512M";
+              end = "1GiB";
               type = "EF00";
               content = {
                 type = "filesystem";
@@ -28,7 +26,7 @@
             };
 
             swap = {
-              size = "<RAM-SIZE>"; # For example "8G" or "16G"
+              size = "RAM-SIZE"; # For example "8G" or "16G"
               content = {
                 type = "swap";
                 resumeDevice = true;
@@ -49,7 +47,6 @@
                 ];
               };
             };
-            # Notice what there is no swap, cause insead of swap configuration uses ZRAM
           };
         };
       };

@@ -60,6 +60,7 @@
 
       cmake-language-server
       clang-tools
+      glsl_analyzer
 
       # python314Packages.jedi-language-server
       ty
