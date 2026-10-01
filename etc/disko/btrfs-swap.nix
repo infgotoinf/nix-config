@@ -8,14 +8,19 @@
         content = {
           type = "gpt";
           partitions = {
-
-            ESP = {
+            # Lagacy BIOS
+            MBR = {
+              type = "EF02";
+              size = "1M";
               priority = 1;
-              name = "ESP";
-              start = "1M";
+            };
+
+            # EFI
+            ESP = {
+              priority = 2;
               # Since NixOS stores all installed kernels' versions in boot, I don't recommend going below 0.5GiB
               # https://discourse.nixos.org/t/boot-partition-is-too-small-and-becoming-full/32194
-              end = "1GiB";
+              size = "1G";
               type = "EF00";
               content = {
                 type = "filesystem";
