@@ -24,7 +24,7 @@
       # "ctrl-K".command = "kill-line";
     };
     functions = {
-      path-info = "nix path-info nixpkgs#$argv[1]";
+      nix-path-info = "nix path-info nixpkgs#$argv[1]";
       build-package-path = ''nix-build -E "with import <nixpkgs> {}; callPackage $argv[1] {}"'';
     };
     shellAbbrs = {

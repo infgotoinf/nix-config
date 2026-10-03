@@ -3,8 +3,8 @@
     ./email.nix
   ];
 
-  i3.enable = true;
-  # sway.enable = true;
+  # i3.enable = true;
+  sway.enable = true;
 
   drawing.enable = true;
   # music-production.enable = true;

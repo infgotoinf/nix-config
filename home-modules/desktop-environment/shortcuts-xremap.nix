@@ -67,6 +67,10 @@ in
             "Win-Shift-Dot".launch   = ["bash" "-c" "mpc volume +5"];
             "Win-Comma".launch       = ["bash" "-c" "mpc prev"];
             "Win-Dot".launch         = ["bash" "-c" "mpc next"];
+
+            "KEY_PLAYPAUSE".launch    = ["bash" "-c" "mpc toggle"];
+            "KEY_PREVIOUSSONG".launch = ["bash" "-c" "mpc prev"];
+            "KEY_NEXTSONG".launch     = ["bash" "-c" "mpc next"];
           };
         }
         {
@@ -75,6 +79,10 @@ in
             "Win-Ctrl-Shift-M".launch = ["bash" "-c" "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"];
             "Win-Shift-Minus".launch = ["bash" "-c" "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"];
             "Win-Shift-Equal".launch = ["bash" "-c" "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+"];
+
+            "KEY_MUTE".launch       = ["bash" "-c" "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"];
+            "KEY_VOLUMEDOWN".launch = ["bash" "-c" "wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"];
+            "KEY_VOLUMEUP".launch   = ["bash" "-c" "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+"];
           };
         }
         {
@@ -82,6 +90,9 @@ in
           remap = {
             "Win-Shift-Leftbrace".launch  = ["bash" "-c" "${pkgs.brightnessctl}/bin/brightnessctl set 5%-"];
             "Win-Shift-Rightbrace".launch = ["bash" "-c" "${pkgs.brightnessctl}/bin/brightnessctl set 5%+"];
+
+            "KEY_BRIGHTNESSDOWN".launch  = ["bash" "-c" "${pkgs.brightnessctl}/bin/brightnessctl set 5%-"];
+            "KEY_BRIGHTNESSUP".launch    = ["bash" "-c" "${pkgs.brightnessctl}/bin/brightnessctl set 5%+"];
           };
         }
         {
@@ -92,6 +103,9 @@ in
             "Win-Ctrl-Shift-P".launch = ["bash" "-c" "poweroff"];
             "Win-Ctrl-Shift-H".launch = ["bash" "-c" "systemctl hibernate"];
             "Win-Ctrl-Shift-S".launch = ["bash" "-c" "systemctl sleep"];
+
+            # Funny key name
+            "KEY_COFFEE".launch = screenlock;
           };
         }
       ];
