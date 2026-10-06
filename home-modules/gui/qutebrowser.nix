@@ -186,7 +186,8 @@
           input,
           textarea,
           button,
-          select):not([class*="icon"]):not([class*="fa"]):not([class*="material"]):not([class*="glyph"]) {
+          /* Excluding 'react-blob-print-hide' and 'react-blob-print' fixes issues with text and code selection on Github */
+          select):not([class*="icon"]):not([class*="fa"]):not([class*="material"]):not([class*="glyph"]):not([class*="react-blob-print"]):not([class*="prc-components-Input"]) {
           font-size: 16px !important;
         }
 
