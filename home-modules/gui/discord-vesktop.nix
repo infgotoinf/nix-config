@@ -1,15 +1,20 @@
-{ config, lib, ... }:
+{ config, lib, unstable, ... }:
 {
   options = {
     discord.enable = lib.mkEnableOption "Discord desktop";
+    vesktop.enable = lib.mkEnableOption "Vesktop - better discord";
   };
 
   config = lib.mkIf config.discord.enable {
     programs.discord.enable = true;
-
+  } // lib.mkIf config.vesktop.enable {
     programs.vesktop = {
-      # enable = true;
+      enable = true;
+      # Unstable for version >= 1.6.6 so webRTCIPHandlingPolicy is real, so DLTS
+      # connection problems can be fixed
+      package = unstable.vesktop;
       settings = {
+        webRTCIPHandlingPolicy = "default_public_and_private_interfaces";
         appBadge = false;
         arRPC = true;
         checkUpdates = false;

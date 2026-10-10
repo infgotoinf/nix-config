@@ -37,7 +37,7 @@
       url = "github:DaHL-gh/happ-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    zapret-discord-youtube.url = "github:kartavkun/zapret-discord-youtube";
+    # zapret-discord-youtube.url = "github:kartavkun/zapret-discord-youtube";
     weathr.url = "github:Veirt/weathr";
   };
 
@@ -90,7 +90,7 @@
         stylix.nixosModules.stylix
         musnix.nixosModules.musnix
         happ-nix.nixosModules.default
-        zapret-discord-youtube.nixosModules.withTestTools
+        # zapret-discord-youtube.nixosModules.withTestTools
       ];
     };
 

@@ -120,6 +120,7 @@
       colors = config.lib.stylix.colors.withHashtag;
 
     in {
+      content.webrtc_ip_handling_policy = "default-public-and-private-interfaces";
       qt.args = [
         "--enable-gpu-rasterization"
       ];

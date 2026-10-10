@@ -12,6 +12,7 @@
   # video-editing.enable = true;
 
   # discord.enable = true;
+  # vesktop.enable = true;
 
   # targets.genericLinux = {
   #   enable = true;
