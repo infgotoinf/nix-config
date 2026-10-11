@@ -52,7 +52,12 @@
   # Yanked and edited from https://github.com/Ha1kuFox/dotfiles/blob/8b193c6842ec561bce88df0dbb385acd4e271a98/modules/nixos/network.nix
   networking = {
     hostName = hostname;
-    # firewall.enable = false;
+    firewall = {
+      enable = false;
+      allowedUDPPorts = [
+        53 67 # ssh ports
+      ];
+    };
     enableIPv6 = false;
     # nameservers = [ "8.8.8.8" "1.1.1.1" ];
     networkmanager = {
