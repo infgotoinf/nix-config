@@ -1,3 +1,4 @@
+{ pkgs, ... }:
 {
   imports = [
     ./email.nix
@@ -23,5 +24,20 @@
   #   experimental-features = nix-command flakes
   # '';
 
-  # services.xremap.deviceNames = [ "AT Translated Set 2 keyboard" ];
+  services.xremap = {
+    deviceNames = [
+      "AT Translated Set 2 keyboard"
+      "ThinkPad Extra Buttons"
+      "Video Bus"
+    ];
+    config.keymap = [
+      {
+        name = "Thinkpad specific";
+        remap = {
+          "Win-Ctrl-Shift-M".launch = ["bash" "-c" "${pkgs.alsa-utils}/bin/amixer sset 'Master',0 toggle"];
+          "KEY_MUTE".launch         = ["bash" "-c" "${pkgs.alsa-utils}/bin/amixer sset 'Master',0 toggle"];
+        };
+      }
+    ];
+  };
 }

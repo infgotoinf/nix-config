@@ -85,7 +85,7 @@
           })
           (lib.mkIf (system_info.has_battery) { block = "battery";
             format = "$icon $percentage ($time_remaining)";
-            interval = 30;
+            interval = 2;
             theme_overrides.idle_fg = colors.magenta;
           })
           {

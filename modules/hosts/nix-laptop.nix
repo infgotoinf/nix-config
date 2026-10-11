@@ -51,28 +51,6 @@
     };
   };
 
-  services.xremap = {
-    deviceNames = [
-      "AT Translated Set 2 keyboard"
-      "ThinkPad Extra Buttons"
-      "Video Bus"
-    ];
-    config.keymap = [
-      {
-        name = "Thinkpad specific";
-        "Win-Ctrl-Shift-M".launch = "${pkgs.alsa-utils}/bin/amixer sset 'Master',0 toggle";
-        "KEY_MUTE".launch = "${pkgs.alsa-utils}/bin/amixer sset 'Master',0 toggle";
-      }
-    ];
-  };
-
-  config = lib.mkIf config.sway.enable {
-    wayland.windowManager.sway.config.startup = [
-      { command = "systemctl --user restart xremap"; always = true; }
-    ];
-  };
-
-
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
