@@ -53,7 +53,7 @@
   networking = {
     hostName = hostname;
     firewall = {
-      enable = false;
+      # enable = false;
       allowedUDPPorts = [
         53 67 # ssh ports
       ];
