@@ -170,7 +170,8 @@
         /* Apply UnifontExMono font everythere except material icons and stuff */
         /* *:not([class*="icon"]):not([class*="emoji"]):not([class*="fa"]):not([class*="material"]):not([class*="glyph"]):not([class*="tgico"]) { */
         *:not([class*="icon"]):not([class*="emoji"]):not([class*="fa"]):not([class*="material"]):not([class*="glyph"]) {
-          font-family: "UnifontExMono", "Twitter Color Emoji" !important;
+          /* font-family: "UnifontExMono", "Twitter Color Emoji" !important; */
+          font-family: "Unifont", "Twitter Color Emoji" !important;
         }
 
         .emoji {
