@@ -26,7 +26,6 @@
     "Mod4+Shift+Ctrl+q" = "kill";
     "Mod4+q" = null;
     "Mod4+r" = null;
-    "Mod4+k" = null;
     "Mod4+b" = null;
   };
 

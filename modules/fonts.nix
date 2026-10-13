@@ -10,8 +10,11 @@
       # noto-fonts
       unifont
       nur.repos.infgotoinf.UnifontExMono
-      twitter-color-emoji
       times-newer-roman
+      lato
+
+      twitter-color-emoji
+      font-awesome
     ];
   };
 }
