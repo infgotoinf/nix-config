@@ -5,6 +5,7 @@
     gcc
     gnumake
     cmake
+    ninja
     # lua
     ruby
     nodejs
