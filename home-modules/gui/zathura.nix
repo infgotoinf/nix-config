@@ -7,7 +7,7 @@
       selection-clipboard = "clipboard";
     };
     mappings = {
-      D = "toggle_page_mode";
+      D = "toggle_page_mode"; # Dual page mode
       "<C-i>" = "recolor";
       KPEqual = "adjust_window best_fit";
       "<C-k>" = "navigate previous";

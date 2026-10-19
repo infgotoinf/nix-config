@@ -6,6 +6,7 @@
     gnumake
     bear
     cmake
+    ninja
     # lua
     ruby
     nodejs
