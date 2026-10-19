@@ -17,13 +17,17 @@
     enable = true;
   };
 
-  programs.gnupg.agent = {
-    enable = true;
-  };
+  # programs.gnupg.agent = {
+  #   enable = true;
+  # };
 
   environment.systemPackages = with pkgs; [
     git
     vim
     w3m
   ];
+
+  # programs.ghidra = {
+  #   enable = true;
+  # };
 }

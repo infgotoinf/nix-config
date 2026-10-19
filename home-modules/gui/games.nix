@@ -7,7 +7,7 @@
     # the-powder-toy
 
     # retroarch
-    # r2modman
+    r2modman
 
     # Run this if you get an error in Lutris with flathub games:
     # flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
@@ -22,7 +22,7 @@
     enable = true;
   };
 
-  # programs.prismlauncher = {
-  #   enable = true;
-  # };
+  programs.prismlauncher = {
+    enable = true;
+  };
 }

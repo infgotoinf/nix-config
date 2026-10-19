@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     gcc
     gnumake
+    bear
     cmake
     # lua
     ruby

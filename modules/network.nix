@@ -53,10 +53,13 @@
   networking = {
     hostName = hostname;
     firewall = {
-      # enable = false;
-      allowedUDPPorts = [
-        53 67 # ssh ports
-      ];
+      enable = false;
+      # allowedUDPPorts = [
+      #   53 67 # ssh ports
+      # ];
+      # allowedTCPPorts = [
+      #   25565 # minecraft server host
+      # ];
     };
     enableIPv6 = false;
     # nameservers = [ "8.8.8.8" "1.1.1.1" ];

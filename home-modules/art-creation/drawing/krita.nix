@@ -1,4 +1,4 @@
-{ pkgs, lib, config, ... }:
+{ pkgs, unstable, lib, config, ... }:
 {
   config = lib.mkIf config.drawing.enable {
     # home.file = {
@@ -37,7 +37,7 @@
       chmod -R u+rw ~/.local/share/krita/workspaces
       cp ${./krita-settings}/workspaces/* ~/.local/share/krita/workspaces
     '';
-    home.packages = with pkgs; [
+    home.packages = with unstable.pkgs; [
       krita
       krita-plugin-gmic
     ];
