@@ -4,7 +4,7 @@
   home.packages = with pkgs; [
     gcc
     gnumake
-    bear
+    unstable.bear
     cmake
     # ninja
     # lua
