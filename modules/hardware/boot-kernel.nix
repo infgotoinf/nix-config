@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, unstable, ... }:
 {
   boot = {
     kernelParams = [
@@ -18,6 +18,7 @@
   # Amoung all default kernels 'zen' seems like the best one, so if you don't want to
   # wait chachy kernel compilation, you can use zen kernel, but you will sacrifice a
   # little bit of performance.
+  # boot.kernelPackages = unstable.linuxPackages_zen;
   boot.kernelPackages = pkgs.linuxPackages_zen;
 
   # NOTE: This was copy-pasted from ../../flake.nix, so you'll need to add cachyos

@@ -1,6 +1,10 @@
 { system_info, ... }:
 {
-  nixpkgs.config.allowUnfree = true;
+  # Works better than
+  # nixpkgs.config.allowUnfree = true;
+  environment.sessionVariables = {
+    NIXPKGS_ALLOW_UNFREE = 1;
+  };
   nixpkgs.config.cudaSupport = system_info.has_nvidia_gpu;
 
   programs.nix-ld = {

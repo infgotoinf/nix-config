@@ -1,4 +1,4 @@
-{ hostname, ... }:
+{ hostname, unstable, ... }:
 
 {
   systemd.services.NetworkManager-wait-online.enable = false;
@@ -33,9 +33,10 @@
     CapabilityBoundingSet = [ "CAP_NET_ADMIN" ];
   };
 
-  # programs.amnezia-vpn = {
-  #   enable = true;
-  # };
+  programs.amnezia-vpn = {
+    enable = true;
+    package = unstable.amnezia-vpn;
+  };
 
   # environment.systemPackages = with pkgs; [
   #   iptables
@@ -65,22 +66,22 @@
     # nameservers = [ "8.8.8.8" "1.1.1.1" ];
     networkmanager = {
       enable = true;
-      dns = "systemd-resolved";
+      # dns = "systemd-resolved";
     };
   };
 
-  services.resolved = {
-    enable = true;
-    settings.Resolve = {
-      DNS = [
-        "1.1.1.1#one.one.one.one"
-        "8.8.8.8#dns.google"
-      ];
-      # DNSOverTLS = true;
-      DNSSEC = true;
-      Domains = [ "~." ];
-    };
-  };
+  # services.resolved = {
+  #   enable = true;
+  #   settings.Resolve = {
+  #     DNS = [
+  #       "1.1.1.1#one.one.one.one"
+  #       "8.8.8.8#dns.google"
+  #     ];
+  #     # DNSOverTLS = true;
+  #     DNSSEC = true;
+  #     Domains = [ "~." ];
+  #   };
+  # };
 
   # services.zapret-discord-youtube = {
   #   enable = true;
