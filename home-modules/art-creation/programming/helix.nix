@@ -24,13 +24,13 @@
         "A-u" = ":reset-diff-change";
         # https://github.com/helix-editor/helix/discussions/12934#discussioncomment-12438498
         "C-y" = [
-        	'':sh rm -f /tmp/unique-ca1ea106''
-        	'':insert-output yazi "%{buffer_name}" --chooser-file=/tmp/unique-ca1ea106''
-        	'':sh printf "\x1b[?1049h\x1b[?2004h" > /dev/tty''
-        	'':open %sh{cat /tmp/unique-ca1ea106}''
-        	'':redraw''
-        	'':set mouse false''
-          '':set mouse true''
+          '':sh rm -f /tmp/unique-ca1ea106''
+          '':insert-output yazi "%{buffer_name}" --chooser-file=/tmp/unique-ca1ea106''
+          '':sh printf "\x1b[?1049h\x1b[?2004h" > /dev/tty''
+          '':open %sh{cat /tmp/unique-ca1ea106}''
+          '':redraw''
+          '':set mouse false''
+           '':set mouse true''
         ];
         "C-j" = "page_cursor_half_down";
         "C-k" = "page_cursor_half_up";

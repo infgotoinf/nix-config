@@ -8,6 +8,7 @@
     file
     killall
     file-rename
+    codespell
     ffmpeg-full
     # mermaid-filter
     catdocx

@@ -48,6 +48,11 @@
     mimeApps = {
       enable = true;
       defaultApplications = {
+        # To list avalible applications:
+        # ls ~/.nix-profile/share/applications
+        #
+        # To find filetype for a file:
+        # xdg-mime query filetype <file-path>
         "inode/directory" = "pcmanfm.desktop";
 
         "text/html" = "org.qutebrowser.qutebrowser.desktop";
@@ -57,6 +62,7 @@
         "x-scheme-handler/unknown" = "org.qutebrowser.qutebrowser.desktop";
 
         "application/pdf" = "org.pwmt.zathura.desktop";
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "org.pwmt.zaread.desktop";# Thats .docx lol
         "image/gif" = "org.qutebrowser.qutebrowser.desktop";
         # And yes for some reason wildcards (image/*) don't work
         "image/png" = "satty.desktop";
