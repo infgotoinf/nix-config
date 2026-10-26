@@ -53,6 +53,9 @@
         #
         # To find filetype for a file:
         # xdg-mime query filetype <file-path>
+        #
+        # To list all avalible file types
+        # xdg-mime query filetype <file-path>
         "inode/directory" = "pcmanfm.desktop";
 
         "text/html" = "org.qutebrowser.qutebrowser.desktop";
@@ -62,7 +65,7 @@
         "x-scheme-handler/unknown" = "org.qutebrowser.qutebrowser.desktop";
 
         "application/pdf" = "org.pwmt.zathura.desktop";
-        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "org.pwmt.zaread.desktop";# Thats .docx lol
+        "application/vnd.openxmlformats-officedocument.wordprocessingml.document" = "zaread.desktop";# Thats .docx lol
         "image/gif" = "org.qutebrowser.qutebrowser.desktop";
         # And yes for some reason wildcards (image/*) don't work
         "image/png" = "satty.desktop";
@@ -76,7 +79,10 @@
         "video/x-msvideo" = "mpv.desktop";
         "video/quicktime" = "mpv.desktop";
 
-        "audio/mp3" = "mpv.desktop";
+        "audio/mpeg" = "mpv.desktop";
+        "audio/flac" = "mpv.desktop";
+        "audio/ogg" = "mpv.desktop";
+        "audio/acc" = "mpv.desktop";
       };
     };
     # configFile = {

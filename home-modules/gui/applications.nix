@@ -28,10 +28,6 @@
     imagemagick
   ];
 
-  programs.mpv = {
-    enable = true;
-  };
-
   # programs.onlyoffice = {
   #   enable = true;
   # };

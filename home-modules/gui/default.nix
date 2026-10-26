@@ -6,6 +6,7 @@
     ./discord-vesktop.nix
     ./wezterm.nix
     ./rofi.nix
+    ./mpv.nix
     ./zathura.nix
   ];
 }
