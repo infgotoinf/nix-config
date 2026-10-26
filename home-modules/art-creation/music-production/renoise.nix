@@ -8,7 +8,6 @@
     home.activation.renoise_setup = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       mkdir -p ~/.config/Renoise/V${pkgs.renoise.version}
       chmod -R u+rw ~/.config/Renoise/V${pkgs.renoise.version}
-      cp ${./renoise-settings}/Config.xml ~/.config/Renoise/V${pkgs.renoise.version}/
       cp ${./renoise-settings}/KeyBindings.xml ~/.config/Renoise/V${pkgs.renoise.version}/
       cp ${./renoise-settings}/TemplateSong.xrns ~/.config/Renoise/V${pkgs.renoise.version}/
     '';
