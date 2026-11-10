@@ -72,6 +72,7 @@
         "image/jpeg" = "satty.desktop";
         "image/webp" = "satty.desktop";
         "image/svg+xml" = "satty.desktop";
+        "image/vnd.microsoft.icon" = "mpv.desktop";
 
         "video/mp4" = "mpv.desktop";
         "video/x-matroska" = "mpv.desktop";

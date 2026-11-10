@@ -13,6 +13,9 @@
     '';
 
     home.packages = with pkgs; [
+      lmms-full
+      qt5.qtwayland
+
       # reaper
       # ardour
       (pkgs.renoise.overrideAttrs (oldAttrs: {

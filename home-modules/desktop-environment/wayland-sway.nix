@@ -21,6 +21,12 @@ in {
         enable = true;
         systemd.variables = ["--all"];
         config = {
+          # https://github.com/AlynxZhou/showmethekey
+          floating.criteria = [
+            {
+              title = "Floating Window - Show Me The Key";
+            }
+          ];
           input."*" = {
             # modules/keyboard/locales-keyboard-layouts.nix
             xkb_layout = "us,ru";
