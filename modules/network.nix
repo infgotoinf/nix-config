@@ -27,15 +27,10 @@
     enable = true;
     tunMode.enable = true;
   };
-  systemd.services.happ.serviceConfig = {
-    Capabilities = [ "CAP_NET_ADMIN" ];
-    AmbientCapabilities = [ "CAP_NET_ADMIN" ];
-    CapabilityBoundingSet = [ "CAP_NET_ADMIN" ];
-  };
 
-  programs.throne = {
-    enable = true;
-  };
+  # programs.throne = {
+  #   enable = true;
+  # };
 
   # programs.amnezia-vpn = {
   #   enable = true;
@@ -82,39 +77,39 @@
         "1.1.1.1#one.one.one.one"
         "8.8.8.8#dns.google"
       ];
-      DNSOverTLS = true;
+      DNSOverTLS = "opportunistic";
       DNSSEC = true;
       Domains = [ "~." ];
     };
   };
 
-  services.zapret-discord-youtube = {
-    # enable = true;
-    # configName = "general";
-    # configName = "general(ALT)";
-    # configName = "general(ALT2)";
-    # configName = "general(ALT3)";                # норм
-    # configName = "general(ALT4)";
-    # configName = "general(ALT5)";
-    # configName = "general(ALT6)";
-    # configName = "general(ALT7)";
-    # configName = "general(ALT8)";
-    # configName = "general(ALT9)";
-    # configName = "general(ALT10)";
-    # configName = "general(ALT11)";
-    # configName = "general(ALT12)";
-    # configName = "general(ALT13)";
-    configName = "general (FAKE_TLS_AUTO)";      # норм
-    # configName = "general (FAKE_TLS_AUTO_ALT)";  # норм
-    # configName = "general (FAKE_TLS_AUTO_ALT1)";
-    # configName = "general (FAKE_TLS_AUTO_ALT2)";
-    # configName = "general (FAKE_TLS_AUTO_ALT3)";
-    # configName = "general (SIMPLE FAKE)";
-    # configName = "general (SIMPLE FAKE ALT)";
-    # configName = "general (SIMPLE_FAKE_ALT2)"; # WHY DO THEY NAME SHIT SO DIFFERENTLY
-    # configName = "general (EXP)";                # норм
-    activeDiscordFake = "tls_clienthello_4pda_to.bin";
-    activeGameFake = "quic_initial_tencent_com.bin";
-    gameFilter = "all";
-  };
+  # services.zapret-discord-youtube = {
+  #   enable = true;
+  #   # configName = "general";
+  #   # configName = "general(ALT)";
+  #   # configName = "general(ALT2)";
+  #   # configName = "general(ALT3)";                # норм
+  #   # configName = "general(ALT4)";
+  #   # configName = "general(ALT5)";
+  #   # configName = "general(ALT6)";
+  #   # configName = "general(ALT7)";
+  #   # configName = "general(ALT8)";
+  #   # configName = "general(ALT9)";
+  #   # configName = "general(ALT10)";
+  #   # configName = "general(ALT11)";
+  #   # configName = "general(ALT12)";
+  #   # configName = "general(ALT13)";
+  #   configName = "general (FAKE_TLS_AUTO)";      # норм
+  #   # configName = "general (FAKE_TLS_AUTO_ALT)";  # норм
+  #   # configName = "general (FAKE_TLS_AUTO_ALT1)";
+  #   # configName = "general (FAKE_TLS_AUTO_ALT2)";
+  #   # configName = "general (FAKE_TLS_AUTO_ALT3)";
+  #   # configName = "general (SIMPLE FAKE)";
+  #   # configName = "general (SIMPLE FAKE ALT)";
+  #   # configName = "general (SIMPLE_FAKE_ALT2)"; # WHY DO THEY NAME SHIT SO DIFFERENTLY
+  #   # configName = "general (EXP)";                # норм
+  #   activeDiscordFake = "tls_clienthello_4pda_to.bin";
+  #   activeGameFake = "quic_initial_tencent_com.bin";
+  #   gameFilter = "all";
+  # };
 }
