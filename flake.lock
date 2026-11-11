@@ -235,11 +235,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1792426876,
-        "narHash": "sha256-kClRIEE7aNsNFZTkx2VpwnOVCyXHp0hi3ik8e/BlMj8=",
+        "lastModified": 1793655841,
+        "narHash": "sha256-SLwbeler71nQ4Zl1e8iMEjrUbH1VYWs6awiMvmCEg/w=",
         "owner": "DaHL-gh",
         "repo": "happ-nix",
-        "rev": "06b60a87f88309d80a44c14d01e37a0d45769245",
+        "rev": "afed8d5a241c3ce25b19841261a44993547c6600",
         "type": "github"
       },
       "original": {

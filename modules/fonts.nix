@@ -8,10 +8,16 @@
       # google-fonts
       liberation_ttf
       # noto-fonts
-      unifont
-      nur.repos.infgotoinf.UnifontExMono
+      inter
       times-newer-roman
       lato
+      charis
+      eb-garamond
+
+      julia-mono
+      fira-code
+      unifont
+      nur.repos.infgotoinf.UnifontExMono
 
       twitter-color-emoji
       font-awesome

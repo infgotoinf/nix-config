@@ -25,7 +25,7 @@
       calf
       # geonkick
       # carla
-      # cardinal # Crashes Kdenlive
+      cardinal # Crashes Kdenlive
       # vcv-rack
       rubberband
       # airwindows

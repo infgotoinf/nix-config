@@ -33,10 +33,14 @@
     CapabilityBoundingSet = [ "CAP_NET_ADMIN" ];
   };
 
-  programs.amnezia-vpn = {
+  programs.throne = {
     enable = true;
-    package = unstable.amnezia-vpn;
   };
+
+  # programs.amnezia-vpn = {
+  #   enable = true;
+  #   package = unstable.amnezia-vpn;
+  # };
 
   # environment.systemPackages = with pkgs; [
   #   iptables
@@ -61,6 +65,7 @@
       # allowedTCPPorts = [
       #   25565 # minecraft server host
       # ];
+      checkReversePath = "loose"; # For TUN mode in VPNs
     };
     enableIPv6 = false;
     # nameservers = [ "8.8.8.8" "1.1.1.1" ];
@@ -84,7 +89,7 @@
   };
 
   services.zapret-discord-youtube = {
-    enable = true;
+    # enable = true;
     # configName = "general";
     # configName = "general(ALT)";
     # configName = "general(ALT2)";
@@ -99,8 +104,8 @@
     # configName = "general(ALT11)";
     # configName = "general(ALT12)";
     # configName = "general(ALT13)";
-    # configName = "general (FAKE_TLS_AUTO)";
-    configName = "general (FAKE_TLS_AUTO_ALT)";  # норм
+    configName = "general (FAKE_TLS_AUTO)";      # норм
+    # configName = "general (FAKE_TLS_AUTO_ALT)";  # норм
     # configName = "general (FAKE_TLS_AUTO_ALT1)";
     # configName = "general (FAKE_TLS_AUTO_ALT2)";
     # configName = "general (FAKE_TLS_AUTO_ALT3)";
