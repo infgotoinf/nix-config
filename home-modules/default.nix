@@ -4,6 +4,7 @@
     ./fixes.nix
     ./home-manager.nix
     ./nh.nix
+    ./direnv.nix
 
     ./cli
     ./tui
