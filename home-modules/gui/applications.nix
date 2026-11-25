@@ -3,7 +3,7 @@
   home.packages = with pkgs; [
     # aseprite
     # material-maker
-    # gucharmap
+    # gucharmap # Cool thing to inspect fonts
 
     pavucontrol
     # easyeffects

@@ -18,7 +18,7 @@
   home.packages = with pkgs; [
     nur.repos.infgotoinf.zaread
     # For zaread
-    libreoffice-still
+    libreoffice
     md2pdf
   ];
 }
