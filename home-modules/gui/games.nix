@@ -1,6 +1,9 @@
 { pkgs,  ... }:
 {
   home.packages = with pkgs; [
+    slade
+    uzdoom # https://archive.org/download/original-doom-wads
+    quake3e # https://archive.org/details/quake-3-arena
     # supertuxkart
     # mindustry
     # cataclysm-dda

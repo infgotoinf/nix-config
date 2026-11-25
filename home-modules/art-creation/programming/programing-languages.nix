@@ -3,6 +3,10 @@
 {
   home.packages = with pkgs; [
     gcc
+    # Got wierd
+    # "version `GLIBC_2.43' not found" errors recently, don't recomend to
+    # comment this line
+    unstable.glibc
     gnumake
     unstable.bear
     cmake
