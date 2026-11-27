@@ -47,11 +47,6 @@
         content.javascript.clipboard = "access";
         colors.webpage.darkmode.enabled = false;
       };
-      # Fixes the error with not being able to login in Google account
-      # https://github.com/qutebrowser/qutebrowser/issues/5182
-      # "accounts.google.com" = {
-      #   content.headers.user_agent = "Mozilla/5.0 ({os_info}; rv:135.0) Gecko/20100101 Firefox/135";
-      # };
     };
 
     greasemonkey = [
@@ -120,6 +115,11 @@
       colors = config.lib.stylix.colors.withHashtag;
 
     in {
+      # Fixes the error with not being able to login in Google account
+      # https://github.com/qutebrowser/qutebrowser/issues/5182
+      # Fixes sites like zdoom.org that has very strong bot protection
+      content.headers.user_agent = "Mozilla/5.0 ({os_info}; rv:135.0) Gecko/20100101 Firefox/135";
+
       content.webrtc_ip_handling_policy = "default-public-and-private-interfaces";
       qt.args = [
         "--enable-gpu-rasterization"
