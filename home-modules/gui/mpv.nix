@@ -10,5 +10,5 @@
     };
   };
 
-  xdg.configFile."mpv/scripts/visualizer.lua".source = ./visualizer.lua;
+  xdg.configFile."mpv/scripts/visualizer.lua".source = ./mpv-audio-visualizer.lua;
 }

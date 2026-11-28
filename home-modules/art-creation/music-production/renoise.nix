@@ -13,11 +13,6 @@
     '';
 
     home.packages = with pkgs; [
-      lmms-full
-      qt5.qtwayland
-
-      # reaper
-      # ardour
       (pkgs.renoise.overrideAttrs (oldAttrs: {
         # We add an additional step to `postFixup` phase, that changes desktop of renoise to execute
         # Renoise through steam-run, so each time you launch Renoise through Rofi it does this.

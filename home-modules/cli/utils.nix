@@ -1,47 +1,60 @@
 { pkgs, ... }:
 {
   home.packages = with pkgs; [
+    # Based
     wget
-    calc
-    cloc
     _7zz
     file
     killall
-    file-rename
-    codespell
     ffmpeg-full
+    imagemagick
+
+    # Usefull tools
+    calc      # calculator
+    cloc      # number of lines of code
+    codespell # typos in code
+    file-rename
+
+    # Working with documents
     # mermaid-filter
     catdocx
     poppler-utils # For pdftotext
   ];
 
+  programs.fd = {
+    enable = true;
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableFishIntegration = true;
+    tmux.enableShellIntegration  = true;
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+
   programs.fastfetch = {
     enable = true;
   };
 
-  programs.password-store = {
+  programs.bat = {
     enable = true;
+    extraPackages = with pkgs.bat-extras; [
+      batman
+      batgrep
+      batdiff
+    ];
   };
 
-  programs.atool = {
+  programs.eza = {
     enable = true;
-    extraPackages = with pkgs; [
-      bzip2
-      cpio
-      gnutar
-      gzip
-      lhasa
-      lzop
-      _7zz
-      unrar-free
-      unzip
-      xz
-      zip
-    ];
-    settings = {
-      path_7z = "7zz";
-      path_unrar = "unrar-free";
-    };
+    enableFishIntegration = true;
+    git = true;
+    colors = "auto";
+    icons = "auto";
   };
 
   # programs.pandoc = {

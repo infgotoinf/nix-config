@@ -1,11 +1,7 @@
 {
   imports = [
-    ./zoxide.nix
-    ./eza.nix
-    ./fd.nix
-    ./bat.nix
-    ./fzf.nix
     ./starship.nix
+    ./atool.nix
 
     ./utils.nix
   ];

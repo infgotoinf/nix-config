@@ -10,7 +10,6 @@
     # qpwgraph
 
     gnome-system-monitor
-    audacity
     gpu-screen-recorder-gtk
     showmethekey
     # librewolf
@@ -18,14 +17,14 @@
     # rn proton-authenticator fix is only in unstable brach sadly
     unstable.proton-authenticator
 
+    # GUI file manager
     pcmanfm
     # thunar
     # nemo
-    # For file managers to show image preview icons
+    # For the file manager to show image preview icons
     ffmpegthumbnailer
     gdk-pixbuf
     shared-mime-info
-    imagemagick
   ];
 
   # programs.onlyoffice = {

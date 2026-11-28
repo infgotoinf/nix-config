@@ -8,4 +8,9 @@
     # Others
     # devbox
   ];
+
+  programs.direnv = {
+    enable = true;
+    enableFishIntegration = true;
+  };
 }
